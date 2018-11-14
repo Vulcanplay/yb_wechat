@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      新增地址
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="addressForm">
+    <ion-list no-margin margin-top>
+      <ion-item>
+        <ion-label>姓名</ion-label>
+        <ion-input type="text" color="dark" placeholder="最少两个字" formControlName="username" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>电话</ion-label>
+        <ion-input type="number" color="dark" placeholder="不少于7位" formControlName="phone" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>地区</ion-label>
+        <city-picker item-content
+                     formControlName="location"
+                     [cancelText]="'取消'"
+                     [doneText]="'完成'"
+                     [separator]="'-'"
+                     [citiesData]="cityData"
+                     [(ngModel)]="cityName"
+                     (ionChange)="cityChange($event)">
+
+        </city-picker>
+      </ion-item>
+      <ion-item>
+        <ion-label>地址</ion-label>
+        <ion-input type="text" color="dark" placeholder="" formControlName="address" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>邮编</ion-label>
+        <ion-input type="number" color="dark" placeholder="" formControlName="code" ngModel="{{code}}" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>设为默认地址</ion-label>
+        <ion-toggle color="base" checked></ion-toggle>
+      </ion-item>
+    </ion-list>
+
+    <div margin-top>
+      <button ion-button full color="base" type="submit" (click)="newAddress()">保 存</button>
+    </div>
+  </form>
+</ion-content>

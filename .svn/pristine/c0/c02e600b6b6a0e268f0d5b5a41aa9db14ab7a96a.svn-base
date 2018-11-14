@@ -1,0 +1,72 @@
+<ion-content>
+  <div class="ewp-top-banner" style="background-image: url(./assets/img/home/home_slider_v2_1.jpg)"></div>
+  <ion-card>
+    <ion-card-header>
+      <ion-row no-padding class="tabs-ysb">
+        <ion-col tappable (click)="tabsYSB(1)" col-3 class="tabs-yb" [ngClass]="tabsYSBTag == 1 ? 'active' : ''">
+          <ion-icon [name]="tabsYSBTag == 1 ? 'md-alarm' : 'ios-alarm-outline'" [color]="tabsYSBTag == 1 ? 'oranger' : 'garydark'"></ion-icon>
+          <ion-note [color]="tabsYSBTag == 1 ? 'oranger' : 'garydark'">延保</ion-note>
+        </ion-col>
+        <ion-col tappable (click)="tabsYSB(2)" col-3 class="tabs-sb" [ngClass]="tabsYSBTag == 2 ? 'active' : ''">
+          <ion-icon [name]="tabsYSBTag == 2 ? 'ios-construct' : 'ios-construct-outline'" [color]="tabsYSBTag == 2 ? 'primary' : 'garydark'"></ion-icon>
+          <ion-note [color]="tabsYSBTag == 2 ? 'primary' : 'garydark'">三包</ion-note>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+    <ion-list no-margin>
+      <div padding class="cab">享1年3万公里售后保障！</div>
+      <button ion-item>
+        <ion-label>品牌型号</ion-label>
+        <ion-note item-end name="type" color="dark">
+          请选择品牌车型
+          <!--{{carInfo.SONBRANDNAME}}{{carInfo.CARSERIESNAME}}-->
+        </ion-note>
+      </button>
+      <button ion-item>
+        <ion-label>购买价格</ion-label>
+        <ion-note item-end name="type" color="dark">
+          请选择车价区间
+        </ion-note>
+      </button>
+
+      <ion-item detail-push>
+        <ion-label>初次登记日期</ion-label>
+        <ion-datetime placeholder="请选择初次登记日期" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+
+      <ion-item detail-none>
+        <ion-label>当前行驶公里</ion-label>
+        <ion-input type="text" text-right placeholder="请输入"></ion-input>
+        <ion-note item-end name="type" color="dark">
+          公里
+        </ion-note>
+      </ion-item>
+
+      <ion-item class="item-last">
+        <ion-checkbox class="circle" color="base"></ion-checkbox>
+        <ion-label>
+          <ion-note item-left color="dark6" class="font-mini">已知悉承保车辆标准</ion-note>
+          <ion-icon (click)="$event.stopPropagation();alert(1);" class="information" color="garydark" name="md-information-circle"></ion-icon>
+        </ion-label>
+      </ion-item>
+      <div padding class="no-padding-top">
+        <button ion-button block color="garydark" (click)="pushOrder()">我要投保</button>
+      </div>
+    </ion-list>
+  </ion-card>
+  <h2 class="ewp-card-title">延保服务</h2>
+  <ion-row class="ybs">
+    <ion-col col-4>
+      <p><ion-note color="dark">40万</ion-note></p>
+      <p><ion-note color="garydark">最高赔付额</ion-note></p>
+    </ion-col>
+    <ion-col col-4>
+      <p><ion-note color="dark">2大系统</ion-note></p>
+      <p><ion-note color="garydark">保障范围</ion-note></p>
+    </ion-col>
+    <ion-col col-4>
+      <p><ion-note color="dark">1年/3万公里</ion-note></p>
+      <p><ion-note color="garydark">保障期限里程</ion-note></p>
+    </ion-col>
+  </ion-row>
+</ion-content>

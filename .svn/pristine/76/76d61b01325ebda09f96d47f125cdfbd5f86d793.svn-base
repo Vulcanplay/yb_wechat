@@ -1,0 +1,14 @@
+import { Component } from '@angular/core';
+import {AlertController, ModalController, NavController, NavParams} from 'ionic-angular';
+
+@Component({
+  selector: 'page-ewp-introduction-detail',
+  templateUrl: 'introduction-detail.html'
+})
+export class EWPIntroductionDetailPage {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              public alertCtrl: AlertController) {
+  }
+}

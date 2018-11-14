@@ -1,0 +1,175 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start (click)="dismiss()">
+      <button ion-button>
+        <i class="iconfont lg icon-custom-arrowleft"></i>
+      </button>
+    </ion-buttons>
+    <ion-title>城市</ion-title>
+    <ion-searchbar *ngIf="false" placeholder="输入城市名或拼音查询" (ionInput)="filterItems($event)"></ion-searchbar>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <button *ngIf="false" ion-item id="city-gps">
+    <ion-note color="dark" item-start>北京</ion-note>
+    <ion-label>GPS 定位</ion-label>
+  </button>
+  <ion-list no-margin>
+    <ion-item-group id="city-A">
+      <ion-item-divider>A</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of A">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-B">
+      <ion-item-divider>B</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of B">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-C">
+      <ion-item-divider>C</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of C">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-D">
+      <ion-item-divider>D</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of D">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-E">
+      <ion-item-divider>E</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of E">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-F">
+      <ion-item-divider>F</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of F">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-G">
+      <ion-item-divider>G</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of G">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-H">
+      <ion-item-divider>H</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of H">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-J">
+      <ion-item-divider>J</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of J">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-K">
+      <ion-item-divider>K</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of K">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-L">
+      <ion-item-divider>L</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of L">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-M">
+      <ion-item-divider>M</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of M">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-N">
+      <ion-item-divider>N</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of N">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-P">
+      <ion-item-divider>P</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of P">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-Q">
+      <ion-item-divider>Q</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of Q">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-R">
+      <ion-item-divider>R</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of R">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-T">
+      <ion-item-divider>T</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of T">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-S">
+      <ion-item-divider>S</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of S">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-W">
+      <ion-item-divider>W</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of W">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-X">
+      <ion-item-divider>X</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of X">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-Y">
+      <ion-item-divider>Y</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of Y">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="city-Z">
+      <ion-item-divider>Z</ion-item-divider>
+      <button ion-item detail-none (click)="city(item.CITYID)" *ngFor="let item of Z">
+        <ion-label>{{item.CITYNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+  </ion-list>
+</ion-content>
+<div class="citybox-shortcuts">
+  <a citybox-link href="void(0)" (click)="$anchorScroll('#city-A')">A</a>
+  <a citybox-link href="#city-B">B</a>
+  <a citybox-link href="#city-C">C</a>
+  <a citybox-link href="#city-D">D</a>
+  <a citybox-link href="#city-F">E</a>
+  <a citybox-link href="#city-F">F</a>
+  <a citybox-link href="#city-G">G</a>
+  <a citybox-link href="#city-H">H</a>
+  <a citybox-link href="#city-J">J</a>
+  <a citybox-link href="#city-K">K</a>
+  <a citybox-link href="#city-L">L</a>
+  <a citybox-link href="#city-M">M</a>
+  <a citybox-link href="#city-N">N</a>
+  <a citybox-link href="#city-P">P</a>
+  <a citybox-link href="#city-Q">Q</a>
+  <a citybox-link href="#city-R">R</a>
+  <a citybox-link href="#city-T">T</a>
+  <a citybox-link href="#city-S">S</a>
+  <a citybox-link href="#city-W">W</a>
+  <a citybox-link href="#city-X">X</a>
+  <a citybox-link href="#city-Y">Y</a>
+  <a citybox-link href="#city-Z">Z</a>
+</div>

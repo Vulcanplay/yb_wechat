@@ -1,0 +1,52 @@
+page-offer{
+  .no-car ion-col{
+    height: 12rem;
+    background: url(../assets/img/ewp/no_car_bg.png) no-repeat center center;
+    background-size: 100%;
+    border-radius: 10px;
+    margin: 5px 10px;
+  }
+  .no-car h2,.no-car p{ margin: 0; line-height: 6rem;}
+  .no-car h2{ color:color($colors, oranger);}
+  .no-car p{ color:color($colors, white);}
+
+  /* vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
+  .ewp-top-banner{
+    position: relative;
+    width: 100%;
+    height: 13.5rem;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .content-ios{background-color: #fbfbfb !important;}
+  .tabs-ysb{ height: 100%;}
+  .cab{ font-size: 1.3rem; color: #878787;}
+  .tabs-yb, .tabs-sb{ padding: 0; height: 100%; line-height: 4.88rem; text-align: center; background-repeat: no-repeat; background-size: contain;}
+  .tabs-yb.active{/* background-image: url(../assets/img/ewp/card_header_left.png);*/background-color: #ffffff; font-weight: bold;}
+  .tabs-sb.active{/* background-image: url(../assets/img/ewp/card_header_center.png); */ background-color: #ffffff;font-weight: bold;}
+  .tabs-ysb ion-icon{ font-size: 1.55rem;}
+  .tabs-ysb ion-note{ font-size: 1.77rem !important; padding-left: 2px;}
+  .card-ios{box-shadow: 0 10px 20px rgba(233,232,232,1); margin: -2rem auto 0 auto;position: relative;}
+  .card .item-block{ min-height: 5rem !important;}
+  .card .list-ios > .item-block:first-child{ border: none;}
+  .card ion-list .note-ios{ font-size: 1.55rem; color: #6b6968}
+  .card .item-ios{ font-size: 1.66rem; color: #1a1a1a;}
+  .card-ios .item-ios.item-block .item-inner{border-bottom: 1px solid #f5f5f5;}
+  .card-ios .list-ios > .item-block:last-child,.card-ios .list-ios > .item-wrapper:last-child .item-block{ border: 0;}
+  .card-ios .item-last .item-inner{border: none !important;}
+  ion-card-header{background-color: #f8f8f8; padding: 0!important; height: 4.88rem;}
+
+  .ewp-card-title{font-size: 1.7rem; margin: 0; padding: 1.5em 0 2em 1.5em; background-color: white; font-weight: bold;}
+
+  .ybs{ text-align: center; background-color: #ffffff;}
+  .ybs p:first-child{margin: 16px 0 8px 0;}
+  .ybs ion-col{padding-top: 3rem;}
+  .ybs ion-col:nth-child(1){background: url(../assets/img/ewp/linshi1.svg) center 0 no-repeat; background-size: 2.88rem;}
+  .ybs ion-col:nth-child(2){background: url(../assets/img/ewp/linshi2.svg) center 0 no-repeat; background-size: 2.88rem;}
+  .ybs ion-col:nth-child(3){background: url(../assets/img/ewp/linshi3.svg) center 0 no-repeat; background-size: 2.88rem;}
+
+  .item.item-ios .checkbox-ios{margin-right:.5em;}
+  .information{ position: absolute;font-size: 2rem !important;top: 35%;left: auto;}
+  .no-padding-top{padding-top: 0 !important;}
+}

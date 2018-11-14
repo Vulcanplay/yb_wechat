@@ -1,0 +1,123 @@
+import { NgModule, ErrorHandler } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import {IonicApp, IonicModule, Config} from 'ionic-angular';
+import { MyApp } from './app.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+/*providers*/
+import {NativeService} from "../providers/NativeService";
+import {HttpService} from "../providers/HttpService";
+import {FileService} from "../providers/FileService";
+import {Helper} from "../providers/Helper";
+import {Utils} from "../providers/Utils";
+import {HttpModule} from "@angular/http";
+import {GlobalData} from "../providers/GlobalData";
+import {ENABLE_FUNDEBUG, IS_DEBUG, FUNDEBUG_API_KEY} from "../providers/Constants";
+import {Logger} from "../providers/Logger";
+import {
+  CenterModalFromRightEnter, CenterModalFromRightLeave, ModalFromRightEnter, ModalFromRightLeave, ModalScaleEnter,
+  ModalScaleLeave
+} from "./modal-transitions";
+
+/*ionic native*/
+import {StatusBar} from "@ionic-native/status-bar";
+import {SplashScreen} from "@ionic-native/splash-screen";
+import {Network} from "@ionic-native/network";
+import {File} from "@ionic-native/file";
+import {ImagePicker} from "@ionic-native/image-picker";
+import {InAppBrowser} from "@ionic-native/in-app-browser";
+import {Transfer} from "@ionic-native/transfer";
+import {AppVersion} from "@ionic-native/app-version";
+import {Camera} from "@ionic-native/camera";
+import {AppMinimize} from "@ionic-native/app-minimize";
+import {Diagnostic} from "@ionic-native/diagnostic";
+import {Toast} from "@ionic-native/toast";
+import {IonicStorageModule} from "@ionic/storage";
+
+/*pages*/
+import { HomeModule } from "../pages/home/home.module";
+import { CategoryModule } from '../pages/category/category.module';
+import { ShareModule } from '../pages/share/share.module';
+import { CartModule } from '../pages/cart/cart.module';
+import { MineModule } from '../pages/mine/mine.module';
+import { TabsModule } from '../pages/tabs/tabs.module';
+import { SignInModule } from "../pages/login/sign-in/sign-in.module";
+import { FormsModule } from '@angular/forms';
+
+//$ cnpm i fundebug-javascript --save
+//https://docs.fundebug.com/notifier/javascript/framework/ionic2.html
+declare let require: any;
+let fundebug: any = require("fundebug-javascript");
+fundebug.apikey = FUNDEBUG_API_KEY;
+fundebug.releasestage = IS_DEBUG ? 'development' : 'production';//应用开发阶段，development:开发;production:生产
+fundebug.silent = !ENABLE_FUNDEBUG;//如果暂时不需要使用Fundebug，将silent属性设为true
+
+export class FunDebugErrorHandler implements ErrorHandler {
+  handleError(err: any): void {
+    fundebug.notifyError(err);
+    console.error(err);
+  }
+}
+
+@NgModule({
+  declarations: [MyApp],
+  imports: [
+    BrowserModule,
+    HttpModule,
+    PdfViewerModule,
+    IonicModule.forRoot(MyApp, {
+      mode: 'ios',//android >> 'md'
+      backButtonText: '',
+      backButtonIcon: 'ios-arrow-round-back',
+      tabsHideOnSubPages: 'true'
+    }),
+    IonicStorageModule.forRoot(),
+    HomeModule,
+    CategoryModule,
+    ShareModule,
+    CartModule,
+    FormsModule,
+    MineModule,
+    TabsModule,
+    SignInModule,
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [MyApp],
+
+  providers: [
+    StatusBar,
+    SplashScreen,
+    AppVersion,
+    Camera,
+    Toast,
+    File,
+    Transfer,
+    InAppBrowser,
+    ImagePicker,
+    Network,
+    AppMinimize,
+    Diagnostic,
+    {provide: ErrorHandler, useClass: FunDebugErrorHandler},
+    NativeService,
+    HttpService,
+    FileService,
+    Helper,
+    Utils,
+    GlobalData,
+    Logger
+  ]
+})
+
+export class AppModule {
+  constructor(public config: Config) {
+    this.setCustomTransitions();
+  }
+
+  private setCustomTransitions() {
+    this.config.setTransition('modal-from-right-enter', ModalFromRightEnter);
+    this.config.setTransition('modal-from-right-leave', ModalFromRightLeave);
+    this.config.setTransition('modal-scale-enter', ModalScaleEnter);
+    this.config.setTransition('modal-scale-leave', ModalScaleLeave);
+    this.config.setTransition('center-modal-from-right-enter', CenterModalFromRightEnter);
+    this.config.setTransition('center-modal-from-right-leave', CenterModalFromRightLeave);
+  }
+}

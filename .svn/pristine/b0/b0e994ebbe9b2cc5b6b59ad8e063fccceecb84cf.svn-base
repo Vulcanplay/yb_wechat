@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+import {ModalController, NavController, NavParams} from 'ionic-angular';
+import {ShoppingCartPage} from "../../shopping-cart/shopping-cart";
+import {ConfirmOrderPage} from "../../confirm-order/confirm-order";
+import {EWPService} from "../../EWPService";
+import {DomSanitizer} from "@angular/platform-browser";
+
+@Component({
+  selector: 'page-process',
+  templateUrl: 'process.html'
+})
+export class ProcessPage {
+  constructor(public navCtrl: NavController) {
+  }
+}

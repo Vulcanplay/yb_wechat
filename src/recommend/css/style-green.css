@@ -1,0 +1,105 @@
+@charset "UTF-8";
+html{
+  width: 100%;
+  height: 100%;
+  font-size: 62.5%;
+}
+body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  background: #79b472 url(../images/bottom_2.png) no-repeat bottom .5em center;
+  background-size: 98.66667px 22.66667px;
+}
+header{
+  width: 100%;
+  height: 16rem;
+  background: url(../images/banner_2.jpg) no-repeat top center;
+  background-size: 100%;
+}
+.list{
+  margin: 16px 32px;
+}
+.list > .item{
+  padding-left: 16px;
+  border-radius: 5px;
+  position: relative;
+  font-size: 1.4rem;
+  margin: 0;
+  padding: 0;
+  text-align: initial;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 4.4rem;
+  font-weight: normal;
+  line-height: normal;
+  text-decoration: none;
+}
+.item i,.item input,.item button.send-code{
+  -webkit-box-flex: initial;
+  -webkit-flex: initial;
+  -ms-flex: initial;
+  flex: initial;
+  color: #ffffff;
+}
+.item{
+  background-color: rgba(255,255,255,.5);
+  margin-bottom: 16px !important;
+}
+.item input{
+  border:0;
+  outline: none;
+  width: 100%;
+  height: 30px;
+  background-color: transparent;
+  color:#ffffff;
+  margin-top: 3px;
+  margin-left: 24px;
+  font-size: 1.6rem;
+}
+.item button.send-code{
+  background-color: transparent;
+  border-color: transparent;
+  padding: 6px 12px 6px 12px;
+  white-space: nowrap;
+  overflow: initial;
+  border-left:1px solid #ffffff;
+  border-radius-bottomleft: 10px;
+  border-radius-topleft: 10px;
+  outline: none;
+}
+.item button.send-code:active{
+  color: #a8a8a8;
+}
+.submit{
+  outline: none;
+  border:1px solid #ffffff;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+  color:#ffffff;
+  padding: 8px 0;
+  font-size: 1.7rem;
+  margin-top: 32px;
+  border-radius: 5px;
+}
+.submit:active{
+  background-color: rgba(255,255,255,.5);
+}
+::-webkit-input-placeholder {
+  color:white !important;
+}

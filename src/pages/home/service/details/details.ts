@@ -1,0 +1,116 @@
+import { Component } from '@angular/core';
+import { ModalController, NavController, NavParams, ToastController, ViewController } from 'ionic-angular';
+import { ConfirmOrderPage } from "../confirm-order/confirm-order";
+import { EWPService } from "../EWPService";
+import { Storage } from '@ionic/storage';
+import { DomSanitizer } from "@angular/platform-browser";
+import { ServiceContractPage } from "./service-contract/service-contract";
+import { ProcessPage } from "./process/process";
+import { ProductInfo, UserInfo, CarInfo, HomeaddCarARR } from "../../../../model/UserInfo";
+import { FILE_SERVE_URL } from "../../../../providers/Constants";
+import { VehiclePage } from '../../../mine/vehicle/vehicle';
+import { SignInPage } from '../../../login/sign-in/sign-in';
+import { PaymentOrderPage } from "../payment-order/payment-order";
+import { TabsPage } from "../../../tabs/tabs";
+@Component({
+  selector: 'page-ewp-details',
+  templateUrl: 'details.html'
+})
+export class EWPDetailsPage {
+  private power: boolean = false;
+  //是否登录
+  public userinfo: UserInfo = {
+    Userid: '',
+    Username: '',// 姓名
+    NikeName: '', //昵称
+    Email: '',//邮箱
+    Phone: '', //手机号
+    Sex: '',//性别
+    AvatarId: '',//图像
+    AvatarPath: '',//图像路径
+    Openid: '',
+    Sfzhm: '',//省份证号码
+    QQ: '',//qq
+    JF: ''
+  };
+
+  islogin: any;
+
+
+  //车信息
+  public vehicle: CarInfo = {
+    BRANDCODE: '',
+    BRANDNAME: '添加我的爱车',
+    CARSERIESCODE: '',
+    CARSERIESNAME: '',
+    MJCL001: '',
+    MJCL008: '',
+    MJCL009: '',
+    MJCL010: '', //当前行驶公里数
+    MJCL026: '',
+    MJCL027: '',
+    MJCL028: '',
+    MJCL029: '../assets/img/ewp/car_default.png'
+  };
+  public confirmServiceContract: boolean = true;
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    public v: ViewController,
+    private storage: Storage,
+    public _sanitizer: DomSanitizer,
+    public toastCtrl: ToastController) {
+  }
+
+  ionViewDidLoad() {
+
+    this.storage.get('wx_user').then((userInfo: UserInfo) => {
+      if (userInfo != null) {
+        this.islogin = "0";
+      }
+      else{
+        this.islogin = "1";
+      }
+
+    });
+
+  }
+
+  //弹出提示
+  alertTip(title) {
+    let toast = this.toastCtrl.create({
+      message: title,
+      duration: 3000,
+      position: 'middle'
+    });
+    toast.present();
+
+  }
+
+  getBackground(image) {
+    return this._sanitizer.bypassSecurityTrustStyle(`url(${FILE_SERVE_URL + image})`);
+  }
+
+  powerCtrl() {
+    this.power = !this.power;
+  }
+
+  pay() {
+    this.navCtrl.push(PaymentOrderPage);
+  }
+
+  //延保合同服务条款
+  serviceContract() {
+    this.navCtrl.push(ServiceContractPage, { YBJG001: this.navParams.get('YBJG001'), YBCP001: this.navParams.get('YBCP001') });
+  }
+
+  goHome() {
+    sessionStorage.setItem("tag", "0");
+    this.navCtrl.pop();
+  }
+
+  //延保流程
+  process() {
+    this.navCtrl.push(ProcessPage);
+  }
+}

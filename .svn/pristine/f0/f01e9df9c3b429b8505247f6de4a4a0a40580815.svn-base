@@ -1,0 +1,391 @@
+import { Component } from '@angular/core';
+import {ActionSheetController, AlertController, ModalController, NavController, NavParams} from 'ionic-angular';
+import {ProductParams} from "../../../../model/UserInfo";
+import { PreviewPicturePage } from "../../../../shared/preview-picture/preview-picture";
+import { OrderService } from "../OrderService";
+import { CLTP_SERVE_URL, FWXY_SERVE_URL, HT_SERVE_URL} from "../../../../providers/Constants";
+import {NativeService} from "../../../../providers/NativeService";
+import {FilterBrandSeriesPage} from "../../../../shared/filter-brand-series/filter-brand-series";
+@Component({
+  selector: 'page-order-details',
+  templateUrl: 'details.html'
+})
+export class OrderDetailsPage {
+
+  //默认选中第一个
+  public leftIndex:number = 1;
+  //订单详情对象
+  public orderDetailsData: any = {};
+  public orderId:string = '';
+  //服务器地址
+  public serverURL:string = '';
+  //图片最大数
+  public max:number = 2;
+  //返回图片 操作类型
+  public RESULT_ACTION_ADD:string = 'ADD';
+  public RESULT_ACTION_UPDATE:string = 'UPDATE';
+  //补充资料
+  public orderImagesData: any = {};
+  //订购人
+  public subscribers: any = {
+    orderid: '',
+    MJXX002: '',//姓名
+    MJXX006: '',//号码1
+    MJXX010: '',//号码2
+    MJXX008: '',//证件号码类型
+    MJXX007: '',//身份证号
+    MJXX009: '',//邮箱
+    MJXX012: '',//邮编
+    MJXX020: ''//通讯地址
+  };
+  //车辆信息
+  public carInfo: any = {
+    PZ_YB_DDDD002:'', //订单号
+    PZ_YB_MJCLMJCL001:'', //
+    SONBRANDID:'',//
+    SONBRANDNAME:'',//
+    CARSERIESID:'',//
+    CARSERIESNAME:'',//
+    PZ_YB_MJCLCARZHID:'',//车辆组合ID
+    PZ_YB_MJCLMJCL004:'',//车架号
+    PZ_YB_MJCLMJCL005:'',//车牌号
+    PZ_YB_MJCLMJCL006:'',//发动机号
+    PZ_YB_MJCLMJCL007:'',//排量
+    PZ_YB_MJCLMJCL016:'',//购买价格
+    PZ_YB_MJCLMJCL014:'',//是否涡轮增压
+    PZ_YB_MJCLMJCL015:'',//是否四驱
+    PZ_YB_MJCLMJCL022:'',//是非营业性质
+    PZ_YB_MJCLMJCL030:'',//新车出厂日期
+    PZ_YB_MJCLMJCL021:'',//购买发票日期
+    PZ_YB_MJCLMJCL017:'',//发票抬头
+    PZ_YB_MJCLMJCL010:'',//当前行驶公里数
+    PZ_YB_MJCLMJCL032:'',//是否进口
+    /*null*/
+    PZ_YB_MJCLMJCL018:'',//原厂保修起始日期
+    PZ_YB_MJCLMJCL019:'',//原厂保修终止日期
+    PZ_YB_MJCLMJCL020:'',//原厂保修公里数
+  };
+  //延保信息
+  public ybInfo: any = {
+    PZ_DDHT002:"",//订单ID
+    PZ_DDHT029:"",//原厂保修起始日期
+    PZ_DDHT030:"",//原厂保修终止日期
+    PZ_DDHT032:"",//原厂保修公里数(公里)
+    PZ_DDHT034:"",//延保期至
+    PZ_YBCP009:"",//延保年限
+    PZ_YBJG005:"",//赔偿金额
+    PZ_YBJG002:"",//原价
+    PZ_YBJG003:"",//现价
+    PZ_YBJG011:"",//
+    PZ_BXXM005:""//延保项
+  };
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public orderService: OrderService,
+              public modalCtrl: ModalController,
+              public nativeService:NativeService,
+              public alertCtrl:AlertController) {
+  }
+  ionViewWillEnter() {
+    this.orderId = this.navParams.get('orderId');
+    this.orderService.getOrderDetailsData({ orderno: this.orderId }).subscribe(r => {
+      this.orderDetailsData = r.data.Table[0];
+    });
+    this.serverURL = CLTP_SERVE_URL;
+    this.getCarInfo();
+    this.getImagesData();
+  }
+
+  //左边分类单击事件
+  leftIndexChange(index){
+    this.leftIndex = index;
+    switch (index){
+      case 1:
+        this.getCarInfo();
+        break;
+      case 2:
+        this.getSubscribers();
+        break;
+      case 3:
+        this.getImagesData();
+        break;
+      case 4:
+        this.getYbInfo();
+        break;
+    }
+  }
+
+  //合同图片预览
+  viewPhoto(picturePaths) {
+    this.modalCtrl.create(PreviewPicturePage, { 'initialSlide': 0, 'picturePaths': [HT_SERVE_URL + picturePaths] }).present();
+  }
+  //服务协议图片预览
+  viewPhotoFWXY(picturePaths) {
+    let arr = picturePaths.split('*');
+    console.log(arr.toString());
+    for (var i = 0; i < arr.length; i++){
+      arr[i] = FWXY_SERVE_URL + arr[i];
+    }
+    this.modalCtrl.create(PreviewPicturePage, { 'initialSlide': 0, 'picturePaths': arr }).present();
+  }
+
+  /**
+   * TODO
+   * */
+/*  gotopay(orderno,price,hdid){
+    let p = {
+      orderid: orderno,
+      fee:price,
+      hdid: hdid
+    };
+    let modal = this.modalCtrl.create(PayModal, p, {
+      enterAnimation: 'pp-modal-from-right-enter',
+      leaveAnimation: 'pp-modal-from-right-leave'
+    });
+    modal.present();
+    modal.onDidDismiss(data => {
+
+    });
+  }*/
+
+  /*
+  * @车辆信息
+  * */
+  //查询车辆信息
+  getCarInfo(){
+    this.orderService.getCarInfo({PZ_YB_DDDD002: this.orderId}).subscribe(r=>{
+      if (r.success){
+        this.carInfo = r.data[0];
+      } else {
+        this.nativeService.alertTip("查询车辆信息失败：" + r.msg);
+      }
+    });
+  }
+  //查品牌
+  selectBrandId() {
+    let modal = this.modalCtrl.create(FilterBrandSeriesPage, {}, {
+      leaveAnimation: 'modal-from-right-leave'
+    });
+    modal.present();
+    modal.onDidDismiss((data: ProductParams) => {
+      if (data != null) {
+        this.carInfo.SONBRANDNAME = data.brandname;
+        this.carInfo.CARSERIESNAME = data.carseriesName;
+        this.carInfo.PZ_YB_MJCLCARZHID = data.groupid;
+      }
+    });
+  }
+  //保存车辆信息
+  saveCarInfo(){
+    if (this.carInfo.PZ_YB_MJCLCARZHID === '' ||
+      this.carInfo.PZ_YB_MJCLMJCL004 === '' ||
+      this.carInfo.PZ_YB_MJCLMJCL006 === '' ||
+      this.carInfo.PZ_YB_MJCLMJCL007 === '' ||
+      this.carInfo.PZ_YB_MJCLMJCL016 === '' ||
+      this.carInfo.PZ_YB_MJCLMJCL014 === '' ||
+      this.carInfo.PZ_YB_MJCLMJCL015 === '' ||
+      this.carInfo.PZ_YB_MJCLMJCL022 === '' ||
+      this.carInfo.PZ_YB_MJCLMJCL030 === '' ||
+      this.carInfo.PZ_YB_MJCLMJCL021 === '' ||
+      this.carInfo.PZ_YB_MJCLMJCL017 === '' ||
+      this.carInfo.PZ_YB_MJCLMJCL010 === ''
+    ){
+      this.nativeService.alert("提示", "需要补全信息");
+    } else {
+      this.orderService.saveCarInfo(this.carInfo).subscribe(r=>{
+        if (r.success){
+          this.nativeService.alertTip("保存成功");
+        } else {
+          this.nativeService.alertTip("保存失败:" + r.msg);
+        }
+      });
+    }
+  }
+
+  /*
+  * @订购人
+  * */
+  //查询订购人信息
+  getSubscribers(){
+    this.orderService.getSubscribers({orderid: this.orderId}).subscribe(r=>{
+      if (r.success){
+        this.subscribers = r.data[0];
+      } else {
+        this.nativeService.alertTip("查询订购人失败：" + r.msg);
+      }
+    });
+  }
+  //保存订购人信息
+  saveSubscribers(){
+    if (this.subscribers.MJXX002 === '' ||
+      this.subscribers.MJXX006 === '' ||
+      this.subscribers.MJXX010 === '' ||
+      this.subscribers.MJXX008 === '' ||
+      this.subscribers.MJXX007 === '' ||
+      this.subscribers.MJXX009 === '' ||
+      this.subscribers.MJXX012 === '' ||
+      this.subscribers.MJXX020 === ''
+    ){
+      this.nativeService.alert("提示", "需要补全信息");
+    } else {
+      this.subscribers.orderid = this.orderId;
+      this.orderService.saveSubscribers(this.subscribers).subscribe(r=>{
+        if (r.success){
+          this.nativeService.alertTip("保存成功");
+        } else {
+          this.nativeService.alertTip("保存失败:" + r.msg);
+        }
+      });
+    }
+  }
+
+  /*
+  * @补充资料
+  * */
+  //获取所有图片
+  getImagesData(){
+    this.orderService.getImagesData({orderid:this.orderId}).subscribe(r=>{
+        this.orderImagesData = r.data;
+    });
+  }
+  //更新图片
+  updatePicture(id, url){
+    this.modalCtrl.create(PreviewPicturePage, { 'initialSlide': 0, 'picturePaths': [this.serverURL + url] }).present();
+    let that = this;
+    //TODO
+    /*that.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: '从相册选择',
+          handler: () => {
+            that.nativeService.getMultiplePicture({//从相册多选
+              maximumImagesCount: 1,
+              destinationType: 1//期望返回的图片格式,1图片路径
+            }).subscribe(imgs => {
+              for (let img of < string[]>imgs) {
+                that.getPictureSuccess(img, id, that.RESULT_ACTION_UPDATE);
+              }
+            });
+          }
+        },
+        {
+          text: '拍照',
+          handler: () => {
+            that.nativeService.getPictureByCamera({
+              destinationType: 1//期望返回的图片格式,1图片路径
+            }).subscribe(img => {
+              that.getPictureSuccess(img, id, that.RESULT_ACTION_UPDATE);
+            });
+          }
+        },
+        {
+          text: '查看大图',
+          handler: () => {
+            this.modalCtrl.create(PreviewPicturePage, { 'initialSlide': 0, 'picturePaths': [that.serverURL + url] }).present();
+          }
+        },
+        {
+          text: '取消',
+          role: 'cancel'
+        }
+      ]
+    }).present();*/
+  }
+  //新增照片
+  addPicture(type) {
+    /*let that = this;
+    that.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: '从相册选择',
+          handler: () => {
+            that.nativeService.getMultiplePicture({//从相册多选
+              maximumImagesCount: 1,
+              destinationType: 1//期望返回的图片格式,1图片路径
+            }).subscribe(imgs => {
+              for (let img of < string[]>imgs) {
+                that.getPictureSuccess(img, type, that.RESULT_ACTION_ADD);
+              }
+            });
+          }
+        },
+        {
+          text: '拍照',
+          handler: () => {
+            that.nativeService.getPictureByCamera({
+              destinationType: 1//期望返回的图片格式,1图片路径
+            }).subscribe(img => {
+              that.getPictureSuccess(img, type, that.RESULT_ACTION_ADD);
+            });
+          }
+        },
+        {
+          text: '取消',
+          role: 'cancel'
+        }
+      ]
+    }).present();*/
+  }
+
+  //返回图片成功时
+  getPictureSuccess(img:string, obj, action: string) {
+    //转换b64
+
+  }
+
+  //删除照片
+  deletePicture(id) {
+    this.alertCtrl.create({
+      title: '确认删除？',
+      buttons: [{text: '取消'},
+        {
+          text: '确定',
+          handler: () => {
+            this.orderService.deleteOrderImagesData({
+              //TODO
+              CLT001:id
+            }).subscribe(r=>{
+              if (r.success){
+                this.getImagesData();
+              }else{
+                this.nativeService.alertTip("删除：" + r.msg);
+              }
+            });
+          }
+        }
+      ]
+    }).present();
+  }
+
+  /*
+  * 延保信息
+  * */
+  getYbInfo(){
+    this.orderService.getYBInfo({PZ_YB_DDDD002: this.orderId}).subscribe(r=>{
+      if (r.success){
+        this.ybInfo = r.data[0];
+      } else {
+        this.nativeService.alertTip("查询延保信息失败：" + r.msg);
+      }
+    });
+  }
+  saveYbInfo(){
+    if (this.ybInfo.PZ_DDHT029 === '' ||
+      this.ybInfo.PZ_DDHT030 === '' ||
+      this.ybInfo.PZ_DDHT032 === ''
+    ){
+      this.nativeService.alert("提示", "需要补全信息");
+    } else {
+      this.carInfo.PZ_YB_MJCLMJCL018 = this.ybInfo.PZ_DDHT029;
+      this.carInfo.PZ_YB_MJCLMJCL019 = this.ybInfo.PZ_DDHT030;
+      this.carInfo.PZ_YB_MJCLMJCL020 = this.ybInfo.PZ_DDHT032;
+      this.orderService.saveYBInfo(this.carInfo).subscribe(r=>{
+        if (r.success){
+          this.nativeService.alertTip("保存成功");
+        } else {
+          this.nativeService.alertTip("保存失败:" + r.msg);
+        }
+      });
+    }
+  }
+}

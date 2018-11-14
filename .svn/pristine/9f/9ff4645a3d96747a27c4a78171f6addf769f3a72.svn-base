@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>个人中心</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="person-view">
+  <div class="sign-header" *ngIf="!isHasLogin">
+    <img src="./assets/img/mine/sign_bg.png" />
+    <button ion-button small outline color="primary" (click)='signIn()'>登&nbsp;录</button>
+  </div>
+  <header style="background-image: url('./assets/img/mine/visiting.png')" *ngIf="isHasLogin">
+    <ion-row>
+      <ion-col col-4>
+        <img src="./assets/img/mine/logo.png" width="90px" height="90px" class="radius-50">
+      </ion-col>
+      <ion-col col-6>
+        <p class="farr-font">{{userInfo.KHXX002 || '暂无' }}</p>
+        <h4 class="farr-font">{{userInfo.KHZH002}}</h4>
+        <!--<img src="./assets/img/mine/silver.png" class="margin-top-5" width="95" height="25" style="">-->
+      </ion-col>
+      <button ion-button clear small class="edit" (click)="personal()"><ion-icon name="ios-create-outline"></ion-icon></button>
+    </ion-row>
+  </header>
+  <!--<div class="hr"></div>
+  <ion-row class="finance" text-center *ngIf="isHasLogin">
+    <ion-col col-4>
+      <ion-note color="danger">0</ion-note><br/>
+      <ion-note color="dark6">积分</ion-note>
+    </ion-col>
+    <ion-col col-4>
+      <ion-note color="danger">88.66</ion-note><br/>
+      <ion-note color="dark6">积金</ion-note>
+    </ion-col>
+    <ion-col col-4>
+      <ion-note color="danger">10000.00</ion-note><br/>
+      <ion-note color="dark6">储值</ion-note>
+    </ion-col>
+  </ion-row>-->
+  <div class="hr"></div>
+  <ion-row text-center *ngIf="isHasLogin">
+    <ion-col col-4 (click)="order(-1, 0)">
+      <img src="./assets/img/mine/order.png" width="28" height="28"/><br/>
+      <ion-note color="dark6">全部订单</ion-note>
+    </ion-col>
+    <ion-col col-4 (click)="order(0, 0)">
+      <img src="./assets/img/mine/order_p.png" width="28" height="28"/><br/>
+      <ion-note color="dark6">已支付</ion-note>
+    </ion-col>
+    <ion-col col-4 (click)="order(1, 0)">
+      <img src="./assets/img/mine/order_np.png" width="28" height="28"/><br/>
+      <ion-note color="dark6">待支付</ion-note>
+    </ion-col>
+  </ion-row>
+  <div class="hr"></div>
+  <ion-row text-center *ngIf="isHasLogin">
+    <ion-col col-4>
+      <img src="./assets/img/mine/certificate.png" width="48" height="34"/><br/>
+      <ion-note color="dark6">我的卡券</ion-note>
+    </ion-col>
+<!--    <ion-col col-4>
+      <img src="./assets/img/mine/member.png" width="48" height="34"/><br/>
+      <ion-note color="dark6">会员权益</ion-note>
+    </ion-col>-->
+    <ion-col col-4>
+      <img src="./assets/img/mine/car.png" width="48" height="34"/><br/>
+      <ion-note color="dark6">我的爱车</ion-note>
+    </ion-col>
+    <ion-col col-4 (click)="contract()">
+      <img src="./assets/img/mine/contract.png" width="48" height="34"/><br/>
+      <ion-note color="dark6">我的合同</ion-note>
+    </ion-col>
+  </ion-row>
+</ion-content>

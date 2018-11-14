@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      我的合同
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list no-margin margin-top *ngFor="let item of contractList">
+    <button ion-item (click)="viewPDF(item.Column1)">
+      <ion-icon class="iconfont icon-custom-gaizhang" color="base" item-start></ion-icon>
+      {{item.KHYBHT007}}
+      <!--<button ion-button clear item-end><ion-icon color="icon-gary" [name]="item.togglePower ? 'ios-arrow-up' : 'ios-arrow-down'"></ion-icon></button>-->
+    </button>
+  </ion-list>
+  <div *ngIf="contractList.length == 0" text-center margin-vertical><ion-note color="icon-gary">暂无可查看的合同</ion-note></div>
+</ion-content>

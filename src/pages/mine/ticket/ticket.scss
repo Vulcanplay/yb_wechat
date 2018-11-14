@@ -1,0 +1,63 @@
+page-mine-ticket{
+  .item-ios h2{
+    font-size: 1.5rem;
+    padding:.5rem 0;
+  }
+  .item-ios p{
+    font-size:1.3rem;
+  }
+  .shop ion-col{
+    position: relative;
+    height: 120px;
+    padding:0;
+  }
+  .shop ion-col .bg.blue{
+    background-image: url('../assets/img/index/shop_bg_blue.png');
+  }
+  .shop ion-col .bg{
+    position: absolute;
+    left: auto;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    z-index: -1;
+    width: 97%;
+    height: 115px;
+    margin: 5px 2% 0 2%;
+    background-image: url('../assets/img/index/shop_bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    /*background-image: -webkit-gradient(linear,0 0, 70% 0, from(#f5a346), to(#f96a47));*/
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+
+    color: white;
+  }
+  .shop ion-col .bg h2{
+    margin: .3em;
+    font-size: 2.3rem;
+    font-weight: bold;
+    padding-left: .3em;
+  }
+  .shop ion-col .bg p{
+    font-size: 5rem;
+    margin: 5px 0;
+    font-weight: 100;
+    padding-right: .2em;
+  }
+  .shop ion-col .bg p ion-icon{
+    font-size: 2rem;
+  }
+  .shop ion-col:nth-of-type(odd) .bg{
+    margin-right: 1%;
+  }
+  .shop ion-col:nth-of-type(odd) .info{
+    right: 1%;
+  }
+  .shop ion-col:nth-of-type(even) .bg{
+    margin-left: 1%;
+  }
+  .shop ion-col:nth-of-type(even) .info{
+    left: 1%;
+  }
+}

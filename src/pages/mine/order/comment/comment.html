@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      订单详情
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+  <ion-content>
+  <ion-list no-margin margin-top>
+    <ion-item>
+      订单号&nbsp;<ion-note color="base">96666654173</ion-note>
+    </ion-item>
+    <ion-item>
+      综合评价
+      <ion-buttons no-margin item-end>
+        <button ion-button clear (click)="starCtrl(1)" [color]="star >= 1 ? 'base':'gary'"><ion-icon [name]="star >= 1 ? 'star':'star-outline'"></ion-icon></button>
+        <button ion-button clear (click)="starCtrl(2)" [color]="star >= 2 ? 'base':'gary'"><ion-icon [name]="star >= 2 ? 'star':'star-outline'"></ion-icon></button>
+        <button ion-button clear (click)="starCtrl(3)" [color]="star >= 3 ? 'base':'gary'"><ion-icon [name]="star >= 3 ? 'star':'star-outline'"></ion-icon></button>
+        <button ion-button clear (click)="starCtrl(4)" [color]="star >= 4 ? 'base':'gary'"><ion-icon [name]="star >= 4 ? 'star':'star-outline'"></ion-icon></button>
+        <button ion-button clear (click)="starCtrl(5)" [color]="star >= 5 ? 'base':'gary'"><ion-icon [name]="star >= 5 ? 'star':'star-outline'"></ion-icon></button>
+      </ion-buttons>
+    </ion-item>
+    <ion-item class="comment">
+      <textarea placeholder="评论" row="6"></textarea>
+      <ion-note>最多200字</ion-note>
+    </ion-item>
+  </ion-list>
+  <div margin-top>
+    <button ion-button full color="base">提　交</button>
+  </div>
+</ion-content>

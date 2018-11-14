@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      我的合同
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border class="filter-tabs">
+    <ion-grid text-center no-padding>
+      <ion-row>
+        <ion-col tappable (click)="filterTabs(0)" [ngClass]="{'filter-tabs-bottom-line':status == 0}">
+          <button ion-button small clear [color]="status == 0 ? 'oranger':'dark'">延保合同</button>
+        </ion-col>
+        <ion-col tappable (click)="filterTabs(1)" [ngClass]="{'filter-tabs-bottom-line':status == 1}">
+          <button ion-button small clear [color]="status == 1 ? 'oranger':'dark'">三包合同</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="status == 0">
+    <ion-list no-margin margin-top *ngFor="let item of contractList">
+      <button ion-item detail-none (click)="power(item)">
+        <ion-icon class="iconfont icon-custom-gaizhang" color="base" item-start></ion-icon>
+        {{item.PZ_DDHT005}}
+        <button ion-button clear item-end><ion-icon color="icon-gary" [name]="item.togglePower ? 'ios-arrow-up' : 'ios-arrow-down'"></ion-icon></button>
+      </button>
+      <div *ngIf="item.togglePower" padding tappable (click)="viewPhoto(ybServeUrl + item.PZ_DDHT004)">
+        <img [src]="ybServeUrl + item.PZ_DDHT004" width="100%"/>
+      </div>
+    </ion-list>
+    <div *ngIf="contractList.length == 0" text-center margin-vertical><ion-note color="icon-gary">没有更多了...</ion-note></div>
+  </div>
+  <div *ngIf="status == 1">
+    <ion-list no-margin margin-top *ngFor="let item of contractList">
+      <button ion-item detail-none (click)="power(item)">
+        <ion-icon class="iconfont icon-custom-gaizhang" color="base" item-start></ion-icon>
+        {{item.OFFERCONTRACTINF040}}
+        <button ion-button clear item-end><ion-icon color="icon-gary" [name]="item.togglePower ? 'ios-arrow-up' : 'ios-arrow-down'"></ion-icon></button>
+      </button>
+      <div *ngIf="item.togglePower" padding tappable (click)="viewPhoto(sbServeUrl + item.OFFERORDERINFO036)">
+        <img [src]="sbServeUrl + item.OFFERORDERINFO036" width="100%"/>
+      </div>
+    </ion-list>
+    <div *ngIf="contractList.length == 0" text-center margin-vertical><ion-note color="icon-gary">没有更多了...</ion-note></div>
+  </div>
+</ion-content>

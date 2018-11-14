@@ -1,0 +1,24 @@
+import { Component, ViewChild } from '@angular/core';
+import { Tabs, NavParams, NavController, ViewController, ModalController } from "ionic-angular";
+import { HomePage } from '../home/home';
+import { MinePage } from '../mine/mine';
+import {EWPPage} from "../ewp/ewp";
+@Component({
+  templateUrl: 'tabs.html'
+})
+export class TabsPage {
+  @ViewChild('mainTabs') tabs: Tabs;
+  tab1Root = HomePage;
+  tab2Root = EWPPage;
+  tab3Root = MinePage;
+  rootPage: any = TabsPage;
+  selectedIndex: number = 0;
+  constructor(private np: NavParams, private nav: NavController, private view: ViewController, private modal: ModalController) {
+    if (this.np.get("index") != '' || this.np.get("index") != null) {
+
+      this.selectedIndex = this.np.get("index");
+
+    }
+  }
+
+}

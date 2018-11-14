@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      服务网点
+    </ion-title>
+  </ion-navbar>
+  <ion-toolbar no-border class="filter-tabs">
+    <ion-grid text-center no-padding>
+      <ion-row>
+        <ion-col tappable (click)="filterTabs(0)" [ngClass]="{'filter-tabs-bottom-line':filterTabsCtrl == 0}">
+          <button ion-button small clear [color]="filterTabsCtrl == 0 ? 'base':'gary'">默认&nbsp;<ion-icon name="md-arrow-dropdown"></ion-icon></button>
+        </ion-col>
+        <ion-col tappable (click)="filterTabs(1)" [ngClass]="{'filter-tabs-bottom-line':filterTabsCtrl == 1}">
+          <button ion-button small clear [color]="filterTabsCtrl == 1 ? 'base':'gary'">热门&nbsp;<ion-icon name="md-arrow-dropdown"></ion-icon></button>
+        </ion-col>
+        <ion-col tappable (click)="filterTabs(2)" [ngClass]="{'filter-tabs-bottom-line':filterTabsCtrl == 2}">
+          <button ion-button small clear [color]="filterTabsCtrl == 2 ? 'base':'gary'">距离&nbsp;<ion-icon name="md-arrow-dropdown"></ion-icon></button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item (click)="details()">
+      <ion-thumbnail item-start>
+        <img src="https://gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png">
+      </ion-thumbnail>
+      <h2>北京市 普天德胜</h2>
+      <p>地址:新街口外大街28号</p>
+      <p>电话:13643246921</p>
+      <ion-note item-end color="primary">17.22km</ion-note>
+    </ion-item>
+    <ion-item (click)="details()">
+      <ion-thumbnail item-start>
+        <img src="https://gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png">
+      </ion-thumbnail>
+      <h2>北京市 普天德胜</h2>
+      <p>地址:新街口外大街28号</p>
+      <p>电话:13643246921</p>
+      <ion-note item-end color="primary">17.22km</ion-note>
+    </ion-item>
+    <ion-item (click)="details()">
+      <ion-thumbnail item-start>
+        <img src="https://gw.alicdn.com/tps/TB1W_X6OXXXXXcZXVXXXXXXXXXX-400-400.png">
+      </ion-thumbnail>
+      <h2>北京市 普天德胜</h2>
+      <p>地址:新街口外大街28号</p>
+      <p>电话:13643246921</p>
+      <ion-note item-end color="primary">17.22km</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

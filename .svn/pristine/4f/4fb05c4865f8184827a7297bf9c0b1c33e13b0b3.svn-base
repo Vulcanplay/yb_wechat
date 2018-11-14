@@ -1,0 +1,10 @@
+page-ewp-shopping-cart{
+  .add-sub .button-small-ios{
+    height: 1.4em;
+    font-size: 1.3rem;
+    padding: 0 0.4em;
+    margin: 0;
+  }
+  .add-sub .button-small-ios[ion-button][disabled]{opacity: 1;}
+  .item.item-ios .checkbox-ios{margin-right:.7em;}
+}

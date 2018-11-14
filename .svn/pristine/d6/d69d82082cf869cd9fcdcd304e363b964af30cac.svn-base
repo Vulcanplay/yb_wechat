@@ -1,0 +1,181 @@
+<ion-header>
+  <ion-searchbar
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    placeholder="商品名称"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="category" no-padding>
+    <ion-row class="first-row">
+      <ion-scroll col col-4 col-md-3 col-lg-2 col-xl-2 scrollY="true">
+        <ion-list class="level-1">
+          <div *ngFor="let lvOne of categoryList">
+            <button ion-item no-padding detail-none no-margin text-center (click)="categoryListCtrl(lvOne)">
+              <ion-label padding-left>{{lvOne.categoryName}}&emsp;<ion-icon [name]="lvOne.active == 1 ? 'md-arrow-dropup' : 'md-arrow-dropdown'"></ion-icon></ion-label>
+            </button>
+            <ion-list class="level-2" [ngClass]="lvOne.details.length == 0 ? 'no-lines' : ''" no-margin *ngIf="lvOne.active == 1">
+              <button ion-item detail-none (click)="getProductList(lvTwo.id)" *ngFor="let lvTwo of lvOne.details" [ngClass]="lvTwo.id == categorySelectId ? 'active' : ''">
+                <ion-label class="normal">{{lvTwo.categoryName}}({{lvTwo.count}})</ion-label>
+              </button>
+            </ion-list>
+          </div>
+        </ion-list>
+      </ion-scroll>
+      <ion-scroll col col-8 col-md-9 col-lg-10 col-xl-10 scrollY="true">
+        <!-- 暂无 -->
+        <div class="product-no" *ngIf="productList.length == 0">暂无商品</div>
+        <ion-list>
+          <ion-item class="item-product">
+            <ion-thumbnail item-start>
+              <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2999168145,825785497&fm=27&gp=0.jpg"/>
+            </ion-thumbnail>
+            <ion-label>
+              <p>副标题副标题副标题副标题副标题副标题副标题</p>
+              <p>
+                <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+              </p>
+            </ion-label>
+            <button item-end ion-button icon-only clear color="danger"><ion-icon name="md-cart"></ion-icon></button>
+          </ion-item>
+          <ion-item class="item-product">
+            <ion-thumbnail item-start>
+              <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2999168145,825785497&fm=27&gp=0.jpg"/>
+            </ion-thumbnail>
+            <ion-label>
+              <p>副标题副标题副标题副标题副标题副标题副标题</p>
+              <p>
+                <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+              </p>
+            </ion-label>
+            <button item-end ion-button icon-only clear color="danger"><ion-icon name="md-cart"></ion-icon></button>
+          </ion-item>
+          <ion-item class="item-product">
+            <ion-thumbnail item-start>
+              <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2999168145,825785497&fm=27&gp=0.jpg"/>
+            </ion-thumbnail>
+            <ion-label>
+              <p>副标题副标题副标题副标题副标题副标题副标题</p>
+              <p>
+                <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+              </p>
+            </ion-label>
+            <button item-end ion-button icon-only clear color="danger"><ion-icon name="md-cart"></ion-icon></button>
+          </ion-item>
+          <ion-item class="item-product">
+            <ion-thumbnail item-start>
+              <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2999168145,825785497&fm=27&gp=0.jpg"/>
+            </ion-thumbnail>
+            <ion-label>
+              <p>副标题副标题副标题副标题副标题副标题副标题</p>
+              <p>
+                <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+              </p>
+            </ion-label>
+            <button item-end ion-button icon-only clear color="danger"><ion-icon name="md-cart"></ion-icon></button>
+          </ion-item>
+          <ion-item class="item-product">
+            <ion-thumbnail item-start>
+              <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2999168145,825785497&fm=27&gp=0.jpg"/>
+            </ion-thumbnail>
+            <ion-label>
+              <p>副标题副标题副标题副标题副标题副标题副标题</p>
+              <p>
+                <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+              </p>
+            </ion-label>
+            <button item-end ion-button icon-only clear color="danger"><ion-icon name="md-cart"></ion-icon></button>
+          </ion-item>
+          <ion-item class="item-product">
+            <ion-thumbnail item-start>
+              <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2999168145,825785497&fm=27&gp=0.jpg"/>
+            </ion-thumbnail>
+            <ion-label>
+              <p>副标题副标题副标题副标题副标题副标题副标题</p>
+              <p>
+                <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+              </p>
+            </ion-label>
+            <button item-end ion-button icon-only clear color="danger"><ion-icon name="md-cart"></ion-icon></button>
+          </ion-item>
+          <ion-item class="item-product">
+            <ion-thumbnail item-start>
+              <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2999168145,825785497&fm=27&gp=0.jpg"/>
+            </ion-thumbnail>
+            <ion-label>
+              <p>副标题副标题副标题副标题副标题副标题副标题</p>
+              <p>
+                <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+              </p>
+            </ion-label>
+            <button item-end ion-button icon-only clear color="danger"><ion-icon name="md-cart"></ion-icon></button>
+          </ion-item>
+          <ion-item class="item-product">
+            <ion-thumbnail item-start>
+              <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2999168145,825785497&fm=27&gp=0.jpg"/>
+            </ion-thumbnail>
+            <ion-label>
+              <p>副标题副标题副标题副标题副标题副标题副标题</p>
+              <p>
+                <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+              </p>
+            </ion-label>
+            <button item-end ion-button icon-only clear color="danger"><ion-icon name="md-cart"></ion-icon></button>
+          </ion-item>
+          <ion-item class="item-product">
+            <ion-thumbnail item-start>
+              <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2999168145,825785497&fm=27&gp=0.jpg"/>
+            </ion-thumbnail>
+            <ion-label>
+              <p>副标题副标题副标题副标题副标题副标题副标题</p>
+              <p>
+                <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+              </p>
+            </ion-label>
+            <button item-end ion-button icon-only clear color="danger"><ion-icon name="md-cart"></ion-icon></button>
+          </ion-item>
+          <ion-item class="item-product">
+            <ion-thumbnail item-start>
+              <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2999168145,825785497&fm=27&gp=0.jpg"/>
+            </ion-thumbnail>
+            <ion-label>
+              <p>副标题副标题副标题副标题副标题副标题副标题</p>
+              <p>
+                <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+              </p>
+            </ion-label>
+            <button item-end ion-button icon-only clear color="danger"><ion-icon name="md-cart"></ion-icon></button>
+          </ion-item>
+          <ion-item class="item-product">
+            <ion-thumbnail item-start>
+              <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2999168145,825785497&fm=27&gp=0.jpg"/>
+            </ion-thumbnail>
+            <ion-label>
+              <p>副标题副标题副标题副标题副标题副标题副标题</p>
+              <p>
+                <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+              </p>
+            </ion-label>
+            <button item-end ion-button icon-only clear color="danger"><ion-icon name="md-cart"></ion-icon></button>
+          </ion-item>
+          <ion-item class="item-product">
+            <ion-thumbnail item-start>
+              <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2999168145,825785497&fm=27&gp=0.jpg"/>
+            </ion-thumbnail>
+            <ion-label>
+              <p>副标题副标题副标题副标题副标题副标题副标题</p>
+              <p>
+                <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+              </p>
+            </ion-label>
+            <button item-end ion-button icon-only clear color="danger"><ion-icon name="md-cart"></ion-icon></button>
+          </ion-item>
+
+        </ion-list>
+      </ion-scroll>
+    </ion-row>
+  </ion-grid>
+</ion-content>

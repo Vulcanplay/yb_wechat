@@ -1,0 +1,191 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button small clear (click)="filterCity()">北京&nbsp;
+        <ion-icon name="md-arrow-dropdown"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides autoplay="3000" loop="true" pager="true" paginationType="bullets" (ionSlideDidChange)="slideChanged()" zoom="false"
+    class="banner-ion-slides">
+    <ion-slide style="background-image: url(./assets/img/home/home_slider_1.jpg)"></ion-slide>
+    <ion-slide style="background-image: url(./assets/img/home/home_slider_2.jpg)"></ion-slide>
+    <ion-slide style="background-image: url(./assets/img/home/home_slider_3.jpg)"></ion-slide>
+  </ion-slides>
+  <ion-grid class="white-bg" no-padding>
+    <ion-row text-center class="icon-grid">
+      <ion-col tappable (click)="working()">
+        <ion-icon class="iconfont icon-custom-jfsc" color="base"></ion-icon>
+        <p>积分商城</p>
+      </ion-col>
+      <ion-col tappable (click)="working()">
+        <ion-icon class="iconfont icon-custom-gy" color="base"></ion-icon>
+        <p>爱心公益</p>
+      </ion-col>
+      <ion-col>
+        <ion-icon class="iconfont icon-custom-jsq" color="base"></ion-icon>
+        <p>计算器</p>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row class="toutiao">
+      <ion-col col-3></ion-col>
+      <ion-col col-9>
+        <ion-slides autoplay="3000" loop="true" direction="vertical" zoom="false" *ngIf="slidelen >= 1">
+       
+          <ion-slide class="text-over-dot" *ngFor="let tm of topMessage">{{tm.XXGL003}}</ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row> -->
+  </ion-grid>
+
+  <ion-list no-margin margin-top>
+    <ion-item class="home-item">
+      <ion-icon class="icon-img icon-tuijian" item-start></ion-icon>
+      <ion-label>为你推荐</ion-label>
+    </ion-item>
+    <ion-grid class="white-bg" no-padding>
+      <ion-row class="icon-grid">
+        <ion-col ion-item col-6 no-lines tappable (click)="ask()">
+          <ion-icon class="iconfont icon-custom-kefu" color="base" item-start></ion-icon>
+          <h2>客服快答</h2>
+          <p>你问,我答答答问题!</p>
+        </ion-col>
+        <ion-col ion-item col-6 no-lines>
+          <ion-icon class="iconfont icon-custom-gift" color="base" item-start></ion-icon>
+          <h2>邀请有礼</h2>
+          <p>你请,我送送送大礼!</p>
+        </ion-col>
+        <ion-col ion-item col-6 no-lines tappable (click)="raiders()">
+          <ion-icon class="iconfont icon-custom-baodian" color="base" item-start></ion-icon>
+          <h2>延保宝典</h2>
+          <p>我们是谁?我们是延保!</p>
+        </ion-col>
+        <ion-col ion-item col-6 no-lines tappable (click)="working()">
+          <ion-icon class="iconfont icon-custom-gamelive" color="base" item-start></ion-icon>
+          <h2>沃享飞车</h2>
+          <p>想飞车吗?安全有奖送!</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
+  <ion-list no-margin margin-top>
+    <ion-item class="home-item">
+      <ion-icon class="icon-img icon-chanpin" item-start></ion-icon>
+      <ion-label>最新产品</ion-label>
+      <button ion-button no-padding item-end clear small color="icon-gary" (click)="newProuctUrl()">更多
+        <ion-icon class="iconfont icon-custom-arrowright"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-grid class="home-product white-bg">
+      <ion-row>
+        <!-- ID:{{YBCP001}} -->
+        <ion-col col-6 *ngFor="let np of newProduct" tappable>
+          <!-- style="background-image: url({{np.YBCP003}})"-->
+          <div class="product-box new" [style.background-image]="getBackground(np.YBCP003)" (click)="productone(np.YBCP001,np.YBJG001)">
+            <ion-note color="danger">
+              <ion-icon class="iconfont icon-custom-rmb"></ion-icon>{{np.YBJG003}}</ion-note>
+          </div>
+          <ion-note color="dark">{{np.YBCP002.slice(0,2)}}</ion-note>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-list no-margin margin-top *ngIf="!isHascar">
+    <ion-item class="home-item">
+      <ion-icon class="icon-img icon-yanbao" item-start></ion-icon>
+      <ion-label>延保套餐</ion-label>
+      <button ion-button no-padding item-end clear small color="base" (click)="addMycar()">
+        <ion-icon class="iconfont icon-custom-tianjia"></ion-icon>&nbsp;添加爱车</button>
+    </ion-item>
+    <ion-grid class="home-yanbao white-bg">
+      <ion-row text-center>
+        <ion-col col-3 tappable *ngFor="let yb of ybBrand">
+          <!-- style="background-image: url({{yb.LOGO}})" -->
+          <div class="img-contain" [style.background-image]="getBackground(yb.LOGO)"></div>
+          <ion-note color="dark">{{yb.NAME}}</ion-note>
+        </ion-col>
+      </ion-row>
+      <!--<ion-row no-padding>
+        <ion-col no-padding text-right><button no-padding ion-button small clear color="icon-gary">更多品牌<ion-icon class="iconfont icon-custom-arrowright"></ion-icon></button></ion-col>
+      </ion-row>-->
+    </ion-grid>
+  </ion-list>
+
+  <ion-list no-margin margin-top *ngIf="isHascar">
+    <button ion-item class="home-item" (click)='addMycar(carInfo.MJCL0001)'>
+      <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(carInfo.MJCL027)"></ion-icon>
+      <ion-label> {{carInfo.BRANDNAME}} {{carInfo.CARSERIESNAME}}</ion-label>
+    </button>
+  </ion-list>
+  <ion-list no-margin no-lines *ngIf="isHascar">
+    <ion-grid no-padding class="yb-package">
+      <ion-row>
+        <button detail-none ion-item col-6 (click)='ybPackage(1,mycar)'>
+          <ion-icon color="danger" class="iconfont icon-push"></ion-icon>
+          <ion-thumbnail item-start>
+            <img src="./assets/img/home/home_ybpackage_1.png" />
+          </ion-thumbnail>
+          <ion-note color="danger">
+            <ion-icon class="iconfont icon-custom-rmb"></ion-icon>2800
+            <br/>
+            <ion-note color="gary" class="line-through">
+              <ion-icon class="iconfont icon-custom-rmb"></ion-icon>2800</ion-note>
+          </ion-note>
+        </button>
+        <button detail-none ion-item col-6 (click)='ybPackage(2,mycar)'>
+          <ion-thumbnail item-start>
+            <img src="./assets/img/home/home_ybpackage_2.png" />
+          </ion-thumbnail>
+          <ion-note color="danger">
+            <ion-icon class="iconfont icon-custom-rmb"></ion-icon>2800
+            <br/>
+            <ion-note color="gary" class="line-through">
+              <ion-icon class="iconfont icon-custom-rmb"></ion-icon>2800</ion-note>
+          </ion-note>
+        </button>
+      </ion-row>
+      <ion-row>
+        <button detail-none ion-item col-6 (click)='ybPackage(3,mycar)'>
+          <ion-thumbnail item-start>
+            <img src="./assets/img/home/home_ybpackage_3.png" />
+          </ion-thumbnail>
+          <ion-note color="danger">
+            <ion-icon class="iconfont icon-custom-rmb"></ion-icon>2800
+            <br/>
+            <ion-note color="gary" class="line-through">
+              <ion-icon class="iconfont icon-custom-rmb"></ion-icon>2800</ion-note>
+          </ion-note>
+        </button>
+        <button detail-none ion-item col-6 (click)='ybPackage(4,mycar)'>
+          <ion-thumbnail item-start>
+            <img src="./assets/img/home/home_ybpackage_4.png" />
+          </ion-thumbnail>
+          <ion-note color="danger">
+            <ion-icon class="iconfont icon-custom-rmb"></ion-icon>2800
+          </ion-note>
+        </button>
+      </ion-row>
+    </ion-grid>
+    <!--    <div text-center padding-bottom class="white-bg">
+      <button ion-button small color="base" (click)="ybPackage(mycar)">查看延保套餐</button>
+    </div>-->
+  </ion-list>
+  <ion-list no-margin margin-top>
+    <ion-item class="home-item">
+      <ion-icon class="icon-img icon-dongtai" item-start></ion-icon>
+      <ion-label>最新动态</ion-label>
+    </ion-item>
+    <ion-item *ngFor="let nm of newMessage">
+      <ion-label>
+        <!-- {{nm.XXFS009}} -->
+        <ion-note color="icon-gary"> {{nm.XXFS009}}</ion-note>
+      </ion-label>
+      <ion-note color="dark" item-end>{{nm.XXFS004}}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>

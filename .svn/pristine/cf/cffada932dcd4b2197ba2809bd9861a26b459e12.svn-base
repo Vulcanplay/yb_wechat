@@ -1,0 +1,584 @@
+webpackJsonp([0,3,4],{
+
+/***/ 651:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchAddressModule", function() { return SearchAddressModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__search_address__ = __webpack_require__(656);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var SearchAddressModule = (function () {
+    function SearchAddressModule() {
+    }
+    return SearchAddressModule;
+}());
+SearchAddressModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__search_address__["a" /* SearchAddress */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__search_address__["a" /* SearchAddress */]),
+        ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_2__search_address__["a" /* SearchAddress */]
+        ]
+    })
+], SearchAddressModule);
+
+//# sourceMappingURL=search-address.module.js.map
+
+/***/ }),
+
+/***/ 652:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavigationModule", function() { return NavigationModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__navigation__ = __webpack_require__(657);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var NavigationModule = (function () {
+    function NavigationModule() {
+    }
+    return NavigationModule;
+}());
+NavigationModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__navigation__["a" /* Navigation */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__navigation__["a" /* Navigation */]),
+        ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_2__navigation__["a" /* Navigation */]
+        ]
+    })
+], NavigationModule);
+
+//# sourceMappingURL=navigation.module.js.map
+
+/***/ }),
+
+/***/ 653:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapLocationModule", function() { return MapLocationModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__map_location__ = __webpack_require__(658);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__navigation_navigation_module__ = __webpack_require__(652);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__search_address_search_address_module__ = __webpack_require__(651);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+var MapLocationModule = (function () {
+    function MapLocationModule() {
+    }
+    return MapLocationModule;
+}());
+MapLocationModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__map_location__["a" /* MapLocation */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__map_location__["a" /* MapLocation */]), __WEBPACK_IMPORTED_MODULE_3__navigation_navigation_module__["NavigationModule"], __WEBPACK_IMPORTED_MODULE_4__search_address_search_address_module__["SearchAddressModule"]
+        ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_2__map_location__["a" /* MapLocation */]
+        ]
+    })
+], MapLocationModule);
+
+//# sourceMappingURL=map-location.module.js.map
+
+/***/ }),
+
+/***/ 656:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchAddress; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_NativeService__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(31);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the SearchAddress page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+var SearchAddress = (function () {
+    function SearchAddress(storage, viewCtrl, navParams, nativeService) {
+        var _this = this;
+        this.storage = storage;
+        this.viewCtrl = viewCtrl;
+        this.navParams = navParams;
+        this.nativeService = nativeService;
+        this.address = '';
+        // searchQuery: string = '';
+        this.items = [];
+        this.searchTextStream = new __WEBPACK_IMPORTED_MODULE_2_rxjs__["Subject"]();
+        this.address = this.navParams.get('address');
+        AMap.service('AMap.PlaceSearch', function () {
+            _this.placeSearch = new AMap.PlaceSearch({
+                pageSize: 10,
+                pageIndex: 1,
+                city: '广州市'
+            });
+        });
+        this.storage.get('MapSearchHistory').then(function (items) {
+            _this.items = (items || []).reverse();
+        });
+    }
+    SearchAddress.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.searchBar.setFocus();
+        });
+    };
+    SearchAddress.prototype.ngAfterContentInit = function () {
+        var _this = this;
+        this.searchTextStream
+            .debounceTime(600)
+            .distinctUntilChanged()
+            .subscribe(function (value) {
+            _this.getSearchData(value).then(function (list) { return _this.items = list; });
+        });
+        this.searchTextStream.next(this.address);
+    };
+    SearchAddress.prototype.getItems = function ($event) {
+        this.searchTextStream.next($event.target.value);
+    };
+    SearchAddress.prototype.selectItem = function (item) {
+        var _this = this;
+        this.storage.get('MapSearchHistory').then(function (items) {
+            if (items) {
+                var isExist = false;
+                for (var _i = 0, items_1 = items; _i < items_1.length; _i++) {
+                    var value = items_1[_i];
+                    if (value.id === item.id) {
+                        isExist = true;
+                    }
+                }
+                if (!isExist) {
+                    items.push(item);
+                }
+            }
+            else {
+                items = [item];
+            }
+            _this.storage.set('MapSearchHistory', items);
+        });
+        this.viewCtrl.dismiss(item);
+    };
+    SearchAddress.prototype.clearHistory = function () {
+        this.storage.remove('MapSearchHistory');
+        this.items = [];
+    };
+    SearchAddress.prototype.getSearchData = function (val) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            if (val && val.trim() != '') {
+                _this.placeSearch.search(val, function (status, result) {
+                    if (status == 'complete') {
+                        resolve(result.poiList.pois);
+                    }
+                    else if (status == 'no_data') {
+                        _this.nativeService.showToast('没有找到匹配结果,请精确查询条件');
+                    }
+                    else {
+                        _this.nativeService.showToast('地图查询失败,稍后再试.');
+                    }
+                });
+            }
+        });
+    };
+    SearchAddress.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    return SearchAddress;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])('searchBar'),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* Searchbar */])
+], SearchAddress.prototype, "searchBar", void 0);
+SearchAddress = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-search-address',template:/*ion-inline-start:"D:\YB_C\test\src\shared\map-component\search-address\search-address.html"*/'<!--\n\n  Generated template for the LocationSearch page.\n\n\n\n  See http://ionicframework.com/docs/v2/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-toolbar>\n\n    <ion-title>\n\n      <ion-searchbar #searchBar\n\n                     mode="ios"\n\n                     placeholder="搜索"\n\n                     debounce="600"\n\n                     [(ngModel)]="address"\n\n                     (ionInput)="getItems($event)">\n\n      </ion-searchbar>\n\n    </ion-title>\n\n    <ion-buttons>\n\n      <button ion-button (click)="dismiss()">关闭</button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n\n\n\n\n<ion-content>\n\n\n\n  <ion-list>\n\n    <ion-item *ngFor="let item of items" tappable (click)="selectItem(item)">\n\n      {{ item.name }}<br/>\n\n      <span *ngFor="let add of item.address.split(\';\')">\n\n        <span class="address">{{add}}</span>\n\n      </span>\n\n    </ion-item>\n\n    <button *ngIf="items.length>0" ion-button full clear (click)="clearHistory()">清空搜索历史</button>\n\n  </ion-list>\n\n</ion-content>\n\n\n\n'/*ion-inline-end:"D:\YB_C\test\src\shared\map-component\search-address\search-address.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["z" /* ViewController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_3__providers_NativeService__["a" /* NativeService */]])
+], SearchAddress);
+
+//# sourceMappingURL=search-address.js.map
+
+/***/ }),
+
+/***/ 657:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Navigation; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_NativeService__ = __webpack_require__(30);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the Navigation page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+var Navigation = (function () {
+    function Navigation(viewCtrl, nativeService, navParams) {
+        this.viewCtrl = viewCtrl;
+        this.nativeService = nativeService;
+        this.navParams = navParams;
+        this.navigationIsReady = false;
+        this.navigationType = this.navParams.get("navigationType");
+        this.endPoint = this.navParams.get("markerLocation");
+        this.map = window['HomeAMap'];
+    }
+    Navigation.prototype.ngAfterContentInit = function () {
+        var _this = this;
+        var type = this.navigationType, options = { city: '广州市', panel: this.panel.nativeElement, map: this.map };
+        if (type === 1) {
+            AMap.service('AMap.Driving', function () {
+                _this.navigationIsReady = true;
+                _this.doSearch(type, new AMap.Driving(options));
+            });
+        }
+        else if (type === 2) {
+            AMap.service('AMap.Transfer', function () {
+                _this.doSearch(type, new AMap.Transfer(options));
+            });
+        }
+        else if (type === 3) {
+            AMap.service('AMap.Walking', function () {
+                _this.doSearch(type, new AMap.Walking(options));
+            });
+        }
+    };
+    Navigation.prototype.doSearch = function (navigationType, navigationService) {
+        var _this = this;
+        this.nativeService.getUserLocation().subscribe(function (location) {
+            _this.map.clearMap();
+            _this.startPoint = location;
+            navigationService.search([_this.startPoint.lng, _this.startPoint.lat], [_this.endPoint.lng, _this.endPoint.lat], function (status, result) {
+            });
+        });
+    };
+    Navigation.prototype.doNavigation = function (type) {
+        this.nativeService.navigation(this.startPoint, this.endPoint, type).subscribe(function (message) {
+            debugger;
+        });
+    };
+    Navigation.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    return Navigation;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])('panel'),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */])
+], Navigation.prototype, "panel", void 0);
+Navigation = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-navigation',template:/*ion-inline-start:"D:\YB_C\test\src\shared\map-component\navigation\navigation.html"*/'<ion-header>\n\n  <ion-toolbar>\n\n    <ion-title>\n\n      路线查看或导航\n\n    </ion-title>\n\n    <ion-buttons>\n\n      <button ion-button (click)="dismiss()">关闭</button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-grid *ngIf="navigationIsReady">\n\n    <ion-row class="align-center">\n\n      <ion-col width-50>\n\n        <button ion-button outline small (click)="doNavigation(0)">开始实时导航</button>\n\n      </ion-col>\n\n      <ion-col width-50>\n\n        <button ion-button color="secondary" outline small (click)="doNavigation(1)">开始模拟导航</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n  <div #panel></div>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\YB_C\test\src\shared\map-component\navigation\navigation.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["z" /* ViewController */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_NativeService__["a" /* NativeService */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
+], Navigation);
+
+//# sourceMappingURL=navigation.js.map
+
+/***/ }),
+
+/***/ 658:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapLocation; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__search_address_search_address__ = __webpack_require__(656);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__navigation_navigation__ = __webpack_require__(657);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_NativeService__ = __webpack_require__(30);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the MapLocation page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+var MapLocation = (function () {
+    function MapLocation(navCtrl, modalCtrl, nativeService, navParams) {
+        this.navCtrl = navCtrl;
+        this.modalCtrl = modalCtrl;
+        this.nativeService = nativeService;
+        this.navParams = navParams;
+        this.mapIsComplete = false; //地图是否加载完成
+        this.isPositioning = false; //是否正在定位
+        this.showIonFab = false; //是否显示导航按钮
+        this.params = {
+            draggable: true,
+            click: false,
+            searchBar: true,
+            navigation: true,
+            address: '',
+            position: {
+                lng: '',
+                lat: ''
+            },
+            lnglatXY: {}
+        };
+    }
+    MapLocation.prototype.ngAfterContentInit = function () {
+        var _this = this;
+        this.loadMap();
+        setTimeout(function () {
+            if (!_this.map) {
+                _this.loadMap();
+            }
+        }, 3000);
+    };
+    //加载地图
+    MapLocation.prototype.loadMap = function () {
+        var that = this;
+        try {
+            that.map = new AMap.Map('map-share', {
+                view: new AMap.View2D({
+                    zoom: 14,
+                    rotateEnable: true,
+                    showBuildingBlock: true,
+                    baseRender: 'd'
+                })
+            });
+            that.map.on('complete', function () {
+                that.mapIsComplete = true;
+                AMap.plugin(['AMap.ToolBar', 'AMap.Scale'], function () {
+                    that.map.addControl(new AMap.ToolBar());
+                });
+                if (that.params.position && that.params.position.lat && that.params.position.lng) {
+                    that.drawMarker(that.params.position);
+                }
+                else if (!(that.params.position.lat && that.params.position.lng) && that.params.address) {
+                    //判断主页面传过来的是地址就跳转到地址搜索地址页面,返回确定的地址
+                    that.locationSearch();
+                }
+                else {
+                    //主页面不传address和position就直接定位到当前位置
+                    that.mapLocation();
+                }
+                //判断是否可以点击地图改变标注位置
+                if (that.params.click) {
+                    that.map.on('click', function (e) {
+                        var position = {
+                            lng: e.lnglat.getLng(),
+                            lat: e.lnglat.getLat()
+                        };
+                        that.drawMarker(position);
+                    });
+                }
+            });
+            window['HomeAMap'] = this.map;
+        }
+        catch (err) {
+            that.mapIsComplete = false;
+            that.nativeService.showToast('地图加载失败,请检查网络或稍后再试.');
+        }
+    };
+    //跳转到地址查询搜索页面,并返回一个地址对象(经纬坐标+中文地址)
+    MapLocation.prototype.locationSearch = function () {
+        var _this = this;
+        var that = this;
+        var locationSearchModal = that.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_2__search_address_search_address__["a" /* SearchAddress */], { address: that.params.address });
+        locationSearchModal.present();
+        locationSearchModal.onDidDismiss(function (item) {
+            if (item) {
+                _this.drawMarker(item.location, item.name);
+            }
+        });
+    };
+    //定位当前地址
+    MapLocation.prototype.mapLocation = function () {
+        var that = this;
+        that.isPositioning = true;
+        that.nativeService.getUserLocation().subscribe(function (position) {
+            that.drawMarker(position);
+            that.isPositioning = false;
+        }, function () {
+            that.isPositioning = false;
+        });
+    };
+    //描点标注
+    MapLocation.prototype.drawMarker = function (position, addressName) {
+        if (addressName === void 0) { addressName = ''; }
+        var that = this;
+        that.params.lnglatXY = new AMap.LngLat(position.lng, position.lat);
+        that.map.clearMap();
+        //配置需要显示搜索框就根据传进来的position参数给搜索框赋值
+        if (that.params.searchBar) {
+            if (addressName) {
+                that.params.address = addressName;
+            }
+            else {
+                that.geocoder(that.params.lnglatXY);
+            }
+        }
+        that.marker = new AMap.Marker({
+            map: that.map,
+            draggable: that.params.draggable,
+            position: that.params.lnglatXY,
+        });
+        //配置需要搜索框才执行
+        if (that.params.navigation) {
+            if (that.marker) {
+                that.showIonFab = true;
+            }
+        }
+        //拖拽标注
+        that.marker.on('dragend', function (e) {
+            var position = {
+                lng: e.lnglat.getLng(),
+                lat: e.lnglat.getLat()
+            };
+            that.drawMarker(position);
+        });
+        that.map.setFitView();
+    };
+    //根据经纬坐标获取对应的地址
+    MapLocation.prototype.geocoder = function (position) {
+        var that = this;
+        var geocoder = new AMap.Geocoder({
+            radius: 1000,
+            extensions: "all"
+        });
+        geocoder.getAddress(position, function (status, result) {
+            if (status === 'complete' && result.info === 'OK') {
+                //获得了有效的地址信息:
+                var addressComponent = result.regeocode.addressComponent;
+                that.params.address = addressComponent.district + addressComponent.township +
+                    addressComponent.street + addressComponent.streetNumber;
+            }
+            else {
+                that.params.address = '';
+            }
+        });
+    };
+    //导航函数
+    MapLocation.prototype.mapNavigation = function (navigationType) {
+        var markerPosition = this.marker.getPosition();
+        if (!markerPosition) {
+            this.nativeService.showToast('请先搜索要去的地点');
+            return;
+        }
+        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3__navigation_navigation__["a" /* Navigation */], {
+            'navigationType': navigationType,
+            'markerLocation': { 'lng': markerPosition.lng, 'lat': markerPosition.lat }
+        });
+        modal.present();
+    };
+    return MapLocation;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Object)
+], MapLocation.prototype, "params", void 0);
+MapLocation = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-map-location',template:/*ion-inline-start:"D:\YB_C\test\src\shared\map-component\map-location\map-location.html"*/'<!--\n\n  Generated template for the MapLocation page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<div *ngIf="showIonFab">\n\n  <ion-fab center bottom>\n\n    <button ion-fab>去这里</button>\n\n    <ion-fab-list side="left">\n\n      <button ion-fab color="danger" (click)="mapNavigation(1)">驾车</button>\n\n    </ion-fab-list>\n\n    <ion-fab-list side="right">\n\n      <button ion-fab color="dark" (click)="mapNavigation(2)"> 公交</button>\n\n    </ion-fab-list>\n\n    <ion-fab-list side="top">\n\n      <button ion-fab color="secondary" (click)="mapNavigation(3)">步行</button>\n\n    </ion-fab-list>\n\n  </ion-fab>\n\n</div>\n\n\n\n<div *ngIf="mapIsComplete&&!isPositioning">\n\n  <ion-icon name="radio-button-on" class="position-btn" tappable (click)="mapLocation()"></ion-icon>\n\n</div>\n\n<ion-searchbar *ngIf="params.address||params.searchBar"\n\n  class="search"\n\n  placeholder="搜索地址"\n\n  [(ngModel)]="params.address"\n\n  debounce="600"\n\n  (ionFocus)="locationSearch()"\n\n>\n\n</ion-searchbar>\n\n  <div id="map-share" class="map-share"></div>\n\n'/*ion-inline-end:"D:\YB_C\test\src\shared\map-component\map-location\map-location.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ModalController */],
+        __WEBPACK_IMPORTED_MODULE_4__providers_NativeService__["a" /* NativeService */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
+], MapLocation);
+
+//# sourceMappingURL=map-location.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=0.js.map

@@ -1,0 +1,194 @@
+import { Component } from "@angular/core";
+import { Storage } from "@ionic/storage";
+import {NavController, ModalController, AlertController, NavParams} from "ionic-angular";
+import { UserInfo, MineParams } from "../../model/UserInfo";
+import { Helper } from "../../providers/Helper";
+import { DEFAULT_AVATAR } from "../../providers/Constants";
+import { NativeService } from "../../providers/NativeService";
+import { SignInPage } from "../login/sign-in/sign-in";
+import { OrderPage } from "./order/order";
+import { AboutPage } from "./about/about";
+import { VehiclePage } from "./vehicle/vehicle";
+import { ContractPage } from "./contract/contract";
+import { MessagePage } from "./message/message";
+import { AddressPage } from "./address/address";
+import { PersonalDataPage } from "./personal-data/personal-data";
+import { MineService } from "./MineService";
+import { Utils } from "../../providers/Utils";
+@Component({
+  selector: 'page-mine',
+  templateUrl: 'mine.html'
+})
+export class MinePage {
+  userInfo: UserInfo;
+  avatarPath: String = DEFAULT_AVATAR;
+  IsHasLogin: boolean = false;
+  LoginType: MineParams;
+  //订单状态数量
+  orderCount = {
+    status1: 0,  //待
+    status2: 0//已
+  }
+
+  constructor(private navCtrl: NavController,
+    private storage: Storage,
+    private helper: Helper,
+    private modalCtrl: ModalController,
+    private mineServices: MineService,
+    private nativeService: NativeService,
+    private params: NavParams,
+    private alertCtrl: AlertController) {
+    this.userInfo = {
+      Userid: '',
+      Username: '',// 姓名
+      NikeName: '', //昵称
+      Email: '',//邮箱
+      Phone: '', //手机号
+      Sex: '',//性别
+      AvatarId: '',//图像
+      AvatarPath: '',//图像路径
+      Openid: '',
+      Sfzhm: '',//省份证号码
+      QQ: '',//qq
+      JF: ''
+    }
+  }
+
+
+  //清空数据
+  clearData() {
+    this.IsHasLogin = false;
+    this.userInfo = {
+      Userid: '',
+      Username: '',// 姓名
+      NikeName: '', //昵称
+      Email: '',//邮箱
+      Phone: '', //手机号
+      Sex: '',//性别
+      AvatarId: '',//图像
+      AvatarPath: '',//图像路径
+      Openid: '',
+      Sfzhm: '',//省份证号码
+      QQ: '',//qq
+      JF: ''
+    }
+  }
+
+  ionViewDidEnter() {
+    this.storage.get('wx_user').then((userInfo: UserInfo) => {
+      if (userInfo != null) {
+        this.userInfo = userInfo;
+       // this.avatarPath = userInfo.AvatarPath;
+        this.IsHasLogin = true;
+        this.getOrdernum();
+      }
+
+    });
+  }
+
+
+  getOrdernum() {
+    this.mineServices.getOrderNum({ id: this.userInfo.Userid }).subscribe(r => {
+      if (r.data != null) {
+        for(var key in r.data){
+          if(r.data[key].stu==0){
+            this.orderCount.status1=r.data[key].num;
+          }
+          else{
+            this.orderCount.status2=r.data[key].num;
+          }
+        }
+      }
+    })
+  }
+  //跳转登录
+  SinIn() {
+    this.LoginType = {
+      userid: '',
+      type: '0'
+    };
+    let profileModal = this.modalCtrl.create(SignInPage, { type: this.LoginType.type });
+    profileModal.present();
+    profileModal.onDidDismiss((data: UserInfo) => {
+      if (data != null) {
+        this.userInfo = data;
+        this.IsHasLogin = true;
+      }
+    });
+  }
+
+  //跳转订单
+  order(status) {
+    if (this.userInfo.Userid != '') {
+      this.navCtrl.push(OrderPage, { status: status, userid: this.userInfo.Userid });
+    }
+
+  }
+  vehicle() {
+    if (this.userInfo.Userid != '') {
+      this.navCtrl.push(VehiclePage, { user: this.userInfo });
+    }
+  }
+  contract() {
+    if (this.userInfo.Userid != '') {
+      this.navCtrl.push(ContractPage,{userid: this.userInfo.Userid });
+    }
+  }
+  message() {
+    if (this.userInfo.Userid != '') {
+      this.navCtrl.push(MessagePage, { userid: this.userInfo.Userid });
+    }
+  }
+  address() {
+    if (this.userInfo.Userid != '') {
+      this.navCtrl.push(AddressPage, { userid: this.userInfo.Userid });
+    }
+  }
+  personal() {
+    if (this.userInfo.Userid != '') {
+      this.navCtrl.push(PersonalDataPage);
+    }
+  }
+  about() {
+    this.navCtrl.push(AboutPage);
+  }
+
+  //退出
+  signOut() {
+    this.alertCtrl.create({
+      title: '确认退出系统',
+      buttons: [{ text: '取消' },
+      {
+        text: '确定',
+        handler: () => {
+          this.storage.remove('wx_user');
+          this.storage.clear();//清除缓存
+          Utils.sessionStorageClear();//清除缓存
+          Utils.sessionStorageRemoveItem('wx_user');
+          this.LoginType = {
+            userid: '',
+            type: '0'
+          };
+          this.clearData();
+          let modal = this.modalCtrl.create(SignInPage, { type: this.LoginType.type });
+          modal.present();
+          modal.onDidDismiss(userInfo => {
+            if (userInfo) {
+              this.userInfo = userInfo;
+
+              // this.helper.loadAvatarPath(userInfo.avatarId).subscribe(avatarPath => {//获取头像路径
+              //   this.avatarPath = avatarPath
+              // });
+            }
+          });
+        }
+      }
+      ]
+    }).present();
+  }
+
+  notice() {
+    this.nativeService.alert('开发中...');
+  }
+
+}

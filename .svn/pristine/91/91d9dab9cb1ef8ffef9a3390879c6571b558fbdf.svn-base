@@ -1,0 +1,302 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>补充资料</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <!-- 车辆信息 -->
+  <ion-list no-margin>
+    <ion-item>
+      <h2 class="datum-title">车辆信息</h2>
+    </ion-item>
+    <div>
+      <ion-item>
+        <ion-label>车牌号&emsp;</ion-label>
+        <ion-input type="text" text-right disabled placeholder="车牌号" [(ngModel)]="params.htmjCarNo"></ion-input>
+      </ion-item>
+      <!--[disabled]="params.orderIsPay == 0"-->
+      <button ion-item disabled (click)="selectBrand()">
+        <ion-label><ion-note color="oranger">*</ion-note>品牌型号</ion-label>
+        <ion-note item-right name="type" color="dark">
+          {{params.htmjBrand}}{{params.htmjCarserise}}
+        </ion-note>
+      </button>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>车架号</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjVin" type="text" text-right placeholder="车架号"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>发动机号</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjFDJNO" type="text" text-right placeholder="发动机号"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>排量</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjCarPL" type="text" text-right placeholder="排量"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>购买价</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjCarBuyMoney" type="text" text-right placeholder="购买价"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>是否涡轮增压</ion-label>
+        <ion-select disabled [(ngModel)]="params.htmjCarIszengya" cancelText="取消" okText="确定">
+          <ion-option value=0>是</ion-option>
+          <ion-option value=1>否</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-note color="oranger">*</ion-note>是否四轮驱动</ion-label>
+        <ion-select disabled [(ngModel)]="params.htmjCarIssiqu" cancelText="取消" okText="确定">
+          <ion-option value=0>是</ion-option>
+          <ion-option value=1>否</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>车辆是否用于非营业性质</ion-label>
+        <ion-select disabled [(ngModel)]="params.htmjCarIsBussess" cancelText="取消" okText="确定" >
+          <ion-option value="0">是</ion-option>
+          <ion-option value="1">否</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>新车出厂日期</ion-label>
+        <ion-datetime disabled [(ngModel)]="params.htmjCarNewStarTime" type="text" text-right min="1970-01-01" max="2030-01-01" displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>购车发票日期</ion-label>
+        <ion-datetime disabled [(ngModel)]="params.htmjCarNewBuyTime" type="text" min="1970-01-01" max="2030-01-01" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>新车购车发票抬头</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjCarFPtitle" type="text" text-right placeholder="发票抬头"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>当前行驶公里数(公里)</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjCarIsBussess" type="number" text-rght placeholder="必填"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-note color="oranger">*</ion-note>是否进口</ion-label>
+        <ion-select disabled [(ngModel)]="params.mjclIsjionkou" cancelText="取消" okText="确定">
+          <ion-option value=0>是</ion-option>
+          <ion-option value=1>否</ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </ion-list>
+  <!-- 订购人信息 -->
+  <ion-list no-margin>
+    <ion-item>
+      <h2 class="datum-title">订购人</h2>
+    </ion-item>
+    <div>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>姓名</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjName" type="text" text-right placeholder="姓名"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>联系电话一</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjMobilePhone" type="text" text-right placeholder="联系电话一"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>联系固话二</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjPhone" type="text" text-right placeholder="联系固话二"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-note color="oranger">*</ion-note>登记证件类型</ion-label>
+        <ion-select disabled [(ngModel)]="params.htmjCardType" cancelText="取消" okText="确定">
+          <ion-option value="0">身份证</ion-option>
+          <ion-option value="1">护照</ion-option>
+          <ion-option value="2">组织机构代码</ion-option>
+          <ion-option value="3">统一社会信用代码</ion-option>
+          <ion-option value="4">营业执照号</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-note color="oranger">*</ion-note>证件号码</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjCardNo" type="text" text-right placeholder="证件号"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-note color="oranger">*</ion-note>通讯地址</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjaddress" type="text" text-right placeholder="通讯地址"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>邮编</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjYoubain" type="text" text-right placeholder="邮编"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>邮箱</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjEmail" type="text" text-right placeholder="邮箱"></ion-input>
+      </ion-item>
+    </div>
+  </ion-list>
+  <!-- 资料补充 -->
+  <ion-list no-margin>
+    <ion-item>
+      <h2 class="datum-title">资料补充</h2>
+    </ion-item>
+    <div>
+      <ion-item>
+        购车发票
+      </ion-item>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item>
+        行驶证
+      </ion-item>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item>
+        新车合格证
+      </ion-item>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item>
+        二手车交易发票
+      </ion-item>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item>
+        当日里程表读数
+      </ion-item>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item>
+        二手车认证报告
+      </ion-item>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item>
+        身份证
+      </ion-item>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item>
+        其他
+      </ion-item>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-list>
+  <!-- 延保信息 -->
+  <ion-list no-margin>
+    <ion-item>
+      <h2 class="datum-title">延保信息</h2>
+    </ion-item>
+    <div>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>原厂保修起始日期</ion-label>
+        <ion-datetime disabled [(ngModel)]="params.htmjFatorystartTime" min="1970-01-01" max="2030-01-01" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>原厂保修终止日期</ion-label>
+        <ion-datetime disabled [(ngModel)]="params.htmjFatoryendTime" min="1970-01-01" max="2030-01-01" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>原厂保修公里数(公里)</ion-label>
+        <ion-input disabled [(ngModel)]="params.htmjFatoryGLNO" type="number" text-right placeholder="必填"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>延保期至</ion-label>
+        <ion-input [(ngModel)]="params.htStartTimeendTime" type="text" style="font-size: 1rem;" disabled text-right></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>延保年限</ion-label>
+        <ion-input [(ngModel)]="params.htYanbaoTime" type="text" disabled text-right></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>赔偿金额</ion-label>
+        <ion-input [(ngModel)]="params.htPCmoney" type="text" disabled text-right></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>延保项</ion-label>
+        <ion-input [(ngModel)]="params.htProjectName" type="text" disabled text-right></ion-input>
+      </ion-item>
+    </div>
+  </ion-list>
+  <!-- 合同信息 -->
+  <ion-list>
+    <ion-item>
+      <h2 class="datum-title">延保信息</h2>
+    </ion-item>
+    <ion-item>
+      <ion-label>延保合同</ion-label>
+      <button ion-button item-end color="base" (click)="viewPhotoHT(params.htUrl)">查看</button>
+    </ion-item>
+    <ion-item>
+      <ion-label>服务协议信息</ion-label>
+      <button ion-button item-end color="base" (click)="viewPhotoFWXY(params.htFwxyUrl)">服务协议</button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer ion-row no-margin padding-horizontal>
+  <button (click)="payOrder()" full ion-button color="base">保存</button>
+</ion-footer>

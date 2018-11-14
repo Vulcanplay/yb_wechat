@@ -1,0 +1,3 @@
+page-home-package {
+  .line-through{text-decoration: line-through;}
+}

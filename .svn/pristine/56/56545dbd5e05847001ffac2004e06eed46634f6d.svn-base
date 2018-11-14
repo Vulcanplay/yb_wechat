@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start (click)="dismiss()">
+      <button ion-button>
+        <i class="iconfont lg icon-custom-arrowleft"></i>
+      </button>
+    </ion-buttons>
+    <ion-title>选择城市</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of cityArray" (click)="city(item)">
+      {{item.City || item.Province}}
+    </ion-item>
+  </ion-list>
+</ion-content>

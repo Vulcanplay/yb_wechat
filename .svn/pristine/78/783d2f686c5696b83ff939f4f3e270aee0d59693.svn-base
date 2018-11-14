@@ -1,0 +1,58 @@
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { Storage } from "@ionic/storage";
+import { UserInfo } from "../../../model/UserInfo";
+import { MineService } from "./../MineService";
+@Component({
+  selector: 'page-mine-personal-data',
+  templateUrl: 'personal-data.html'
+})
+export class PersonalDataPage {
+  users: UserInfo = {
+    Userid: '',//用户ID
+    Username: '',//姓名
+    NikeName: '',//昵称
+    Sex: '',//性别
+    Email: '',  //邮箱
+    Phone: '', //手机
+    QQ: '',//QQ
+    AvatarId: '',//图像
+    AvatarPath: '',//图像路径
+    Openid: '',
+    Sfzhm: '', //省份证号码
+    JF: ''
+
+  };
+  constructor(public navCtrl: NavController,
+    private storage: Storage,
+    private minservice: MineService) {
+
+  }
+
+
+  ionViewDidEnter() {
+    this.storage.get('wx_user').then((userInfo: UserInfo) => {
+      if (userInfo != null) {
+        this.users = userInfo;
+      }
+    });
+  }
+
+  //修改
+  update(item, id, type) {
+    debugger;
+    let arr = [];
+    if (type == 'Sex') {
+      arr['Sex'] = item;
+    }
+    else {
+      arr[item.target.name] = item.target.value;
+    }
+    let params = {
+      data: arr
+    };
+    this.minservice.updateMineInfo(params).subscribe(r => {
+    });
+  }
+
+}

@@ -1,0 +1,53 @@
+import { Component } from '@angular/core';
+import { NavController, NavParams, ViewController } from "ionic-angular";
+import { FilterBrandSeries } from "../../filter-brand-series/FilterBrandSeries";
+import { ProductParams } from "../../../model/UserInfo";
+@Component({
+  selector: 'page-filter-configure',
+  templateUrl: 'configure.html',
+  providers: [FilterBrandSeries]
+})
+export class FilterConfigurePage {
+  public carserise: any;
+
+  private productParams: ProductParams = {
+    type: '',
+    carseriesId: '',
+    carseriesName: '',
+    brandid: '',
+    brandname: '',
+    groupid: '',
+    MJCL029: ''
+  };
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
+    public filterBrandSeries: FilterBrandSeries) {
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+  ionViewWillEnter() {
+    this.productParams.brandid = this.navParams.get('brandid');
+    this.productParams.brandname = this.navParams.get('brandname');
+    this.productParams.type = this.navParams.get('type');
+    this.getCarSeries(this.productParams.brandid);
+  }
+  getCarSeries(brandid) {
+    this.filterBrandSeries.getCarSeriseList(brandid).subscribe(r => {
+      this.carserise = r.data.Table;
+    });
+  }
+
+  GotoTYPE(carseriesId, carseriesName, YBCXZH001) {
+    let type = this.navParams.get('type');
+    this.productParams.carseriesId = carseriesId;
+    this.productParams.carseriesName = carseriesName;
+    this.productParams.groupid = YBCXZH001;
+    this.viewCtrl.dismiss(this.productParams);
+
+
+  }
+
+}

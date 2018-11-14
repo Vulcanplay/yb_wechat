@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      我要额度
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <img src="./assets/img/home/finance/jd_1.png" width="100%"/>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label>真实姓名：</ion-label>
+        <ion-input type="text" placeholder="请输入您的真实姓名"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>身份证号：</ion-label>
+        <ion-input type="text" placeholder="请输入您的身份证号"></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <p class="tip">请确认身份信息，如有误请修改</p>
+  <h2 class="sub-title">上传身份证照片：</h2>
+  <ion-row text-center>
+    <ion-col col-6>
+      <div class="upload">
+        <ion-icon name="add"></ion-icon>
+      </div>
+      <p>身份证人像面</p>
+    </ion-col>
+    <ion-col col-6>
+      <div class="upload">
+        <ion-icon name="add"></ion-icon>
+      </div>
+      <p>身份证国徽面</p>
+    </ion-col>
+  </ion-row>
+
+  <div padding>
+    <button ion-button block color="base" (click)="next()">下一步</button>
+  </div>
+</ion-content>

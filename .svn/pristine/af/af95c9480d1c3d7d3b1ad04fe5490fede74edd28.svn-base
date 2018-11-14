@@ -1,0 +1,29 @@
+page-ewp {
+
+  .order-tabs{
+    border-top: 1px solid #f5f5f5 !important;
+  }
+  .order-tabs ion-grid ion-row ion-col ion-icon{
+    font-size: 3.8rem;
+    margin-bottom: 8px;
+  }
+  .order-tabs ion-grid ion-row ion-col{
+    font-size: 1.3rem;
+  }
+  .order-tabs ion-badge{
+    position: absolute;
+    right: calc(50% - 2.1111rem);
+    top: 0;
+    margin: 0 !important;
+    font-size: 1rem;
+  }
+}
+page-ewp-shopping-cart,page-ewp-payment-order,page-ewp-confirm-order,page-ewp-details{
+  ion-footer button.button-ios .button-inner{font-size:1.45rem;}
+  ion-footer button[disabled], ion-footer [ion-button][disabled]{opacity: 1;}
+  .ewp-details-item.item-block{min-height: 3.5rem !important}
+  .ewp-details-item .icon-img{background-position: center center;background-size: contain; background-repeat: no-repeat;margin: 0!important;}
+  .ewp-details-item .icon-img.icar-logo{min-width: 40px;}
+  .ewp-details-item.item-ios ion-icon[item-left], .ewp-details-item.item-ios ion-icon[item-right], .ewp-details-item.item-ios ion-icon[item-start], .ewp-details-item.item-ios ion-icon[item-end] {  margin-left: 0; margin-top: 0;margin-bottom: 0;margin-right: 4px;font-size:2.4rem;line-height: 1.5em; }
+  .ewp-details-item.vehicle ion-label{color: color($colors,icon-gary)}
+}

@@ -1,0 +1,31 @@
+<ion-content>
+
+  <ion-list no-lines="">
+    <ion-item>
+      我的订单
+      <ion-icon class="iconfont icon-custom-order" item-left color="base"></ion-icon>
+    </ion-item>
+    <ion-item-divider color="white" no-padding class="order-tabs">
+      <ion-grid no-padding>
+        <ion-row no-padding text-center>
+          <ion-col tappable (click)="order(-1, 0)">
+            <ion-icon color="dark" name="ios-alarm-outline"></ion-icon>
+            <br/> 延保
+            <!--<ion-badge item-end color="danger">{{orderCount.status1}}</ion-badge>-->
+          </ion-col>
+          <ion-col tappable (click)="order(-1, 1)">
+            <ion-icon color="dark" name="ios-card-outline"></ion-icon>
+            <br/> 喷漆券
+            <!--<ion-badge item-end color="danger">{{orderCount.status2}}</ion-badge>-->
+          </ion-col>
+          <ion-col tappable (click)="order(-1, 2)">
+            <ion-icon color="dark" name="ios-construct-outline"></ion-icon>
+            <br/> 三包
+            <!--<ion-badge item-end color="danger">{{orderCount.status2}}</ion-badge>-->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-divider>
+  </ion-list>
+
+</ion-content>

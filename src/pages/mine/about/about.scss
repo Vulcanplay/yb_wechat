@@ -1,0 +1,21 @@
+page-mine-about{
+  p{ margin:0; text-indent:2em;}
+  .about-list{
+    background-color: #ffffff !important;
+    border-top:1px solid $custom-list-border-color;
+  }
+  .about-item{
+    padding-bottom: 1em;
+  }
+  .about-item h3{
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.6rem;
+  }
+  .about-item p{
+    text-indent: .8em;
+    font-size: 1.3rem;
+    color: #787878;
+    padding: .7em 0;
+  }
+}

@@ -1,0 +1,76 @@
+import {NgModule} from '@angular/core';
+import {IonicModule, IonicPageModule} from 'ionic-angular';
+import {EWPPage} from './ewp';
+import {FilterBrandSeriesPage} from "../../shared/filter-brand-series/filter-brand-series";
+import {FilterConfigurePage} from "../../shared/filter-brand-series/configure/configure";
+import {EWPDetailsPage} from "./details/details";
+import {ShoppingCartPage} from "./shopping-cart/shopping-cart";
+import {ConfirmOrderPage} from "./confirm-order/confirm-order";
+import {PaymentOrderPage} from "./payment-order/payment-order";
+import {EWPService} from "./EWPService";
+import {AlertPage} from "../../shared/alert/alert";
+import {ServiceContractPage} from "./details/service-contract/service-contract";
+import {ProcessPage} from "./details/process/process";
+import {WindowViewPage} from "../../shared/window-view/window-view";
+import {SBGetBrandPage} from "./sanbao/brand/brand";
+import {SBGetSeriesPage} from "./sanbao/brand/series/series";
+import {EWPYBOrderPage} from "./yb-order/order";
+import {EWPYBOrderDatumPage} from "./yb-order/datum/datum";
+import {EWPSBOrderPage} from "./sb-order/order";
+import {EWPSBOrderDatumPage} from "./sb-order/datum/datum";
+import {EWPYBIntroductionPage} from "./yb-introduction/introduction";
+import {EWPSBIntroductionPage} from "./sb-introduction/introduction";
+import {EWPYBIntroductionDetailPage} from "./yb-introduction/detail/introduction-detail";
+import {EWPSBIntroductionDetailPage} from "./sb-introduction/detail/introduction-detail";
+
+@NgModule({
+  imports: [IonicModule,IonicPageModule.forChild(EWPPage)],
+  declarations: [
+    EWPPage,
+    WindowViewPage,
+    SBGetBrandPage,
+    SBGetSeriesPage,
+    FilterBrandSeriesPage,
+    FilterConfigurePage,
+    EWPDetailsPage,
+    EWPYBOrderPage,
+    EWPYBOrderDatumPage,
+    EWPSBOrderPage,
+    EWPSBOrderDatumPage,
+    ShoppingCartPage,
+    ConfirmOrderPage,
+    PaymentOrderPage,
+    AlertPage,
+    ServiceContractPage,
+    EWPYBIntroductionPage,
+    EWPSBIntroductionPage,
+    EWPYBIntroductionDetailPage,
+    EWPSBIntroductionDetailPage,
+    ProcessPage],
+  entryComponents: [
+    EWPPage,
+    WindowViewPage,
+    SBGetBrandPage,
+    SBGetSeriesPage,
+    FilterBrandSeriesPage,
+    FilterConfigurePage,
+    EWPDetailsPage,
+    EWPYBOrderPage,
+    EWPYBOrderDatumPage,
+    EWPSBOrderPage,
+    EWPSBOrderDatumPage,
+    ShoppingCartPage,
+    ConfirmOrderPage,
+    PaymentOrderPage,
+    AlertPage,
+    ServiceContractPage,
+    EWPYBIntroductionPage,
+    EWPSBIntroductionPage,
+    EWPYBIntroductionDetailPage,
+    EWPSBIntroductionDetailPage,
+    ProcessPage],
+  providers: [EWPService],
+  exports: [IonicModule]
+})
+export class EWPModule {
+}

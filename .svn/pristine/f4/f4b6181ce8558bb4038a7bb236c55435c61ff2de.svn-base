@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>定制延保</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="no-car">
+    <ion-row>
+      <ion-col text-center tappable (click)="details()">
+        <h2>请填写车辆信息</h2>
+        <p>根据您的车辆推荐最合适的延保项目</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

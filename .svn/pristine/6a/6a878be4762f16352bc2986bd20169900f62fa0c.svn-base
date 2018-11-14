@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      个人资料
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list no-margin>
+      <ion-item>
+        <ion-label>客户姓名</ion-label>
+        <ion-input text-right type="text" placeholder="姓名" [(ngModel)]="userInfo.KHXX002"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>客户身份证号</ion-label>
+        <ion-input text-right type="text" placeholder="客户身份证号" [(ngModel)]="userInfo.KHXX003"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>客户驾驶本号</ion-label>
+        <ion-input text-right type="text" placeholder="客户驾驶本号" [(ngModel)]="userInfo.KHXX004"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>客户联系电话</ion-label>
+        <ion-input text-right type="text" placeholder="客户联系电话" [(ngModel)]="userInfo.KHXX007"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>客户座机电话</ion-label>
+        <ion-input text-right type="text" placeholder="客户座机电话" [(ngModel)]="userInfo.KHXX008"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>客户家庭住址</ion-label>
+        <ion-input text-right type="text" placeholder="客户家庭住址" [(ngModel)]="userInfo.KHXX009"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>邮编</ion-label>
+        <ion-input text-right type="text" placeholder="邮编" [(ngModel)]="userInfo.KHXX012"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>邮箱</ion-label>
+        <ion-input text-right type="text" placeholder="邮箱" [(ngModel)]="userInfo.KHXX013"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div margin-top padding>
+      <button ion-button full color="danger" type="submit" (click)="submit()">提交</button>
+    </div>
+</ion-content>

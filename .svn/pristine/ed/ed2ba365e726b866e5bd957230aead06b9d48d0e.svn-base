@@ -1,0 +1,76 @@
+
+<ion-content>
+  <ion-header>
+    <ion-navbar>
+      <ion-buttons start>
+        <button ion-button small clear (click)="getSiteForCity()">{{siteParams.City || '北京'}}&nbsp;
+          <ion-icon name="md-arrow-dropdown"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title></ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <!--<ion-header>-->
+    <!--<ion-navbar>-->
+    <!--<ion-buttons start>-->
+      <!--<a href="tel:4000505345" ion-button clear>-->
+        <!--<ion-icon name="md-call"></ion-icon>-->
+      <!--</a>-->
+    <!--</ion-buttons>-->
+      <!--<ion-buttons end>-->
+        <!--<button ion-button small clear (click)="getSiteForCity()">北京&nbsp;-->
+          <!--<ion-icon name="md-arrow-dropdown"></ion-icon>-->
+        <!--</button>-->
+      <!--</ion-buttons>-->
+    <!--</ion-navbar>-->
+  <!--</ion-header>-->
+  <img src="./assets/img/home/home_slider_v2_1.png" width="100%"/>
+  <!--<ion-slides autoplay="3000" loop="false" pager="false" paginationType="bullets" (ionSlideDidChange)="slideChanged()" zoom="false"
+    class="banner-ion-slides">
+    <ion-slide style="background-image: url(./assets/img/home/home_slider_v2_1.png)"></ion-slide>
+  </ion-slides>-->
+  <ion-list no-margin no-lines>
+    <ion-row class="shop">
+      <ion-col col-6 (click)="go(0)">
+        <div class="bg" [style.background-image]="getBackground('./assets/img/home/1.jpg')"></div>
+        <div class="info">
+          <p><ion-note color="white">预约保养/维修</ion-note></p>
+        </div>
+      </ion-col>
+      <ion-col col-6 (click)="go(1)">
+        <div class="bg" [style.background-image]="getBackground('./assets/img/home/2.jpg')"></div>
+        <div class="info">
+          <p><ion-note color="white">车辆各部位维修价格</ion-note></p>
+        </div>
+      </ion-col>
+      <ion-col col-6 (click)="go(2)">
+        <div class="bg" [style.background-image]="getBackground('./assets/img/home/3.jpg')"></div>
+        <div class="info">
+          <p style="font-size:1.3rem;"><ion-note color="white">全国售后合作伙伴(含4S店)加盟中</ion-note></p>
+        </div>
+      </ion-col>
+      <ion-col col-6 (click)="go(3)">
+        <div class="bg" [style.background-image]="getBackground('./assets/img/home/4.jpg')"></div>
+        <div class="info">
+          <p><ion-note color="white">理赔流程</ion-note></p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="shop">
+      <ion-col col-6>
+        <div class="bg">
+          <h2>保养券</h2>
+          <p text-right><ion-icon class="iconfont icon-custom-rmb"></ion-icon>160</p>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="bg blue">
+          <h2>漆面券</h2>
+          <p text-right><ion-icon class="iconfont icon-custom-rmb"></ion-icon>288</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+
+</ion-content>

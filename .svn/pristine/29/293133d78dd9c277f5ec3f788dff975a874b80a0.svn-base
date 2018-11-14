@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\appworkspace\\YB-YANBAO\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-land-xhdpi\\screen.png",
+        "source": "E:\\appworkspace\\YB-YANBAO\\platforms\\android\\res\\drawable-land-xhdpi\\screen.png"
+    },
+    {
+        "merged": "E:\\appworkspace\\test\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-land-xhdpi\\screen.png",
+        "source": "E:\\appworkspace\\test\\platforms\\android\\res\\drawable-land-xhdpi\\screen.png"
+    }
+]

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      我的订单
+    </ion-title>
+  </ion-navbar>
+  <!-- <ion-toolbar no-border-top>
+    <ion-searchbar placeholder="商品名称/编号/订单号" [(ngModel)]="searchText" type="search"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button color="white" (click)="searchData()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar> -->
+  <ion-toolbar no-border class="filter-tabs">
+    <ion-grid text-center no-padding>
+      <ion-row>
+        <!-- <ion-col tappable (click)="filterTabs(-1)" [ngClass]="{'filter-tabs-bottom-line':status == -1}">
+          <button ion-button small clear [color]="status == -1 ? 'base':'gary'">全部</button>
+        </ion-col> -->
+        <ion-col tappable (click)="filterTabs(1)" [ngClass]="{'filter-tabs-bottom-line':status == 1}">
+          <button ion-button small clear [color]="status == 1 ? 'oranger':'dark'">待付款</button>
+        </ion-col>
+        <ion-col tappable (click)="filterTabs(0)" [ngClass]="{'filter-tabs-bottom-line':status == 0}">
+          <button ion-button small clear [color]="status == 0 ? 'oranger':'dark'">已完成</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card padding-vertical *ngFor="let item of orderList">
+    <button ion-item (click)="details(item.PZ_YB_DDDD002)">
+      <ion-label>{{item.PZ_YB_DDDD002}}</ion-label>
+      <ion-note color="icon-gary" item-end>详情</ion-note>
+    </button>
+    <ion-card-content>
+      <ion-note color="dark">{{item.PZ_DDHT017}}</ion-note>
+      <ion-note color="icon-gary">{{item.PZ_DDHT018}}</ion-note>
+    </ion-card-content>
+    <ion-item>
+      <ion-note item-start color="dark">保费</ion-note>
+      <ion-note item-start color="oranger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>{{item.PZ_YB_DDDD014}}</ion-note>
+      <button ion-button item-end small color="base" [hidden]="item.PZ_YB_DDDD012 =='0'?'hidden':''" >未支付</button>
+    </ion-item>
+  </ion-card>
+</ion-content>

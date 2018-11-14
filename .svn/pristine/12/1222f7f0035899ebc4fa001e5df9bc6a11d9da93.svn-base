@@ -1,0 +1,23 @@
+page-sanbao-order-details{
+  ion-item .toggle-ios .toggle-icon {
+    background-color: #5d5d5d;
+  }
+  .toggle-ios .toggle-inner{
+    background-color: #f9f9f9;
+  }
+  .top.item-ios{
+    background-color: #f1f1f1;
+  }
+  .show{display: block;}
+  .hide{display: none;}
+  .content-ios{
+    width: 100% !important;;
+    margin: 0 !important;
+  }
+  .text-input[disabled],.datetime-disabled, .select-disabled{
+    opacity: .7;
+  }
+  .item-select-disabled ion-label, .item-datetime-disabled ion-label{
+    opacity: 1;
+  }
+}

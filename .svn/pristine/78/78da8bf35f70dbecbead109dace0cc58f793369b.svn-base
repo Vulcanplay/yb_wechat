@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      服务网点
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <h6>科技有限公司</h6>
+  <p>全国统一服务热线:&nbsp;<a href="tel:4008006966">4008006966</a></p>
+  <p>联系电话:&nbsp;<a href="tel:110">7788561</a></p>
+  <p>理财咨询:&nbsp;<a href="tel:110">13912345678</a>李逍遥</p>
+  <p>邮箱:&nbsp;<a href="javascript:;">lhzx@5i4s.com</a></p>
+  <p>地址:&nbsp;</p>
+  <p>邮编:&nbsp;</p>
+  <p>办公时间:&nbsp;</p>
+  <p>周一至周五</p>
+  <p>上午:&nbsp;09:00-12:00</p>
+  <p>下午:&nbsp;13:00-18:00</p>
+  <p>周一至周日:&nbsp;<a href="tel:110">13912345678</a>李逍遥</p>
+</ion-content>

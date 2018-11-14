@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      我的车辆
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="licenseTag()">
+        <ion-icon name="ios-add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list radio-group no-margin margin-top (ionChange)="changeDefault()" [(ngModel)]="defaultTag">
+    <div margin-top *ngFor="let item of carList">
+      <ion-item (click)='details(item)'>
+        <ion-thumbnail item-start>
+          <img src="{{item.BRANDLOGO}}"/>
+        </ion-thumbnail>
+        <h2>{{item.SONBRANDNAME}}</h2>
+        <p>{{item.CARSERIESNAME}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-radio color="oranger" value="{{item.PZ_YB_MJCLMJCL001}}" item-start></ion-radio>
+        <ion-label color="icon-gary">默认</ion-label>
+        <!-- <button item-end ion-button clear color="icon-gary"><ion-icon name="ios-trash" class="trash"></ion-icon>删除</button> -->
+      </ion-item>
+    </div>
+    <!-- <div margin-top>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src=""/>
+        </ion-thumbnail>
+        <h2>车辆名称</h2>
+        <p>车辆配置配置配置配置配置配置配置</p>
+      </ion-item>
+      <ion-item>
+        <ion-radio color="oranger" value="2" item-start></ion-radio>
+        <ion-label color="icon-gary">默认地址</ion-label>
+        <button item-end ion-button clear color="icon-gary"><ion-icon name="ios-trash" class="trash"></ion-icon>删除</button>
+      </ion-item>
+    </div> -->
+  </ion-list>
+</ion-content>

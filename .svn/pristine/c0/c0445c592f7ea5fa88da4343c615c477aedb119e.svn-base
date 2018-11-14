@@ -1,0 +1,17 @@
+import { Component } from '@angular/core';
+import {ModalController, NavController} from 'ionic-angular';
+import {HomeFinanceIdentityAuthenticationPage} from "./identity-authentication/identity-authentication";
+
+@Component({
+  selector: 'page-home-finance',
+  templateUrl: 'finance.html'
+})
+export class HomeFinancePage {
+
+  constructor(public navCtrl: NavController,
+              public modalCtrl: ModalController) {
+  }
+  next(){
+    this.navCtrl.push(HomeFinanceIdentityAuthenticationPage);
+  }
+}

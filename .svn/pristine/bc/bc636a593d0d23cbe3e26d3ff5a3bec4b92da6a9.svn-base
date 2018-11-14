@@ -1,0 +1,7 @@
+page-order,page-order-details{
+
+  .icon-img{background-position: center center;background-size: 22px 22px;background-repeat: no-repeat;margin: 0!important;}
+  .icon-img.icar-logo{min-width: 40px; background-size: contain;}
+  .filter-tabs .toolbar-background-ios{background: #ffffff; border-color: transparent;}
+  .content-ios, .content-md, .content-wp{background-color: #f3f3f3 !important;}
+}

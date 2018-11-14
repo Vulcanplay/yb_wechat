@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      关于我们
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list no-margin>
+    <ion-item no-lines>
+      <ion-icon color="base" item-left class="iconfont icon-gongsijianjie"></ion-icon>
+      <ion-label color="base">公司简介</ion-label>
+    </ion-item>
+    <div padding class="about-list">
+      <p>沃享汽车科技服务（北京）有限公司成立于2016年，注册资本1000
+        万元，专注做中规车辆延长质保服务以及平行进口汽车三包质保期服
+        务业务。</p>
+    </div>
+  </ion-list>
+  <ion-list no-margin margin-top>
+    <ion-item no-lines>
+      <ion-icon color="base" item-left class="iconfont icon-jiangpai"></ion-icon>
+      <ion-label color="base">我们的优势</ion-label>
+    </ion-item>
+    <div padding class="about-list">
+      <div class="about-item">
+        <h3>1.产品<ion-note color="base">更丰富</ion-note></h3>
+        <p>延保产品线全，从不同需求更好满足客户需求，渗透覆盖率更强。</p>
+      </div>
+      <div class="about-item">
+        <h3>2.时间<ion-note color="base">更灵活</ion-note></h3>
+        <p>延保时间灵活，从1年产品至5年产品。</p>
+      </div>
+      <div class="about-item">
+        <h3>3.区域覆盖<ion-note color="base">更广</ion-note></h3>
+        <p>各品牌全国范围承保。</p>
+      </div>
+      <div class="about-item">
+        <h3>4.性价比<ion-note color="base">更高</ion-note></h3>
+        <p>让更多车主更愿购买，节约沟通时间成本。</p>
+      </div>
+      <div class="about-item">
+        <h3>5.承保<ion-note color="base">更深入</ion-note></h3>
+        <p>对店内现有自保延保产品可承接承保，最大程度降低企业风险。</p>
+      </div>
+      <div class="about-item">
+        <h3>6.服务<ion-note color="base">更贴心</ion-note></h3>
+        <p>24小时全国救援服务，贴心管家。</p>
+      </div>
+      <div class="about-item">
+        <h3>7.索赔<ion-note color="base">更高效</ion-note></h3>
+        <p>专业系统索赔，简单，便捷，高效；体验更强专业服务。</p>
+      </div>
+      <div class="about-item">
+        <h3>8.推送<ion-note color="base">更给力</ion-note></h3>
+        <p>可为各店定期推送客户(含平行进口车辆)。有效提高新增客户量。</p>
+      </div>
+      <div class="about-item">
+        <h3>9.培训<ion-note color="base">更专业</ion-note></h3>
+        <p>专业培训，让一线，更了解延保，以及延保和客户保留对4S店更长远的意义。</p>
+      </div>
+      <div class="about-item">
+        <h3>10.支付<ion-note color="base">更前卫</ion-note></h3>
+        <p>消费支付可享受更多相应金融配套服务（可享受消费分期），更低利率让延保消费体验更好。目前合作的银行有：中国银行，中国工商银行，中国农业银行，中国建设银行，中国邮政储蓄银行，中信银行，光大银行，民生银行，招商银行，浦发银行，北京银行，上海银行，兴业银行。</p>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>

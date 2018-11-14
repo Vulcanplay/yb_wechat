@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      延保车辆信息
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <ion-list no-margin>
+    <button ion-item no-lines margin-top detail-none class="top" (click)="itemToggle(1)">
+      <ion-label>机动车信息</ion-label>
+      <button item-end ion-button clear small color="dark"><ion-icon [name]="itemPower[1] ? 'ios-arrow-up-outline' : 'ios-arrow-down-outline'"></ion-icon></button>
+    </button>
+    <div [ngClass]="itemPower[1] ? 'show':'hide'">
+      <button ion-item (click)="selectBrandId()">
+        <ion-label><ion-note color="oranger">*</ion-note>品牌型号：</ion-label>
+        <ion-note item-end name="type" color="dark">
+          {{carInfo.SONBRANDNAME}}{{carInfo.CARSERIESNAME}}
+        </ion-note>
+      </button>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>车型</ion-label>
+        <ion-select [(ngModel)]="carInfo.PZ_YB_MJCLMJCL031" cancelText="取消" okText="确定">
+          <ion-option value=0 selected>轿车</ion-option>
+          <ion-option value=1>越野(SUV)</ion-option>
+          <ion-option value=2>多用途常用用车(MPV)</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>车架号</ion-label>
+        <ion-input type="text" text-right placeholder="请输入车架号" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL004"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>发动机号</ion-label>
+        <ion-input type="text" text-right placeholder="请输入发动机号" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL006"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>排量</ion-label>
+        <ion-input type="text" text-right placeholder="请输入排量" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL007"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>是否涡轮增压</ion-label>
+        <ion-select [(ngModel)]="carInfo.PZ_YB_MJCLMJCL014" cancelText="取消" okText="确定">
+          <ion-option value=0 selected>是</ion-option>
+          <ion-option value=1>否</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>是否四轮驱动</ion-label>
+        <ion-select [(ngModel)]="carInfo.PZ_YB_MJCLMJCL015" cancelText="取消" okText="确定">
+          <ion-option value="0" selected>是</ion-option>
+          <ion-option value="1">否</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>车辆是否用于非营业性质</ion-label>
+        <ion-select [(ngModel)]="carInfo.PZ_YB_MJCLMJCL022" cancelText="取消" okText="确定" >
+          <ion-option value="0" selected>是</ion-option>
+          <ion-option value="1">否</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>车辆购买价(元)</ion-label>
+        <ion-input type="text" text-right placeholder="车辆购买价" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL016"></ion-input>
+      </ion-item>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>新车出厂日期</ion-label>
+        <ion-datetime type="text" (ionChange)="updateFP()" text-right min="1970-01-01" max="{{toDay}}" displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL030"></ion-datetime>
+      </ion-item>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>购车发票日期</ion-label>
+        <ion-datetime type="text" min="{{carInfo.PZ_YB_MJCLMJCL030}}" max="2030" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL021"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-note color="oranger">*</ion-note>新车购车发票抬头</ion-label>
+        <ion-input type="text" text-right placeholder="发票抬头" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL017"></ion-input>
+      </ion-item>
+    </div>
+    <button ion-item no-lines margin-top detail-none class="top" (click)="itemToggle(2)">
+      <ion-label>保修信息</ion-label>
+      <button item-end ion-button clear small color="dark"><ion-icon [name]="itemPower[2] ? 'ios-arrow-up-outline' : 'ios-arrow-down-outline'"></ion-icon></button>
+    </button>
+    <div [ngClass]="itemPower[2] ? 'show':'hide'">
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>原厂保修起始日期</ion-label>
+        <ion-datetime min="{{carInfo.PZ_YB_MJCLMJCL021}}" max="2030" text-right displayFormat="YYYY-MM-DD" (ionChange)='updateFPBXEND()' cancelText="取消" doneText="确定" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL018"></ion-datetime>
+      </ion-item>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>原厂保修终止日期</ion-label>
+        <ion-datetime min="{{carInfo.PZ_YB_MJCLMJCL018}}" max="2030" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL019"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>原厂保修公里数(公里)</ion-label>
+        <ion-input type="number" text-right placeholder="必填" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL020"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>当前行驶公里数(公里)</ion-label>
+        <ion-input type="number" text-right [(ngModel)]="carInfo.PZ_YB_MJCLMJCL010" placeholder="必填"></ion-input>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <div padding-horizontal margin-bottom (click)="addCarInfo()">
+    <button ion-button block color="base">保&emsp;存</button>
+  </div>
+</ion-footer>

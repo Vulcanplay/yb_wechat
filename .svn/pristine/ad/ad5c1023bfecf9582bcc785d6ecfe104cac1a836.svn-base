@@ -1,0 +1,20 @@
+import {NgModule} from '@angular/core';
+import {IonicModule} from 'ionic-angular';
+import {HomePage} from './home';
+import {HomePackagePage} from "./package/package";
+import {HomeService} from "./HomeService";
+import {HomeAskPage} from "./ask/ask";
+import {HomeRaidersPage} from "./raiders/raiders";
+import {HomeWorkingPage} from "./working/working";
+import {FilterCityModule} from "../../shared/filter-city/filter-city.module";
+import {ArticlePage} from "./article/article";
+
+@NgModule({
+  imports: [IonicModule,FilterCityModule],
+  declarations: [HomePage, HomePackagePage, HomeRaidersPage, HomeWorkingPage, HomeAskPage, ArticlePage],
+  entryComponents: [HomePage, HomePackagePage, HomeRaidersPage, HomeWorkingPage, HomeAskPage, ArticlePage],
+  providers: [HomeService],
+  exports: [IonicModule]
+})
+export class HomeModule {
+}

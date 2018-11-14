@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>一大件介绍</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <p padding>以下延保车辆在延保购买前均经认证，并确保以下不存在已知故障：</p>
+  <ion-card>
+    <ion-card-header color="base">
+      保修部件包括：
+    </ion-card-header>
+    <ion-list ion-row>
+      <button ion-item col-6 (click)="detail()">
+        发动机部分
+      </button>
+    </ion-list>
+  </ion-card>
+  <ion-card>
+    <ion-card-header color="base">
+      不包含情况：
+    </ion-card-header>
+    <!--<ion-list ion-row>
+      <button ion-item col-6 (click)="detail()">
+        发动机部分
+      </button>
+    </ion-list>-->
+  </ion-card>
+</ion-content>

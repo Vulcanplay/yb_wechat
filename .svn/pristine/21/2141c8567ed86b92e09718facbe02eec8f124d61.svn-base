@@ -1,0 +1,41 @@
+<ion-content>
+  <img src="./assets/img/home/finance/home_finance.png" width="100%"/>
+  <div class="custom-card">
+    <h2>审核期短</h2>
+    <img src="./assets/img/home/finance/f_t.png" class="bg"/>
+    <h3>全面支持全场景</h3>
+    <p>汽车消费</p>
+    <p><span class="tag">汽车消费</span></p>
+  </div>
+  <div class="custom-card">
+    <h2>认证便捷</h2>
+    <img src="./assets/img/home/finance/f_t.png" class="bg"/>
+    <h3>专注于汽车消费</h3>
+    <ion-row>
+      <ion-col col-3>
+        <img src="./assets/img/home/finance/f_sl.png"/>
+        <img src="./assets/img/home/finance/f_dj.png"/>
+        <img src="./assets/img/home/finance/f_q.png"/>
+      </ion-col>
+      <ion-col col-9>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+        <div>123</div>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="custom-card">
+    <h2>货款快速</h2>
+    <img src="./assets/img/home/finance/f_t.png" class="bg"/>
+    <h3>二手车贷,兼容24家银行信用消费；</h3>
+    <p>只要您的额度够；</p>
+    <p><span class="tag">3</span>月期至<span class="tag">36</span>期不等分期付款;</p>
+    <p>最低费率仅<span class="tag">3.9/12</span>期；</p>
+  </div>
+  <div padding text-center>
+    <button ion-button color="yellow-c" class="sq" (click)="next()">立即申请</button>
+  </div>
+</ion-content>

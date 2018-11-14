@@ -1,0 +1,47 @@
+page-category {
+  .searchbar-ios{background-color: #f8f8f8}
+  .img-contain{
+    width: 10rem;
+    height: 10rem;
+    margin: auto;
+    background: url(../assets/img/category/default_img.png) no-repeat center center;
+    background-size: contain;
+  }
+  ion-grid.category{height:100%;}
+  ion-grid.category .first-row{height: 100%;}
+  ion-grid.category .first-row ion-scroll[col-4]{border-right: 1px solid #dedede; background-color: #fbfbfb;}
+  ion-grid.category .first-row ion-scroll[col-4] .list-ios .item-block .item-inner{border-color: #dedede;}
+  ion-grid.category .first-row ion-scroll[col-4] ion-list.level-2{border-bottom: 1px solid #dedede;}
+  ion-grid.category .first-row ion-scroll[col-4] ion-list.level-2.no-lines{border-bottom: none;}
+  ion-grid.category .first-row ion-scroll[col-4] .level-1 .item-block{min-height: 5rem !important; background-color: #fbfbfb;}
+  ion-grid.category .first-row ion-scroll[col-4] .level-2 .item-block{min-height: 4.4rem !important; background-color: #f1f1f1;}
+  ion-grid.category .first-row ion-scroll[col-4] .level-2 .item-md.active{ font-weight: bold; color:color($colors, base); background-color: white;}
+  ion-scroll[col-4] .level-1 .item-md.item-block .item-inner{ padding-right: 0;}
+  ion-scroll[col-4] .level-1 .item-md.item-block .item-inner .label-md{ margin: 0;}
+
+  ion-thumbnail{ margin-left: 16px !important;}
+  ion-thumbnail img{width: 100px; height: 100px;}
+  .add-sub .button-small-md[ion-button][disabled]{opacity: 1;}
+
+  ion-thumbnail{ border: 1px solid #dedede; border-radius: 4px; background-color: #ffffff;}
+  ion-thumbnail img{ width: 70px; height: 70px; margin: 5px;}
+  .product-no{ position: absolute; width: 100%; top: calc(50% - 50px); height: 100px; line-height: 100px; text-align: center; font-size: 2.4rem; color: #dedede;}
+
+  ion-fab .badge-md{ font-size: 1.2rem; border-radius: 50% !important; font-weight: bold; background-color: transparent; color: color($colors, oranger); position: absolute; top: 2px; right: 5px; z-index: 5; }
+
+  .add-sub .button-small-ios{
+    height: 1.4em;
+    font-size: 1.3rem;
+    padding: 0 0.4em;
+    margin: 0;
+  }
+  .add-sub .button-small-ios[ion-button][disabled]{opacity: 1;}
+  .item.item-ios .checkbox-ios{margin-right:.7em;}
+
+  .item-product.item-ios{padding-left: .2em;}
+  .item-product.item-ios ion-thumbnail[item-start]{margin: 4px 2px !important;min-width: 32px; min-height: 32px;}
+  .item-product.item-ios ion-thumbnail img {
+    width: 32px;
+    height: 32px;
+  }
+}

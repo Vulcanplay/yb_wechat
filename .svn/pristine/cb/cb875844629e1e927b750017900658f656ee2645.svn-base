@@ -1,0 +1,77 @@
+import {Component} from '@angular/core';
+import {NavController, ViewController,AlertController,Platform} from 'ionic-angular';
+import {FormBuilder, Validators} from '@angular/forms';
+import {SignInPage} from '../sign-in/sign-in';
+import { SignInService } from '../sign-in/SignInService'
+import { Storage } from '@ionic/storage';
+import { Utils } from "../../../providers/Utils";
+@Component({
+  selector: 'page-forgot-password',
+  templateUrl: 'forgot-password.html'
+})
+export class ForgotPasswordPage {
+  forgotPasswordForm: any;
+
+  constructor(private navCtrl: NavController,
+              private viewCtrl: ViewController,
+              private storage:Storage,
+              private signInService:SignInService,
+              private platform: Platform,
+              private alertCtrl:AlertController,
+              private formBuilder: FormBuilder) {
+    this.forgotPasswordForm = this.formBuilder.group({
+      phone: [, [Validators.required, Validators.minLength(11), Validators.pattern('1[0-9]{10}')]],
+      verificationCode: [, [Validators.required, Validators.minLength(6), Validators.pattern('[0-9]{6}')]],
+      newPassword: [, [Validators.required, Validators.minLength(6)]]
+    });
+  };
+
+  confirm() {
+    this.navCtrl.setRoot(SignInPage);
+  }
+
+  dismiss() {
+    this.navCtrl.setRoot(SignInPage);
+  }
+
+
+  signIn(user) {
+    //   if (user.verificationCode == this.CodeFW) {
+    this.signInService.ForGotPassword(user)
+      .subscribe(r => {
+        debugger;
+        if (r.data) {
+          this.storage.clear();//清除缓存
+          Utils.sessionStorageClear();//清除缓存
+        }
+        else {
+          this.alertCtrl.create({
+            title: '您的账号不存在',
+            buttons: [{ text: '取消' },
+            {
+              text: '确定',
+              handler: () => {
+
+                this.platform.exitApp();
+              }
+            }]
+          }).present();
+          return false;
+        }
+
+      });
+    // }
+    // else {
+    //   this.alertCtrl.create({
+    //     title: '验证码不正确',
+    //     buttons: [
+    //       {
+    //         text: '确定', handler: () => { this.platform.exitApp(); }
+    //       }]
+    //   }).present();
+    // }
+  }
+
+
+
+}

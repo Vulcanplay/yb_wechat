@@ -1,0 +1,78 @@
+import { Component } from '@angular/core';
+import { NavController, NavParams} from 'ionic-angular';
+import { MineService } from "../MineService";
+import { VehicleDetailsPage } from '../../mine/vehicle/details/details';
+import {LicenseTagPage} from "./license-tag/license-tag";
+
+@Component({
+  selector: 'page-mine-vehicle',
+  templateUrl: 'vehicle.html'
+})
+export class VehiclePage {
+  //车辆列表
+  public carList: any = [];
+  public togglePower: boolean = false;
+  public user: any = {
+    Userid: '',
+    Username: '',// 姓名
+    NikeName: '', //昵称
+    Email: '',//邮箱
+    Phone: '', //手机号
+    Sex: '',//性别
+    AvatarId: '',//图像
+    AvatarPath: '',//图像路径
+    Openid: '',
+    Sfzhm: '',//省份证号码
+    QQ: '',//qq
+    JF: ''
+  };
+  public defaultTag: string = '';
+
+  constructor(public navCtrl: NavController,
+    private mineServices: MineService,
+    private params: NavParams) {
+
+  }
+  ionViewWillEnter() {
+    this.user = this.params.get('user');
+    this.mineServices.getVehicle({ id: this.user.Userid || '' }).subscribe(r => {
+      if (r.data.length > 0) {
+        this.carList = r.data;
+        for (let item of this.carList){
+          if (item.PZ_YB_MJCLMJCL024 == 0){
+            this.defaultTag = item.PZ_YB_MJCLMJCL001;
+            return;
+          }
+        }
+      }
+    });
+  }
+
+  //修改默认车辆
+  changeDefault(){
+    if (this.defaultTag != ''){
+      this.mineServices.changeDefaultVehicle({
+        PZ_YB_MJCLMJCL001: this.defaultTag,
+        PZ_YB_MJCLMJCL024: 0,
+      }).subscribe(r=>{
+        if (r.success){
+          console.log("change default success.");
+        } else {
+          console.log("change default fail.");
+        }
+      });
+    }
+  }
+
+  //车辆详情
+  details(item) {
+    this.navCtrl.push(VehicleDetailsPage, {item: item});
+  }
+
+  //去车牌号
+  licenseTag() {
+    var hasCar = this.carList.length > 0 ? true : false;
+    this.navCtrl.push(LicenseTagPage, {user: this.user, hasCar: hasCar});
+  }
+
+}

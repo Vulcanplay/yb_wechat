@@ -1,0 +1,38 @@
+import { Component, ViewChild } from '@angular/core';
+import { NavController, Slides } from 'ionic-angular';
+import {OfferPage} from "./service/offer/offer";
+
+@Component({
+  selector: 'page-home',
+  templateUrl: 'home.html'
+})
+export class HomePage {
+
+  public test:any = {};
+
+  constructor(public navCtrl: NavController,) {}
+
+  ngOnInit() {
+    this.test = {
+      "selectHeadlInesListTitle":[{"del_flag":0,"update_time":null,"update_user":null,"creat_time":"2017-02-28T19:35:45","enable":1,"id":33,"sort":1,"create_user":"97","app_no":"9","title":"牛咖斯率先推出“假一赔车”","article_url":"http:\/\/mp.weixin.qq.com\/s?__biz=MzA4NjEyOTM0Mw==&mid=2649986141&idx=2&sn=b63f6851100224e9ce9407c02acd50cc&chksm=87ca5b8db0bdd29b4b558287e8aa786f0943eda6bf729dd43a89b18e86d6d2904a9a7e6e0b19&mpshare=1&scene=1&srcid=02289krXMRqBh0fK1kljaayw#rd"}],
+      "selectHeadlInesList":[{"del_flag":0,"update_time":null,"update_user":null,"creat_time":"2017-02-28T19:35:45","enable":1,"id":33,"sort":1,"create_user":"97","app_no":"9","title":"牛咖斯率先推出“假一赔车”","article_url":"http:\/\/mp.weixin.qq.com\/s?__biz=MzA4NjEyOTM0Mw==&mid=2649986141&idx=2&sn=b63f6851100224e9ce9407c02acd50cc&chksm=87ca5b8db0bdd29b4b558287e8aa786f0943eda6bf729dd43a89b18e86d6d2904a9a7e6e0b19&mpshare=1&scene=1&srcid=02289krXMRqBh0fK1kljaayw#rd"},{"del_flag":0,"update_time":null,"update_user":null,"creat_time":"2017-02-28T19:36:13","enable":1,"id":34,"sort":2,"create_user":"97","app_no":"9","title":"牛咖斯挂牌新三板，汽车后市场的滴滴出行","article_url":"http:\/\/m.neeqm.cn\/company\/2017-02-22\/57723.html"},{"del_flag":0,"update_time":null,"update_user":null,"creat_time":"2017-02-28T19:36:41","enable":1,"id":35,"sort":3,"create_user":"97","app_no":"9","title":"奔驰宝马奥迪的那些通病，你中了几枪","article_url":"http:\/\/mp.weixin.qq.com\/s?__biz=MzA4NjEyOTM0Mw==&mid=2649986645&idx=1&sn=035c6abbe32ff9046b4979b3df499325&chksm=87ca5985b0bdd093dab881ced29bf3a9ad0e006ae0f8cc150784c24dceb8e29e7211b79b3a77&mpshare=1&scene=1&srcid=02284jBzYyy3kUwABtGXe13O#rd"}]};
+  }
+
+  slideChanged() {
+
+  }
+
+  /**
+   * 跳转延保报价
+   * */
+  yb(){
+    this.navCtrl.push(OfferPage, {tabsYSBTag: 1});
+  }
+  /**
+   * 跳转三包报价
+   * */
+  sb(){
+    this.navCtrl.push(OfferPage, {tabsYSBTag: 2});
+  }
+
+}

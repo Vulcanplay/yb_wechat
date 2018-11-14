@@ -1,0 +1,119 @@
+webpackJsonp([2],{
+
+/***/ 654:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PagingPageModule", function() { return PagingPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__paging__ = __webpack_require__(659);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var PagingPageModule = (function () {
+    function PagingPageModule() {
+    }
+    return PagingPageModule;
+}());
+PagingPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__paging__["a" /* PagingPage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__paging__["a" /* PagingPage */]),
+        ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_2__paging__["a" /* PagingPage */]
+        ]
+    })
+], PagingPageModule);
+
+//# sourceMappingURL=paging.module.js.map
+
+/***/ }),
+
+/***/ 659:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PagingPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_Constants__ = __webpack_require__(26);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * @name 自定义分页组件
+ * @description
+ * @example <page-paging [total]="18" (pageNumChange)="doSearch($event)"></page-paging>
+ * @example <page-paging [total]="total" (pageNumChange)="doSearch($event)" pageSize="10" color="dark"></page-paging>
+ */
+var PagingPage = (function () {
+    function PagingPage() {
+        this.pageSize = __WEBPACK_IMPORTED_MODULE_2__providers_Constants__["n" /* PAGE_SIZE */]; //每页大小,默认5条
+        this.color = 'primary'; //主题颜色
+        this.pageNum = 1; //当前第几页,默认1
+        this.pageNumChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+    }
+    PagingPage.prototype.btnClick = function (pageNum) {
+        this.pageNum = pageNum;
+        this.pageNumChange.emit(pageNum);
+    };
+    PagingPage.prototype.ceil = function (num) {
+        return Math.ceil(num);
+    };
+    return PagingPage;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Number)
+], PagingPage.prototype, "total", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Number)
+], PagingPage.prototype, "pageSize", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", String)
+], PagingPage.prototype, "color", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Number)
+], PagingPage.prototype, "pageNum", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */])(),
+    __metadata("design:type", Object)
+], PagingPage.prototype, "pageNumChange", void 0);
+PagingPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-paging',template:/*ion-inline-start:"D:\YB_C\test\src\shared\paging\paging.html"*/'<ion-grid text-center *ngIf="total>pageSize">\n\n  <ion-row>\n\n    <ion-col no-padding>\n\n      <button ion-button  small [color]="color" [disabled]="pageNum==1" (click)="btnClick(1)">首页</button>\n\n      <button ion-button  small [color]="color" [disabled]="pageNum==1" (click)="btnClick(pageNum-1)">上一页\n\n      </button>\n\n      <button ion-button  small [color]="color" [disabled]="pageNum==ceil(total/pageSize)"\n\n              (click)="btnClick(pageNum+1)">下一页\n\n      </button>\n\n      <button ion-button  small [color]="color" [disabled]="pageNum==ceil(total/pageSize)"\n\n              (click)="btnClick(ceil(total/pageSize))">尾页\n\n      </button>\n\n    </ion-col>\n\n  </ion-row>\n\n  <ion-row>\n\n    <ion-col no-padding style="font-size: 12px">\n\n      每页显示{{pageSize}}条数据，共{{total}}条，当前为第{{pageNum}}页，共{{ceil(total/pageSize)}}页\n\n    </ion-col>\n\n  </ion-row>\n\n</ion-grid>\n\n'/*ion-inline-end:"D:\YB_C\test\src\shared\paging\paging.html"*/,
+    }),
+    __metadata("design:paramtypes", [])
+], PagingPage);
+
+//# sourceMappingURL=paging.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=2.js.map

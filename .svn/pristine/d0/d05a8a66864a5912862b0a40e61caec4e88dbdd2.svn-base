@@ -1,0 +1,28 @@
+
+<ion-content>
+  <ion-header>
+    <ion-toolbar color="white">
+      <ion-title>{{title}}</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only color="dark" (click)="dismiss()">
+          <ion-icon name="ios-close-outline"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <div class="alert-content">
+    <div class="content-info">
+      <!--延保悉知-->
+      <ul *ngIf="type == 0"><li>承保条件：<br>1.行驶时间不超过8年车辆；<br>2.行驶里程不超过15万公里车辆；<br>3.7座及7座以下车辆；<br>4.汽油发动机汽车；<br></li><li>下列类型车辆不能承保，请仔细核对投保车辆，确保不是下列车型：<br>1.柴油发动机车型；<br>2.混合动力车型；<br>3.电动车型；<br>4.液化气驱动车型；<br>5.转子发动机车型；<br>6.所有发动机12缸和12缸以上的车型<br>7.有营运记录的车辆和曾经用于营运的车辆；<br>8.特种车；<br>9.改装车；<br>10.超级跑车；</li></ul>
+      <!--三包悉知-->
+      <ul *ngIf="type == 1"></ul>
+      <!--延保套餐说明-->
+      <ul *ngIf="type == 2"></ul>
+      <!--三包套餐说明-->
+      <ul *ngIf="type == 3"></ul>
+    </div>
+    <ion-footer padding-horizontal>
+      <button ion-button color="base" block (click)="dismiss()">确定</button>
+    </ion-footer>
+  </div>
+</ion-content>

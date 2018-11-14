@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start (click)="dismiss()">
+      <button ion-button>
+        <i class="iconfont lg icon-custom-arrowleft"></i>
+      </button>
+    </ion-buttons>
+    <ion-title>选择品牌</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list no-margin>
+    <button ion-item detail-none (click)="havingDataDismiss(item.BRANDINFO001, item.BRANDINFO002)" *ngFor="let item of sbBrand">
+      <ion-label>{{item.BRANDINFO002}}</ion-label>
+    </button>
+  </ion-list>
+</ion-content>

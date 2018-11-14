@@ -1,0 +1,46 @@
+import { Injectable } from "@angular/core";
+import { HttpService } from "../../providers/HttpService";
+import { Observable } from "rxjs/Observable";
+import { Result } from "../../model/Result";
+
+@Injectable()
+export class HomeService {
+  constructor(public httpServices: HttpService) {
+  }
+  /**
+   * 推荐网点
+   * */
+  getHomeSite(p){
+    return this.httpServices.getNoLoading('OnLineShop/GetShouYeOnLineShopList', p).map(r => r.json());
+  }
+  /**
+   * 全部网点
+   * */
+  getStore(){
+    return this.httpServices.get('OnLineShop/GetOnLineShopList').map(r => r.json());
+  }
+  /**
+   * 推荐商品
+   * */
+  getHomeProduct(){
+    return this.httpServices.getNoLoading('GodsTipInfo/GetShouYeGodsTipInfoList').map(r => r.json());
+  }
+  /**
+   * 头条
+   * */
+  getHomeTouTiao(){
+    return this.httpServices.getNoLoading('TopMessageInfo/GetTopMessageList').map(r => r.json());
+  }
+  /**
+   * 动态
+   * */
+  getHomeTip(){
+    return this.httpServices.getNoLoading('NewTipInfo/GetNewTipList').map(r => r.json());
+  }
+  /**
+   * 提交支付结果
+   * */
+  submitPayResult(p){
+    return this.httpServices.get('wxYanbaoOrder/EditYanBaoOrderPayState', p).map(r => r.json());
+  }
+}

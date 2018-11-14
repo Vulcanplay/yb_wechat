@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{barTitle || '未登录'}}
+    </ion-title>
+  </ion-navbar>
+  <!-- <ion-toolbar no-border-top>
+    <ion-searchbar placeholder="商品名称/编号/订单号" [(ngModel)]="searchText" type="search"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button color="white" (click)="searchData()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar> -->
+  <ion-toolbar no-border class="filter-tabs">
+    <ion-grid text-center no-padding *ngIf="isHasLogin">
+      <ion-row>
+        <ion-col tappable (click)="filterTabs(-1)" [ngClass]="{'filter-tabs-bottom-line':status == -1}">
+          <button ion-button small clear [color]="status == -1 ? 'oranger':'dark'">全部</button>
+        </ion-col>
+        <ion-col tappable (click)="filterTabs(0)" [ngClass]="{'filter-tabs-bottom-line':status == 0}">
+          <button ion-button small clear [color]="status == 0 ? 'oranger':'dark'">已完成</button>
+        </ion-col>
+        <ion-col tappable (click)="filterTabs(1)" [ngClass]="{'filter-tabs-bottom-line':status == 1}">
+          <button ion-button small clear [color]="status == 1 ? 'oranger':'dark'">待付款</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div class="sign-header" *ngIf="!isHasLogin">
+    <img src="./assets/img/mine/sign_bg.png" />
+    <button ion-button small outline color="white" (click)='signIn()'>登&nbsp;录</button>
+  </div>
+  <div *ngIf="isHasLogin && orderType == 0">
+    <ion-card padding-vertical *ngFor="let item of ybOrderList">
+      <button ion-item detail-none><!-- (click)="ybDetails(item.ORDER001)" -->
+        <ion-label no-margin>{{item.ORDER002}}</ion-label>
+        <!--<ion-note color="icon-gary" item-end>详情</ion-note>-->
+      </button>
+      <ion-card-content>
+        <ion-note color="dark">{{item.ORDER011}}</ion-note>
+        <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>{{item.ORDER006}}</ion-note>
+      </ion-card-content>
+      <ion-item>
+        <ion-note item-end [color]="item.ORDER017 == 0 ? 'secondary' : 'danger'">{{item.ORDER017 == 0 ? '已支付' : '未支付'}}</ion-note>
+        <button ion-button *ngIf="item.ORDER017 == 0 && item.KHYBHT051 == 0" item-end (click)="$event.stopPropagation();sign(item.ORDER013);">签字</button>
+        <button ion-button *ngIf="item.ORDER017 == 0 && item.KHYBHT051 == 2" color="danger" item-end clear>合同待生成</button>
+        <button ion-button *ngIf="item.ORDER017 == 0 && item.KHYBHT051 == 3" color="secondary" item-end clear>合同已生成</button>
+        <!--<button ion-button item-end color="danger" *ngIf="item.ORDER017 != 0" (click)="pay(item)">支付</button>-->
+      </ion-item>
+    </ion-card>
+  </div>
+
+  <div *ngIf="isHasLogin && orderType == 2">
+    <ion-card padding-vertical *ngFor="let item of sbOrderList">
+      <button ion-item (click)="sbDetails(item.OFFERORDERINFO001)">
+        <ion-label no-margin>{{item.OFFERORDERINFO039}}</ion-label>
+        <ion-note color="icon-gary" item-end>详情</ion-note>
+      </button>
+      <ion-card-content>
+        <ion-note color="dark">{{item.OFFERORDERINFO008}}</ion-note>
+        <ion-note color="icon-gary">{{item.OFFERORDERINFO010}}</ion-note>
+      </ion-card-content>
+      <ion-item>
+        <ion-note item-end [color]="item.OFFERORDERINFO016 == 0 ? 'oranger' : 'danger'">{{item.OFFERORDERINFO016 == 0 ? '已支付' : '未支付'}}</ion-note>
+      </ion-item>
+    </ion-card>
+  </div>
+</ion-content>

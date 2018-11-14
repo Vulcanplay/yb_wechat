@@ -1,0 +1,14 @@
+<ion-content>
+  <ion-list margin-top >
+    <ion-item-group>
+      <ion-item-divider>{{productParams.brandname}}</ion-item-divider>
+
+      <button ion-item detail-none *ngFor="let my of carserise" (click)="GotoTYPE(my.CARSERIESID,my.CARSERIESNAME,my.YBCXZH001)">
+        <ion-label hidden></ion-label>
+        <ion-label>{{my.CARSERIESNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+
+
+  </ion-list>
+</ion-content>

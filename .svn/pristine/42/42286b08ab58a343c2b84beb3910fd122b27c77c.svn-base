@@ -1,0 +1,21 @@
+import {Injectable} from "@angular/core";
+import {Observable} from "rxjs";
+import {
+  Http, Headers, RequestOptions, URLSearchParams, RequestOptionsArgs, RequestMethod
+} from '@angular/http';
+import {HttpService} from "../../../providers/HttpService";
+import{Result} from "../../../model/Result";
+
+@Injectable()
+export class ContractService {
+  constructor( public httpServices:HttpService ) {
+  }
+
+  getContractData(p): Observable<(Result)> {
+    let params = {
+      id: p.id
+    }
+    return this.httpServices.get('MyContract/YBgetMyContractList', params).map( r => r.json());
+  }
+
+}

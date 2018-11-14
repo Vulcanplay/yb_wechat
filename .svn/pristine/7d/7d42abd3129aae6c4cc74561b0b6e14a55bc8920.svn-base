@@ -1,0 +1,40 @@
+page-home-finance-auxiliary-information{
+  .content-ios{
+    background-color: #f9f9f9 !important;
+  }
+  .card-ios{margin-top: -35px;}
+  .card-ios .item-ios.item-block .item-inner{
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .card-ios .item-ios:last-child.item-block .item-inner{
+    border: 0;
+  }
+  .tip{
+    padding-left: 40px;
+    font-size: 12px;
+    margin: 10px 0;
+    color:#c5c5c5;
+  }
+  .sub-title{
+    font-size: 14px;
+    margin: 10px 0;
+    font-weight: bold;
+    padding-left: 16px;
+  }
+  ion-row .upload{
+    background-color: white;
+    width: 70%;
+    height: 180px;
+    margin: 0 auto;
+    border: 3px dashed #f5f5f5;
+  }
+  .upload ion-icon{
+    font-size: 5rem;
+    color: #999999;
+    line-height: 180px;
+  }
+  ion-row p{
+    font-size: 12px;
+    color: #666666;
+  }
+}

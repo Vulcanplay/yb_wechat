@@ -1,0 +1,138 @@
+webpackJsonp([4],{
+
+/***/ 652:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavigationModule", function() { return NavigationModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__navigation__ = __webpack_require__(657);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var NavigationModule = (function () {
+    function NavigationModule() {
+    }
+    return NavigationModule;
+}());
+NavigationModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__navigation__["a" /* Navigation */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__navigation__["a" /* Navigation */]),
+        ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_2__navigation__["a" /* Navigation */]
+        ]
+    })
+], NavigationModule);
+
+//# sourceMappingURL=navigation.module.js.map
+
+/***/ }),
+
+/***/ 657:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Navigation; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_NativeService__ = __webpack_require__(30);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the Navigation page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+var Navigation = (function () {
+    function Navigation(viewCtrl, nativeService, navParams) {
+        this.viewCtrl = viewCtrl;
+        this.nativeService = nativeService;
+        this.navParams = navParams;
+        this.navigationIsReady = false;
+        this.navigationType = this.navParams.get("navigationType");
+        this.endPoint = this.navParams.get("markerLocation");
+        this.map = window['HomeAMap'];
+    }
+    Navigation.prototype.ngAfterContentInit = function () {
+        var _this = this;
+        var type = this.navigationType, options = { city: '广州市', panel: this.panel.nativeElement, map: this.map };
+        if (type === 1) {
+            AMap.service('AMap.Driving', function () {
+                _this.navigationIsReady = true;
+                _this.doSearch(type, new AMap.Driving(options));
+            });
+        }
+        else if (type === 2) {
+            AMap.service('AMap.Transfer', function () {
+                _this.doSearch(type, new AMap.Transfer(options));
+            });
+        }
+        else if (type === 3) {
+            AMap.service('AMap.Walking', function () {
+                _this.doSearch(type, new AMap.Walking(options));
+            });
+        }
+    };
+    Navigation.prototype.doSearch = function (navigationType, navigationService) {
+        var _this = this;
+        this.nativeService.getUserLocation().subscribe(function (location) {
+            _this.map.clearMap();
+            _this.startPoint = location;
+            navigationService.search([_this.startPoint.lng, _this.startPoint.lat], [_this.endPoint.lng, _this.endPoint.lat], function (status, result) {
+            });
+        });
+    };
+    Navigation.prototype.doNavigation = function (type) {
+        this.nativeService.navigation(this.startPoint, this.endPoint, type).subscribe(function (message) {
+            debugger;
+        });
+    };
+    Navigation.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    return Navigation;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* ViewChild */])('panel'),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */])
+], Navigation.prototype, "panel", void 0);
+Navigation = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-navigation',template:/*ion-inline-start:"D:\YB_C\test\src\shared\map-component\navigation\navigation.html"*/'<ion-header>\n\n  <ion-toolbar>\n\n    <ion-title>\n\n      路线查看或导航\n\n    </ion-title>\n\n    <ion-buttons>\n\n      <button ion-button (click)="dismiss()">关闭</button>\n\n    </ion-buttons>\n\n  </ion-toolbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-grid *ngIf="navigationIsReady">\n\n    <ion-row class="align-center">\n\n      <ion-col width-50>\n\n        <button ion-button outline small (click)="doNavigation(0)">开始实时导航</button>\n\n      </ion-col>\n\n      <ion-col width-50>\n\n        <button ion-button color="secondary" outline small (click)="doNavigation(1)">开始模拟导航</button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n  <div #panel></div>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\YB_C\test\src\shared\map-component\navigation\navigation.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["z" /* ViewController */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_NativeService__["a" /* NativeService */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
+], Navigation);
+
+//# sourceMappingURL=navigation.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=4.js.map

@@ -1,0 +1,24 @@
+page-modal-alert{
+  .content-ios{
+    height: 262px;
+    top: 15%;
+    border: 1px solid #eee;
+    background-color: #ffffff !important;
+  }
+  .header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios{
+    border-color: #eaeaea;
+  }
+  .alert-content{
+    margin-top: 68px;
+  }
+  .alert-content ion-icon{
+    font-size: 60px;
+  }
+  .alert-content h2{
+    font-size: 18px;
+    color: #555555;
+  }
+  .alert-content ion-buttons{
+    margin-top: 32px;
+  }
+}

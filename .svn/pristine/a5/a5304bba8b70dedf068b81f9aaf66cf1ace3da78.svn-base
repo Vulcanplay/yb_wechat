@@ -1,0 +1,345 @@
+<ion-content [ngClass]="orderDetailsData.PZ_YB_DDDD012 != '0' ? '':'no-footer'">
+  <ion-header>
+    <ion-navbar>
+      <ion-title>订单详情</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-grid no-padding class="con">
+    <ion-row class="con-row">
+      <ion-scroll col col-4 scrollY="true">
+        <ion-list>
+          <ion-item no-padding no-margin text-center (click)="leftIndexChange(1)" [ngClass]="leftIndex == 1 ? 'active' : ''">
+            <ion-label>车辆信息</ion-label>
+          </ion-item>
+          <ion-item no-padding no-margin text-center (click)="leftIndexChange(2)" [ngClass]="leftIndex == 2 ? 'active' : ''">
+            <ion-label>订购人</ion-label>
+          </ion-item>
+          <ion-item no-padding no-margin text-center (click)="leftIndexChange(3)" [ngClass]="leftIndex == 3 ? 'active' : ''">
+            <ion-label>资料补充</ion-label>
+          </ion-item>
+          <ion-item no-padding no-margin text-center (click)="leftIndexChange(4)" [ngClass]="leftIndex == 4 ? 'active' : ''">
+            <ion-label>延保信息</ion-label>
+          </ion-item>
+          <ion-item no-padding no-margin text-center (click)="leftIndexChange(5)" [ngClass]="leftIndex == 5 ? 'active' : ''" *ngIf="orderDetailsData.PZ_YB_DDDD012 == '0' || true">
+            <ion-label>合同信息</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-scroll>
+      <ion-scroll col col-8 scrollY="true">
+        <!-- 车辆信息 -->
+        <ion-list *ngIf="leftIndex == 1">
+          <ion-item>
+            <ion-label>车牌号&emsp;</ion-label>
+            <ion-input type="text" text-right placeholder="请输入车牌号" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL005"></ion-input>
+          </ion-item>
+          <button ion-item [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" (click)="selectBrandId()">
+            <ion-label><ion-note color="oranger">*</ion-note>品牌型号</ion-label>
+            <ion-note item-right name="type" color="garylight">
+              {{carInfo.SONBRANDNAME}}{{carInfo.CARSERIESNAME}}
+            </ion-note>
+          </button>
+          <ion-item>
+            <ion-label><ion-note color="oranger">*</ion-note>车架号</ion-label>
+            <ion-input type="text" text-right [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL004"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><ion-note color="oranger">*</ion-note>发动机号</ion-label>
+            <ion-input type="text" text-right [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL006"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><ion-note color="oranger">*</ion-note>排量</ion-label>
+            <ion-input type="text" text-right [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL007"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><ion-note color="oranger">*</ion-note>购买价</ion-label>
+            <ion-input type="text" text-right [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL016"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><ion-note color="oranger">*</ion-note>是否涡轮增压</ion-label>
+            <ion-select [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL014" cancelText="取消" okText="确定">
+              <ion-option value=0 selected>是</ion-option>
+              <ion-option value=1>否</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-note color="oranger">*</ion-note>是否四轮驱动</ion-label>
+            <ion-select [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL015" cancelText="取消" okText="确定">
+              <ion-option value=0 selected>是</ion-option>
+              <ion-option value=1>否</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label><ion-note color="oranger">*</ion-note>车辆是否用于非营业性质</ion-label>
+            <ion-select [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL022" cancelText="取消" okText="确定" >
+              <ion-option value="0" selected>是</ion-option>
+              <ion-option value="1">否</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item detail-push>
+            <ion-label><ion-note color="oranger">*</ion-note>新车出厂日期</ion-label>
+            <ion-datetime [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL030" type="text" text-right min="1970-01-01" max="2030-01-01" displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+          </ion-item>
+          <ion-item detail-push>
+            <ion-label><ion-note color="oranger">*</ion-note>购车发票日期</ion-label>
+            <ion-datetime [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL021" type="text" min="1970-01-01" max="2030-01-01" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label><ion-note color="oranger">*</ion-note>新车购车发票抬头</ion-label>
+            <ion-input type="text" text-right [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL017" placeholder="发票抬头"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><ion-note color="oranger">*</ion-note>当前行驶公里数(公里)</ion-label>
+            <ion-input type="number" text-right [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL010" placeholder="必填"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-note color="oranger">*</ion-note>是否进口</ion-label>
+            <ion-select [(ngModel)]="orderDetailsData.PZ_YB_MJCLMJCL032" cancelText="取消" okText="确定">
+              <ion-option value=0>是</ion-option>
+              <ion-option value=1>否</ion-option>
+            </ion-select>
+          </ion-item>
+          <!-- TODO -->
+          <!--<div margin>
+            <button ion-button block color="base" (click)="saveCarInfo()">保存</button>
+          </div>-->
+        </ion-list>
+        <!-- 订购人 -->
+        <ion-list *ngIf="leftIndex == 2">
+          <ion-item>
+            <ion-label><ion-note color="oranger">*</ion-note>姓名</ion-label>
+            <ion-input type="text" text-right [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" placeholder="请输入姓名" [(ngModel)]="subscribers.MJXX002"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><ion-note color="oranger">*</ion-note>联系电话一</ion-label>
+            <ion-input type="text" text-right [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" placeholder="请输入联系电话一" [(ngModel)]="subscribers.MJXX006"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><ion-note color="oranger">*</ion-note>联系固话二</ion-label>
+            <ion-input type="text" text-right [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" placeholder="请输入联系固话二" [(ngModel)]="subscribers.MJXX010"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-note color="oranger">*</ion-note>登记证件类型</ion-label>
+            <ion-select [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="subscribers.MJXX008" cancelText="取消" okText="确定">
+              <ion-option value="0" selected>身份证</ion-option>
+              <ion-option value="1">护照</ion-option>
+              <ion-option value="2">组织机构代码</ion-option>
+              <ion-option value="3">统一社会信用代码</ion-option>
+              <ion-option value="4">营业执照号</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-note color="oranger">*</ion-note>证件号码</ion-label>
+            <ion-input type="text" text-right [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" placeholder="请输入证件号" [(ngModel)]="subscribers.MJXX007"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-note color="oranger">*</ion-note>通讯地址</ion-label>
+            <ion-input type="text" text-right [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" placeholder="请输入通讯地址" [(ngModel)]="subscribers.MJXX020"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-note color="oranger">*</ion-note>邮编</ion-label>
+            <ion-input type="text" text-right [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" placeholder="请输入邮编" [(ngModel)]="subscribers.MJXX012"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-note color="oranger">*</ion-note>邮箱</ion-label>
+            <ion-input type="text" text-right [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" placeholder="请输入邮箱" [(ngModel)]="subscribers.MJXX009"></ion-input>
+          </ion-item>
+
+          <!-- TODO -->
+          <!--<div margin>
+            <button ion-button block color="base" [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0'" (click)="saveSubscribers()">保存</button>
+          </div>-->
+        </ion-list>
+        <!-- 资料补充 -->
+        <ion-list *ngIf="leftIndex == 3">
+          <ion-item>
+            购车发票
+          </ion-item>
+          <ion-grid>
+            <ion-row class="pictures">
+              <ion-col tappable (click)="updatePicture(item.CLTP001,item.CLTP002)" *ngFor="let item of orderImagesData.GCFP">
+                <img [src]="serverURL + item.CLTP002"/>
+
+                <!-- TODO -->
+                <!--<button ion-button small color="oranger" (click)="$event.stopPropagation();deletePicture(item.CLTP001);" class="remove" tappable><ion-icon name="md-trash"></ion-icon></button>-->
+              </ion-col>
+              <ion-col tappable class="add" (click)="addPicture(1)" *ngIf="orderImagesData.GCFP.length < max">
+                <ion-icon name="camera"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-item>
+            行驶证
+          </ion-item>
+          <ion-grid>
+            <ion-row class="pictures">
+              <ion-col tappable (click)="updatePicture(item.CLTP001,item.CLTP002)" *ngFor="let item of orderImagesData.XSZ">
+                <img [src]="serverURL + item.CLTP002"/>
+                <!-- TODO -->
+                <!--<button ion-button small color="oranger" (click)="$event.stopPropagation();deletePicture(item.CLTP001);" class="remove" tappable><ion-icon name="md-trash"></ion-icon></button>-->
+              </ion-col>
+              <ion-col tappable class="add" (click)="addPicture(2)" *ngIf="orderImagesData.XSZ.length < max">
+                <ion-icon name="camera"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-item>
+            新车合格证
+          </ion-item>
+          <ion-grid>
+            <ion-row class="pictures">
+              <ion-col tappable (click)="updatePicture(item.CLTP001,item.CLTP002)" *ngFor="let item of orderImagesData.XCHGZ">
+                <img [src]="serverURL + item.CLTP002"/>
+                <!-- TODO -->
+                <!--<button ion-button small color="oranger" (click)="$event.stopPropagation();deletePicture(item.CLTP001);" class="remove" tappable><ion-icon name="md-trash"></ion-icon></button>-->
+              </ion-col>
+              <ion-col tappable class="add" (click)="addPicture(3)" *ngIf="orderImagesData.XCHGZ.length < max">
+                <ion-icon name="camera"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-item>
+            二手车交易发票
+          </ion-item>
+          <ion-grid>
+            <ion-row class="pictures">
+              <ion-col tappable (click)="updatePicture(item.CLTP001,item.CLTP002)" *ngFor="let item of orderImagesData.ESCJYFP">
+                <img [src]="serverURL + item.CLTP002"/>
+                <!-- TODO -->
+                <!--<button ion-button small color="oranger" (click)="$event.stopPropagation();deletePicture(item.CLTP001);" class="remove" tappable><ion-icon name="md-trash"></ion-icon></button>-->
+              </ion-col>
+              <ion-col tappable class="add" (click)="addPicture(4)" *ngIf="orderImagesData.ESCJYFP.length < max">
+                <ion-icon name="camera"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-item>
+            当日里程表读数
+          </ion-item>
+          <ion-grid>
+            <ion-row class="pictures">
+              <ion-col tappable (click)="updatePicture(item.CLTP001,item.CLTP002)" *ngFor="let item of orderImagesData.DRLCBDS">
+                <img [src]="serverURL + item.CLTP002"/>
+                <!-- TODO -->
+                <!--<button ion-button small color="oranger" (click)="$event.stopPropagation();deletePicture(item.CLTP001);" class="remove" tappable><ion-icon name="md-trash"></ion-icon></button>-->
+              </ion-col>
+              <ion-col tappable class="add" (click)="addPicture(5)" *ngIf="orderImagesData.DRLCBDS.length < max">
+                <ion-icon name="camera"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-item>
+            二手车认证报告
+          </ion-item>
+          <ion-grid>
+            <ion-row class="pictures">
+              <ion-col tappable (click)="updatePicture(item.CLTP001,item.CLTP002)" *ngFor="let item of orderImagesData.ESCRZFP">
+                <img [src]="serverURL + item.CLTP002"/>
+                <!-- TODO -->
+                <!--<button ion-button small color="oranger" (click)="$event.stopPropagation();deletePicture(item.CLTP001);" class="remove" tappable><ion-icon name="md-trash"></ion-icon></button>-->
+              </ion-col>
+              <ion-col tappable class="add" (click)="addPicture(6)" *ngIf="orderImagesData.ESCRZFP.length < max">
+                <ion-icon name="camera"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-item>
+            身份证
+          </ion-item>
+          <ion-grid>
+            <ion-row class="pictures">
+              <ion-col tappable (click)="updatePicture(item.CLTP001,item.CLTP002)" *ngFor="let item of orderImagesData.SFZ">
+                <img [src]="serverURL + item.CLTP002"/>
+                <!-- TODO -->
+                <!--<button ion-button small color="oranger" (click)="$event.stopPropagation();deletePicture(item.CLTP001);" class="remove" tappable><ion-icon name="md-trash"></ion-icon></button>-->
+              </ion-col>
+              <ion-col tappable class="add" (click)="addPicture(7)" *ngIf="orderImagesData.SFZ.length < max">
+                <ion-icon name="camera"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-item>
+            其他
+          </ion-item>
+          <ion-grid>
+            <ion-row class="pictures">
+              <ion-col tappable (click)="updatePicture(item.CLTP001,item.CLTP002)" *ngFor="let item of orderImagesData.QT">
+                <img [src]="serverURL + item.CLTP002"/>
+                <!-- TODO -->
+                <!--<button ion-button small color="oranger" (click)="$event.stopPropagation();deletePicture(item.CLTP001);" class="remove" tappable><ion-icon name="md-trash"></ion-icon></button>-->
+              </ion-col>
+              <ion-col tappable class="add" (click)="addPicture(8)" *ngIf="orderImagesData.QT.length < max">
+                <ion-icon name="camera"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-list>
+        <!-- 延保信息 -->
+        <ion-list *ngIf="leftIndex == 4">
+          <ion-item detail-push>
+            <ion-label><ion-note color="oranger">*</ion-note>原厂保修起始日期</ion-label>
+            <ion-datetime [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="ybInfo.PZ_DDHT029" min="1970-01-01" max="2030-01-01" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+          </ion-item>
+          <ion-item detail-push>
+            <ion-label><ion-note color="oranger">*</ion-note>原厂保修终止日期</ion-label>
+            <ion-datetime [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" [(ngModel)]="ybInfo.PZ_DDHT030" min="1970-01-01" max="2030-01-01" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label><ion-note color="oranger">*</ion-note>原厂保修公里数(公里)</ion-label>
+            <ion-input type="number" [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" text-right [(ngModel)]="ybInfo.PZ_DDHT032" placeholder="必填"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>延保期至</ion-label>
+            <ion-input type="text" style="font-size: 1rem;" disabled text-right [(ngModel)]="ybInfo.PZ_DDHT034"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>延保年限</ion-label>
+            <ion-input type="text" disabled text-right [(ngModel)]="ybInfo.PZ_YBCP009"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>赔偿金额</ion-label>
+            <ion-input type="text" disabled text-right [(ngModel)]="ybInfo.PZ_YBJG005"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>原价</ion-label>
+            <ion-input type="text" disabled text-right [(ngModel)]="ybInfo.PZ_YBJG002"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>现价</ion-label>
+            <ion-input type="text" disabled text-right [(ngModel)]="ybInfo.PZ_YBJG003"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>延保项</ion-label>
+            <ion-input type="text" disabled text-right [(ngModel)]="ybInfo.PZ_BXXM005"></ion-input>
+          </ion-item>
+          <!-- TODO -->
+          <!--<div margin>
+            <button ion-button block color="base" [disabled]="orderDetailsData.PZ_YB_DDDD012 == '0' || true" (click)="saveYbInfo()">保存</button>
+          </div>-->
+        </ion-list>
+        <!-- 合同信息 -->
+        <ion-list *ngIf="leftIndex == 5">
+          <ion-item>
+            <ion-label>合同信息</ion-label>
+            <button ion-button item-end color="base" (click)="viewPhoto(orderDetailsData.PZ_DDHT004)">查看</button>
+          </ion-item>
+          <ion-item>
+            <ion-label>服务协议信息</ion-label>
+            <button ion-button item-end color="base" (click)="viewPhotoFWXY(orderDetailsData.PZ_DDHT044)">服务协议</button>
+          </ion-item>
+        </ion-list>
+      </ion-scroll>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<!--<ion-footer *ngIf="orderDetailsData.PZ_YB_DDDD012 != '0'">
+  <div padding-horizontal margin-bottom>
+    <button ion-button block color="base" (click)="gotopay(orderDetailsData.PZ_DDHT002,orderDetailsData.PZ_YB_DDDD014,orderDetailsData.PZ_DDHT005)">去支付</button>
+  </div>
+</ion-footer>-->

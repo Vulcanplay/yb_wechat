@@ -1,0 +1,37 @@
+page-home-finance-identity-authentication{
+  .content-ios{
+    background-color: #f9f9f9 !important;
+  }
+  .card-ios{margin-top: -35px;}
+  .card-ios .item-ios:first-child.item-block .item-inner{
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .tip{
+    padding-left: 40px;
+    font-size: 12px;
+    margin: 10px 0;
+    color:#c5c5c5;
+  }
+  .sub-title{
+    font-size: 14px;
+    margin: 10px 0;
+    font-weight: bold;
+    padding-left: 16px;
+  }
+  ion-row .upload{
+    background-color: white;
+    width: 90%;
+    height: 100px;
+    margin: 0 auto;
+    border: 3px dashed #f5f5f5;
+  }
+  .upload ion-icon{
+    font-size: 5rem;
+    color: #999999;
+    line-height: 100px;
+  }
+  ion-row p{
+    font-size: 12px;
+    color: #666666;
+  }
+}

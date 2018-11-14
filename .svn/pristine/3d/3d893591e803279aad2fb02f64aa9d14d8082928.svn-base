@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      我的消息
+      <!-- <ion-searchbar placeholder=" " (ionInput)="filterItems($event)"></ion-searchbar> -->
+    </ion-title>
+    <!-- <ion-buttons end>
+      <button ion-button (click)="toolbarTabs()" [color]="toolbarTabsCtrl ? 'base' : ''">
+        <ion-icon class="iconfont lg icon-custom-daohang"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+  <ion-toolbar no-border class="filter-tabs">
+    <ion-grid text-center no-padding>
+      <ion-row>
+        <ion-col tappable (click)="filterTabs(0)" [ngClass]="{'filter-tabs-bottom-line':filterTabsCtrl == 0}">
+          <button ion-button small clear [color]="filterTabsCtrl == 0 ? 'oranger':'dark'">系统通知</button>
+        </ion-col>
+        <ion-col tappable (click)="filterTabs(1)" [ngClass]="{'filter-tabs-bottom-line':filterTabsCtrl == 1}">
+          <button ion-button small clear [color]="filterTabsCtrl == 1 ? 'oranger':'dark'">反馈消息</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list margin-top *ngIf="filterTabsCtrl == 0">
+    <!--
+      ID: XXFS001
+      已读：XXFS005
+    -->
+    <ion-item *ngFor="let sys of systemMessageData">
+      <ion-icon item-start class="iconfont icon-custom-xiaolaba" color="base"></ion-icon>
+      <h2>{{sys.XXFS009}}</h2>
+      <!--<p></p>
+      <ion-note item-end color="gary"></ion-note>-->
+    </ion-item>
+  </ion-list>
+  <ion-list margin-top *ngIf="filterTabsCtrl == 1">
+    <!--
+      ID:DDPL001
+      订单号:DD001
+    -->
+    <ion-item *ngFor="let om of orderMessageData">
+      <ion-icon item-start class="iconfont icon-custom-xiaolaba" color="base"></ion-icon>
+      <h2>{{om.DDPL006}}</h2>
+      <p>{{om.DDPL007}}</p>
+      <ion-note item-end color="gary">{{om.DDPL008}}</ion-note>
+    </ion-item>
+  </ion-list>
+  <div *ngIf="filterTabsCtrl == 0 && systemMessageData.length == 0" text-center margin-vertical><ion-note color="icon-gary">没有更多了...</ion-note></div>
+  <div *ngIf="filterTabsCtrl == 1 && orderMessageData.length == 0" text-center margin-vertical><ion-note color="icon-gary">没有更多了...</ion-note></div>
+</ion-content>

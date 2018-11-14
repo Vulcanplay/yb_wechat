@@ -1,0 +1,45 @@
+import { Component } from '@angular/core';
+import {InfiniteScroll, ModalController, NavController, NavParams, Refresher, ToastController} from 'ionic-angular';
+import { FilterBrandSeriesPage } from "../../shared/filter-brand-series/filter-brand-series";
+import { EWPDetailsPage } from "./details/details";
+import { EWPService } from "./EWPService";
+import { DomSanitizer } from "@angular/platform-browser";
+import {ProductParams, CityArry, UserInfo} from "../../model/UserInfo";
+import { FILE_SERVE_URL } from "../../providers/Constants";
+import {PaymentOrderPage} from "./payment-order/payment-order";
+import {ServiceContractPage} from "./details/service-contract/service-contract";
+import { Storage } from "@ionic/storage";
+@Component({
+  selector: 'page-ewp',
+  templateUrl: 'ewp.html'
+})
+export class EWPPage {
+
+  userInfo: UserInfo;
+  public confirmServiceContract: boolean = true;
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private storage: Storage,
+              public modalCtrl: ModalController,
+              public toastCtrl: ToastController) {
+
+  }
+
+  ionViewWillEnter() {
+    
+    if (sessionStorage.getItem("tag") == "0"){
+      sessionStorage.removeItem("tag");
+      this.navCtrl.parent.select(0);
+    } else {
+      this.storage.get('wx_user').then((userInfo: UserInfo) => {
+        if (userInfo != null) {
+          this.userInfo = userInfo;
+          this.navCtrl.push(EWPDetailsPage);
+        }
+      });
+    }
+  }
+  details(){
+    this.navCtrl.push(EWPDetailsPage);
+  }
+}

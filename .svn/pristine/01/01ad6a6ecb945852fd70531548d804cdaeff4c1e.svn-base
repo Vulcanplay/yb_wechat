@@ -1,0 +1,21 @@
+page-ewp {
+  .no-car ion-col{
+    height: 12rem;
+    background: url(../assets/img/ewp/no_car_bg.png) no-repeat center center;
+    background-size: 100%;
+    border-radius: 10px;
+    margin: 5px 10px;
+  }
+  .no-car h2,.no-car p{ margin: 0; line-height: 6rem;}
+  .no-car h2{ color:color($colors, oranger);}
+  .no-car p{ color:color($colors, white);}
+}
+page-ewp-shopping-cart,page-ewp-payment-order,page-ewp-confirm-order,page-ewp-details{
+  ion-footer button.button-ios .button-inner{font-size:1.45rem;}
+  ion-footer button[disabled], ion-footer [ion-button][disabled]{opacity: 1;}
+  .ewp-details-item.item-block{min-height: 3.5rem !important}
+  .ewp-details-item .icon-img{background-position: center center;background-size: contain; background-repeat: no-repeat;margin: 0!important;}
+  .ewp-details-item .icon-img.icar-logo{min-width: 40px;}
+  .ewp-details-item.item-ios ion-icon[item-left], .ewp-details-item.item-ios ion-icon[item-right], .ewp-details-item.item-ios ion-icon[item-start], .ewp-details-item.item-ios ion-icon[item-end] {  margin-left: 0; margin-top: 0;margin-bottom: 0;margin-right: 4px;font-size:2.4rem;line-height: 1.5em; }
+  .ewp-details-item.vehicle ion-label{color: color($colors,icon-gary)}
+}

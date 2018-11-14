@@ -1,0 +1,22 @@
+import {NgModule} from '@angular/core';
+import {IonicModule} from 'ionic-angular';
+import {HomePage} from './home';
+import {HomeService} from "./HomeService";
+import {HomeWorkingPage} from "./working/working";
+import {FilterCityModule} from "../../shared/filter-city/filter-city.module";
+
+@NgModule({
+  imports: [IonicModule,FilterCityModule],
+  declarations: [
+    HomePage,
+    HomeWorkingPage
+  ],
+  entryComponents: [
+    HomePage,
+    HomeWorkingPage
+  ],
+  providers: [HomeService],
+  exports: [IonicModule]
+})
+export class HomeModule {
+}

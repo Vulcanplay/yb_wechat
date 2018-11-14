@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>延保套餐</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list no-lines no-margin margin-top margin-bottom>
+    <ion-item class="home-item">
+      <ion-icon class="icon-img icar-logo" item-start style="background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508155119777&di=8d538aaeffe8b1f3fe497c34368043e6&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F11%2F25%2F46%2F97X58PIC48e.jpg);"></ion-icon>
+      <ion-label>奥迪 A4L 2017 1.8T 双离合</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list radio-group>
+    <ion-item *ngFor="let item of packageData">
+      <ion-radio item-start color="base"></ion-radio>
+      <ion-label>{{item.YBCP002}}</ion-label>
+      <ion-note item-end color="gary" class="line-through">原价<ion-icon class="iconfont icon-custom-rmb"></ion-icon> {{item.YBJG002}}</ion-note>
+      <ion-note item-end color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>{{item.YBJG003}}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer ion-row no-margin no-padding>
+  <button (click)="confirmOrder()" col full no-margin ion-button block color="base">立即购买</button>
+  <button (click)="shoppingCart()" col full no-margin ion-button block color="toolbar-bg">加入购物车</button>
+</ion-footer>
+

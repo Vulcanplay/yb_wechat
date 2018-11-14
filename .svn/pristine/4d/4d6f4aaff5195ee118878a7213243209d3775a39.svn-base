@@ -1,0 +1,209 @@
+import { Component } from '@angular/core';
+import { Storage } from "@ionic/storage";
+import { ModalController, NavController, NavParams, AlertController } from 'ionic-angular';
+import { EWPYBOrderDatumPage } from "./datum/datum";
+import { DomSanitizer } from "@angular/platform-browser";
+import { NativeService } from "../../../../providers/NativeService";
+import { SignInPage } from "../../../login/sign-in/sign-in";
+import {EWPService} from "../EWPService";
+
+@Component({
+  selector: 'page-ewp-yb-order',
+  templateUrl: 'order.html'
+})
+export class EWPYBOrderPage {
+  public isHasLogin: boolean = false;
+  public userInfo = {
+    loginId:"",
+    loginname:null,
+    code:null,
+    mjinfoId:"",
+    mjname:null,
+    mjnike:null,
+    mjsex:null,
+    mjareaname:null,
+    mjphone:null,
+    mjcardtype:null,
+    mjcardNO:null,
+    mjaddress:null,
+    mjpostcode:null,
+    mjmail:null
+  };
+  //报价数组
+  private ybPriceArray: any = [];
+  //价格对象
+  private ybPrice:any = {
+    PRODUCT001:"",        //主键
+    PRODUCT002:"",        //产品种类ID
+    PRODUCT003:null,      //适用产品基础车型ID
+    PRODUCT004:"",        //保险公司项目ID
+    PRODUCT005:null,         //保车年限
+    PRODUCT006:0,         //原价
+    PRODUCT007:null,       //现价
+    PRODUCT008:0,         //是否删除
+    PRODUCT009:0,         //赔偿限额值
+    PRODUCT010:0,       //指导价
+    PRODUCT011:null,      //服务条款模板ID
+    PRODUCT012:0,         //保车公里数
+    PRODUCT013:"",        //保险公司ID
+    PRODUCT014:0,         //四驱加价值
+    PRODUCT015:0,         //排量加价值
+    PRODUCT016:null,      //排量临界ID
+    PRODUCT017:null,      //赔付排量临界ID
+    PRODUCT018:0,         //适用车型价格范围
+    PRODUCT019:0,        //车龄
+    PRODUCT020:null,      //出保范围
+    PC002:null,           //车品牌
+    PC003:null,           //车系
+    BXGS002:"",           //保险公司名称
+    BXXM004:"",           //保项名称
+    BXXM005:null,         //保项说明
+    ACTIVITYPRODUCT008:null,//活动赠送优惠券ID
+    ISACTIVI:0,            //是否活动(0：否  1：是)
+    active: false
+  };
+  //报价对象
+  private ybOffer:any = {
+    brandId: "",          //品牌ID
+    carseriseId: "",      //车系ID
+    brandName: "",        //品牌名称
+    carseriseName: "",    //车系名称
+    priceList: "-1",      //价格区间
+    firstTime: "",        //初次等级日期
+    mileage: null,        //当前行驶公里数
+    activeId: "",       //活动ID
+    productTypeId: "",  //产品种类ID
+    isAgree: false,       //已知悉承保车辆标准
+    brandLogo: "",        //品牌LOGO
+  };
+  //提交参数
+  private submitParams: any = {
+    userId:"", //用户ID
+    brandId:"",// 品牌ID
+    carseriseId:"",//车系ID
+    publicId:"",//产品ID
+    cardId:"",//劵ID（可为空）
+    cardNo:"",//劵张数（可为0）
+    buyTime:"",//初次登记时间
+    kilono:"",//公里数
+    price:0,//报价
+    isAgree: false //同意条款
+  };
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              public _sanitizer: DomSanitizer,
+              public alertCtrl: AlertController,
+              public storage: Storage,
+              public ewpService: EWPService,
+              public nativeService: NativeService) {
+  }
+  ionViewWillEnter(){
+    this.ybPriceArray = this.navParams.get("ybPrice");
+    this.ybOffer = this.navParams.get("ybOffer");
+    this.init();
+
+    this.storage.get('wx_user').then(userInfo => {
+      if (userInfo != null) {
+        this.userInfo = userInfo;
+        this.isHasLogin = true;
+      }
+    });
+  }
+
+  /**
+   * 提交
+   * */
+  submit(){
+    if(!this.isHasLogin){
+      this.nativeService.alertTip("请登录后提交~");
+      this.signIn();
+      return false;
+    } else {
+      if(!this.submitParams.isAgree){
+        this.nativeService.alertTip("请阅读《车辆延保服务协议》，同意并勾选~");
+      } else {
+        //TODO REMOVE
+        this.navCtrl.push(EWPYBOrderDatumPage);
+        this.submitParams.userId = this.userInfo.mjinfoId;
+        this.submitParams.brandId = this.ybOffer.brandId;
+        this.submitParams.carseriseId = this.ybOffer.carseriseId;
+        this.submitParams.publicId = this.ybOffer.projectId;
+        this.submitParams.cardId = "";
+        this.submitParams.cardNo = "";
+        this.submitParams.buyTime = this.ybOffer.firstTime;
+        this.submitParams.kilono = this.ybOffer.mileage;
+        this.submitParams.price = this.ybPrice.C_YBJGINFO017;
+        this.ewpService.submitYBPrice(this.submitParams).subscribe(r => {
+          if(r.Code == 200){
+
+          } else {
+            this.nativeService.alertTip(r.Message);
+          }
+        });
+      }
+    }
+  }
+  /**
+   * 支付订单
+   * */
+  payOrder(){
+    this.alertCtrl.create({
+      title: '支付成功',
+      enableBackdropDismiss: false,
+      buttons: [{
+        text: '确定',
+        handler: () => {
+          this.navCtrl.push(EWPYBOrderDatumPage);
+        }
+      }]
+    }).present();
+  }
+
+  /**
+   * 选择保项
+   * */
+  setYbPrice(item){
+    if (item.PRODUCT001 == this.ybPrice.PRODUCT001){ return false; }
+    for (let obj of this.ybPriceArray){
+      obj.active = false;
+    }
+    item.active = true;
+    this.ybPrice = item;
+  }
+  getBackground(image) {
+    return this._sanitizer.bypassSecurityTrustStyle(`url(${image})`);
+  }
+  /**
+   * 弹出信息
+   * */
+  alertInfoWindow(title, type){
+    this.nativeService.alertInfoWindow(title, type);
+  }
+
+  /**
+   * 登录
+   * */
+  signIn() {
+    let profileModal = this.modalCtrl.create(SignInPage);
+    profileModal.present();
+    profileModal.onDidDismiss(data => {
+      if (data != null) {
+        this.userInfo = data;
+        this.isHasLogin = true;
+      }
+    });
+  }
+
+  /**
+   * 初始化
+   * */
+  private init() {
+    if (this.ybPriceArray.length == 0){ return false; }
+    for (let obj of this.ybPriceArray){
+      obj.active = false;
+    }
+    this.ybPriceArray[0].active = true;
+    this.ybPrice = this.ybPriceArray[0];
+  }
+}

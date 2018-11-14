@@ -1,0 +1,22 @@
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import {SiteDetailsPage} from "./details/details";
+
+@Component({
+  selector: 'page-site',
+  templateUrl: 'site.html'
+})
+export class SitePage {
+
+  filterTabsCtrl:any = 0;
+  constructor(public navCtrl: NavController) {
+
+  }
+  filterTabs(index){
+    this.filterTabsCtrl = index;
+  }
+  details(){
+    this.navCtrl.push(SiteDetailsPage);
+  }
+
+}

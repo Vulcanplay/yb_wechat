@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-navbar>
+      <ion-buttons start  (click)="gotoType()" *ngIf="backtype">
+          <button ion-button>
+            <i class="iconfont lg icon-custom-arrowleft"></i>
+          </button>
+        </ion-buttons>
+    <ion-title>
+      我的车辆
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list no-margin margin-top >
+      <ion-list no-margin class="details">
+        <button ion-item (click)=selectBrandId()>
+          <ion-label><ion-note color="oranger">*</ion-note>车辆配置</ion-label>
+          <ion-note item-end color="dark">
+            {{carInfo.SONBRANDNAME}}{{carInfo.CARSERIESNAME}}
+          </ion-note>
+        </button>
+        <ion-item>
+          <ion-label><ion-note color="oranger">*</ion-note>车型</ion-label>
+          <ion-select [(ngModel)]="carInfo.PZ_YB_MJCLMJCL031" cancelText="取消" okText="确定">
+            <ion-option value=0 selected>轿车</ion-option>
+            <ion-option value=1>越野(SUV)</ion-option>
+            <ion-option value=2>多用途常用用车(MPV)</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label><ion-note color="oranger">*</ion-note>车架号</ion-label>
+          <ion-input type="text" text-right placeholder="请输入车架号" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL004"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><ion-note color="oranger">*</ion-note>发动机号</ion-label>
+          <ion-input type="text" text-right placeholder="请输入发动机号" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL006"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><ion-note color="oranger">*</ion-note>排量</ion-label>
+          <ion-input type="text" text-right placeholder="请输入排量" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL007"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><ion-note color="oranger">*</ion-note>是否涡轮增压</ion-label>
+          <ion-select [(ngModel)]="carInfo.PZ_YB_MJCLMJCL014" cancelText="取消" okText="确定">
+            <ion-option value=0 selected>是</ion-option>
+            <ion-option value=1>否</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label><ion-note color="oranger">*</ion-note>是否四轮驱动</ion-label>
+          <ion-select [(ngModel)]="carInfo.PZ_YB_MJCLMJCL015" cancelText="取消" okText="确定">
+            <ion-option value="0" selected>是</ion-option>
+            <ion-option value="1">否</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label><ion-note color="oranger">*</ion-note>车辆是否用于非营业性质</ion-label>
+          <ion-select [(ngModel)]="carInfo.PZ_YB_MJCLMJCL022" cancelText="取消" okText="确定" >
+            <ion-option value="0" selected>是</ion-option>
+            <ion-option value="1">否</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label><ion-note color="oranger">*</ion-note>车辆购买价(元)</ion-label>
+          <ion-input type="text" text-right placeholder="车辆购买价" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL016"></ion-input>
+        </ion-item>
+        <ion-item detail-push>
+          <ion-label><ion-note color="oranger">*</ion-note>新车出厂日期</ion-label>
+          <ion-datetime type="text" text-right min="1970-01-01" max="{{toDay}}" displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL030"></ion-datetime>
+        </ion-item>
+        <ion-item detail-push>
+          <ion-label><ion-note color="oranger">*</ion-note>购车发票日期</ion-label>
+          <ion-datetime type="text" min="{{carInfo.PZ_YB_MJCLMJCL030}}" max="2030" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL021"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <ion-note color="oranger">*</ion-note>新车购车发票抬头</ion-label>
+          <ion-input type="text" text-right placeholder="发票抬头" [(ngModel)]="carInfo.PZ_YB_MJCLMJCL017"></ion-input>
+        </ion-item>
+      </ion-list>
+      <!--<ion-item>
+      <button ion-button clear item-end><ion-icon color="icon-gary" class="font-large" name="ios-trash"></ion-icon></button>
+    </ion-item>-->
+    </ion-list>
+</ion-content>
+<ion-footer>
+  <div padding-horizontal margin-bottom>
+    <button ion-button full color="base" (click)="save()">保存</button>
+  </div>
+</ion-footer>

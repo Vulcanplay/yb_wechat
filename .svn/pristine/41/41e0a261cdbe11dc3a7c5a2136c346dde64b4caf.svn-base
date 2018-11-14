@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>服务介绍</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <h2>标题</h2>
+  <p padding>副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题副标题</p>
+  <ion-card>
+    <ion-card-header color="base">
+      保修部件包括：
+    </ion-card-header>
+    <ion-list ion-row>
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <div class="line" col-12></div>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+      <div class="line" col-12></div>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+      <div class="line" col-12></div>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+      <div class="line" col-12></div>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+      <button ion-item col-6 (click)="detail()">
+        啊发士大夫
+      </button>
+
+    </ion-list>
+  </ion-card>
+</ion-content>

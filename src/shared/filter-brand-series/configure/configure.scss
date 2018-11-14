@@ -1,0 +1,7 @@
+page-filter-configure{
+  .content-ios, .content-md, .content-wp{background-color: color($colors, white) !important;}
+  //ion-grid{height:calc(100% - 44px);margin-top: 44px;}
+  //ion-grid .operation{border-bottom:1px solid $custom-list-border-color;}
+  ion-item-divider{color:#838383 !important;}
+  .item-ios{font-size: 1.5rem;}
+}

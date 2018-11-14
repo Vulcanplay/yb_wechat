@@ -1,0 +1,32 @@
+page-modal-window-view{
+  .content-ios{
+    height: 80%;
+    top: 10%;
+    border: 1px solid #eee;
+    background-color: #ffffff !important;
+  }
+  .header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios{
+    border-color: #eaeaea;
+  }
+  .alert-content{
+    margin-top: 68px;
+    height: 80%;
+  }
+  .content-info{list-style: none;overflow: auto; height: 100%;}
+  li {
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    color: #60554f;
+    padding-bottom: .8rem;
+  }
+  .alert-content ion-icon{
+    font-size: 60px;
+  }
+  .alert-content h2{
+    font-size: 18px;
+    color: #555555;
+  }
+  .alert-content ion-buttons{
+    margin-top: 32px;
+  }
+}

@@ -1,0 +1,150 @@
+import { Component } from '@angular/core';
+import { NavController, ViewController, AlertController, Platform, NavParams, ModalController } from 'ionic-angular';
+import { FormBuilder, Validators } from '@angular/forms';
+import { SignInPage } from '../sign-in/sign-in';
+import { SignInService } from '../sign-in/SignInService';
+import { debounce } from 'ionic-angular/util/util';
+
+@Component({
+  selector: 'page-sign-up',
+  templateUrl: 'sign-up.html',
+  providers: [SignInService],
+})
+export class SignUpPage {
+  signUpForm: any;
+  public CodeFW: string = "-1";
+  submitted: boolean = false;
+  codesubmitted: boolean = false;
+  constructor(private navCtrl: NavController,
+    private viewCtrl: ViewController,
+    private signInService: SignInService,
+    private alertCtrl: AlertController,
+    private platform: Platform,
+    public navParams: NavParams,
+    private modalCtrl: ModalController,
+    private formBuilder: FormBuilder) {
+    this.signUpForm = this.formBuilder.group({
+      phone: ['', [Validators.required, Validators.pattern('1[0-9]{10}')]],
+      verificationCode: ['', [Validators.required, Validators.pattern('1[0-9]{5}')]]
+      
+    })
+  };
+
+  confirm() {
+    this.navCtrl.setRoot(SignInPage)
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+
+  //发送验证码
+  sendcode(sendinfo) {
+    
+    this.codesubmitted = true;
+    if (sendinfo.phone == '') {
+      this.alertCtrl.create({
+        title: '请输入手机号',
+        buttons: [{ text: '取消' },
+        {
+          text: '确定',
+          handler: () => {
+            this.codesubmitted = false;
+          }
+        }]
+      }).present();
+    }
+    else {
+      let inputlist = {
+        phone: sendinfo.phone,
+        sendtype: 0
+      };
+      this.signInService.sendcode(inputlist).subscribe(r => {
+        let values = r.data;
+        if (values != "-1") {
+          this.CodeFW = values;
+          this.alertCtrl.create({
+            title: '验证码已发送',
+            buttons: [
+              {
+                text: '确定',
+                handler: () => {
+                  this.codesubmitted = true;
+                }
+              }]
+          }).present();
+        }
+        else {
+          this.alertCtrl.create({
+            title: '验证码发送失败，请稍后重试',
+            buttons: [
+              {
+                text: '确定',
+                handler: () => {
+                  this.platform.exitApp();
+                  this.codesubmitted = false;
+                }
+              }]
+          }).present();
+        }
+      }), () => {
+        this.codesubmitted = true;
+      };
+    }
+
+  }
+
+
+
+  //注册用户
+  SinUser(sendinfo) {
+    this.submitted = true;
+    if (sendinfo.verificationCode == this.CodeFW) {
+      let prems = {
+        'loginphone': sendinfo.phone,
+        'password': sendinfo.password,
+        'openid':'00000',
+        'wechatlogin':'00000',
+        'areId': '0000',
+        'areName': '北京',
+        'type': '-1',//代表无人推荐
+        'typeuserid':''
+      };
+
+      this.signInService.SinUser(prems).subscribe(r => {
+        debugger;
+        let res = r.data.Table[0].Column1;
+        if (res == '成功') {
+          let modal = this.modalCtrl.create(SignInPage);
+          modal.present();
+        }
+        else {
+          this.alertCtrl.create({
+            title: '注册失败，请联系管理员，18612942502',
+            buttons: [
+              {
+                text: '确定',
+              
+              }
+            ]
+          }).present();
+        }
+      }),()=>{
+        this.submitted = false;
+      };
+    }
+    else {
+      this.submitted = false;
+      this.alertCtrl.create({
+        title: '输入的验证码不匹配',
+        buttons: [
+          {
+            text: '确定',
+            handler: () => {
+            }
+          }
+        ]
+      }).present();
+    }
+  }
+}

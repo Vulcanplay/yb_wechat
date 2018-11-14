@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="confirm()">
+        <i class="iconfont lg icon-custom-arrowleft"></i>
+      </button>
+    </ion-buttons>
+    <ion-title>修改密码</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        <i class="iconfont lg icon-custom-home"></i>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="forgotPasswordForm"  >
+    <ion-list margin-top>
+      <ion-item>
+        <ion-label color="icon-gary"><i class="iconfont lg icon-custom-phone"></i></ion-label>
+        <ion-input type="tel" color="dark" placeholder="手机号" formControlName="phone" clearInput></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="icon-gary"><i class="iconfont lg icon-custom-yanzhengma"></i></ion-label>
+        <ion-input type="number" placeholder="验证码" formControlName="verificationCode" clearInput></ion-input>
+        <button ion-button item-end clear color="base" class="border-left send-code">发送验证码</button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="icon-gary"><i class="iconfont lg icon-custom-password-new"></i></ion-label>
+        <ion-input type="password" placeholder="新密码" formControlName="newPassword" clearInput></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div margin-top>
+      <button ion-button full color="base" type="submit" (click)="signIn(forgotPasswordForm.value)" >确认修改</button>
+    </div>
+  </form>
+
+</ion-content>

@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      个人中心
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="content-background">
+  <div class="sign-header" *ngIf="!isHasLogin">
+    <img src="./assets/img/mine/sign_bg.png" />
+    <button ion-button small outline color="base" (click)='singIn()'>登&nbsp;录</button>
+  </div>
+  <ion-list class="mine-header" *ngIf="isHasLogin">
+    <ion-item (click)="personal()">
+      <ion-thumbnail item-left (click)="viewAvatar();$event.stopPropagation();">
+        <img src="{{avatarPath}}">
+      </ion-thumbnail>
+      <!-- {{userInfo?.NikeName}}  -->
+      <div>
+        <ion-note color="dark">{{userInfo?.loginname}}</ion-note>
+      </div>
+      <div class="description">姓名： {{userInfo?.mjname}}</div>
+    </ion-item>
+  </ion-list>
+
+  <ion-list no-lines="">
+    <ion-item>
+      我的订单
+      <ion-icon class="iconfont icon-custom-order" item-left color="base"></ion-icon>
+    </ion-item>
+    <ion-item-divider color="white" no-padding class="order-tabs">
+      <ion-grid no-padding>
+        <ion-row no-padding text-center>
+          <ion-col tappable (click)="order(-1, 0)">
+            <ion-icon color="dark" name="ios-alarm-outline"></ion-icon>
+            <br/> 延保
+            <!--<ion-badge item-end color="danger">{{orderCount.status1}}</ion-badge>-->
+          </ion-col>
+          <ion-col tappable (click)="order(-1, 1)">
+            <ion-icon color="dark" name="ios-card-outline"></ion-icon>
+            <br/> 喷漆券
+            <!--<ion-badge item-end color="danger">{{orderCount.status2}}</ion-badge>-->
+          </ion-col>
+          <ion-col tappable (click)="order(-1, 2)">
+            <ion-icon color="dark" name="ios-construct-outline"></ion-icon>
+            <br/> 三包
+            <!--<ion-badge item-end color="danger">{{orderCount.status2}}</ion-badge>-->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item-divider>
+  </ion-list>
+  <ion-list>
+    <!--<button ion-item (click)="vehicle()">
+      <ion-icon item-left color="base" class="iconfont icon-custom-car"></ion-icon>
+      我的车辆
+    </button>-->
+    <button ion-item (click)="contract()">
+      <ion-icon item-left color="base" class="iconfont icon-custom-hetong"></ion-icon>
+      我的合同
+    </button>
+     <!--<button ion-item (click)="message()">
+      <ion-icon item-left color="base" class="iconfont icon-custom-message"></ion-icon>
+      我的信息
+     <ion-badge item-end color="danger">1</ion-badge>
+    </button>-->
+    <!--<button ion-item (click)="address()">
+      <ion-icon item-left color="base" class="iconfont icon-custom-location-b"></ion-icon>
+      我的地址
+    </button>-->
+
+  </ion-list>
+  <ion-list>
+    <button ion-item (click)="personal()">
+      <ion-icon item-left color="base" class="iconfont icon-custom-grzl"></ion-icon>
+      个人资料
+    </button>
+  </ion-list>
+
+  <ion-list>
+    <a href="tel:4000505345" class="decoration" ion-item>
+      <ion-icon item-left color="base" class="iconfont icon-kefudianhua"></ion-icon>
+      联系客服
+    </a>
+    <button ion-item (click)="about()">
+      <ion-icon item-left color="base" class="iconfont icon-custom-guanyuwomen"></ion-icon>
+      关于我们
+    </button>
+  </ion-list>
+
+  <button ion-button full margin-top color="white" (click)="signOut()" *ngIf="isHasLogin">退出登录</button>
+</ion-content>

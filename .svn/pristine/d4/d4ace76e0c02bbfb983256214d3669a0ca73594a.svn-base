@@ -1,0 +1,9 @@
+<ion-content (click)="dismiss()">
+</ion-content>
+<ion-grid>
+  <ion-row text-center>
+    <ion-col col-2 *ngFor="let t of totalLicenses">
+      <button ion-button small [outline]="!t.selected" [color]="t.selected ? 'base' : 'item-vice'" (click)="cpChange(t)">{{t.text}}</button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

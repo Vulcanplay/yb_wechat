@@ -1,0 +1,86 @@
+page-home,page-home-package {
+  .bar-button-ios.bar-button-small{font-size: 1.4rem;}
+  .banner-ion-slides{ height: 13.5rem;}
+  .banner-ion-slides ion-slide{background-position: center center;background-size: cover; background-repeat: no-repeat;}
+  .swiper-pagination-bullet-active{background-color: color($colors, white)}
+
+  .icon-grid .iconfont{font-size: 3.7rem;}
+  .icon-grid p{margin: 0;color: color($colors, dark);}
+  .icon-grid [col-6] .iconfont{margin: 0 !important; max-width: 37px;}
+  .icon-grid [col-6] h2{font-size: 1.5rem;}
+  .icon-grid [col-6] p{font-size: 1rem;color:#999999; margin-top:4px;}
+  .icon-grid [col-6].item-ios.item-block .item-inner{padding-right: 0;}
+  .grid[no-padding] > .icon-grid.row > .col{padding: 1em .5em;}
+  .grid[no-padding] > .icon-grid.row > [col-6].col{padding: .5em 1em;padding-right: 0;}
+  .toutiao{ height: 44px; border-top:1px solid $custom-list-border-color;border-bottom:1px solid #e4e4e4;}
+  .toutiao [col-9] ion-slide{margin: 0; padding: .1em 1em; font-size: 1.3rem; box-sizing: border-box; border-right: none;border-left: none;}
+  .toutiao [col-9] ion-slide div{overflow: hidden;text-overflow:ellipsis;white-space: nowrap}
+  .toutiao [col-3]{ height: 42px;background-color: color($colors, base); background-image: url(../assets/img/home/home_toutiao.png);background-repeat: no-repeat;background-position: center center;background-size: 75%;}
+
+  .home-product{padding: 0px 1em;}
+  .home-product .product-box{position:relative;width: 80%; height: 7rem;background-position: left center;background-size: contain; background-repeat: no-repeat;}
+  .home-product .new::after{content: '\e618'; font-family: iconfont; color: color($colors, oranger); position: absolute; right: 15px;top: 5px; font-size: 2.5rem;}
+  .home-product .product-box ion-note{position: absolute;right: 0;bottom: 0; padding: .2em .4em; background-color: rgba(255,255,255,.1); font-size: 1.2rem;font-weight: bold;}
+  .home-product .product-box ion-note ion-icon{font-size:1.6rem;}
+  .home-yanbao .img-contain{background-position: center center;background-size: contain; background-repeat: no-repeat; height: 3.33rem;margin: .4em .8em;}
+
+  .yb ion-grid.line{position: absolute; top: 50%; left: 0; margin-top: -20px;padding: 0}
+  .yb ion-grid.line ion-col div{position: relative;}
+  .yb ion-grid.line ion-col div::after, .yb ion-grid.line ion-col div::before{content: '';position: absolute;top: 50%;margin-top: -1px;height: 1px; width: calc(50% - 3px);background-color: color($colors, gary)}
+  .yb ion-grid.line ion-col:nth-child(1) div::after{background-image: linear-gradient(80deg, rgba(255, 255, 255, 0), #f53d3d 100%, rgba(255, 255, 255, 0));}
+  .yb ion-grid.line ion-col:nth-child(2) div::before{background-color: color($colors, danger);}
+  .yb ion-grid.line ion-col:nth-child(2) div::after{background-image: linear-gradient(80deg, rgba(255, 255, 255, 0.8), #f53d3d 0%, rgba(218, 57, 57, 0.5));}
+  .yb ion-grid.line ion-col:nth-child(3) div::after{background-color: color($colors, base);}
+  .yb ion-grid.line ion-col:nth-child(3) div::before{background-image: linear-gradient(80deg, rgba(255, 255, 255, 0.8), rgba(255, 0, 0, 0.39) 0%, #da8d39);}
+  .yb ion-grid.line ion-col div.checked::after, .yb ion-grid.line ion-col div.checked::before{background-color: color($colors, secondary)}
+  .yb ion-grid.line ion-col div::after{right: -5px;}
+  .yb ion-grid.line ion-col div::before{left: -5px;}
+
+  .yb-package .row:first-child{
+    border-bottom: 1px solid $custom-list-border-color;
+  }
+  .yb-package .row button:nth-of-type(odd){ border-right: 1px solid $custom-list-border-color;}
+  .yb-package .iconfont.icon-push{position: absolute; right: 3px; top: 3px; font-size: 3rem;}
+
+  .yb ion-col:first-child[col-12]{ padding: 1em 0 1.8em 0;}
+  .yb ion-col:last-child[col-12]{ padding: 1.8em 0 1em 0;}
+  .yb .firsh-swiper{position: absolute;left: -33.33333%;top: 0;width: 33.33333%;text-align: center;}
+  .yb .iconfont.icon-custom-rmb{ font-size: .8rem;}
+  .yb .iconfont.icon-custom-car,.yb .swiper-slide-visible .iconfont.icon-custom-car{ font-size: 3rem;color: color($colors, icon-gary)}
+  .yb .swiper-slide,.yb .firsh-swiper{font-size:1.2rem;}
+  .yb .swiper-slide-prev,.yb .swiper-slide-prev .iconfont.icon-custom-car{color: color($colors, gary)}
+  .yb .swiper-slide-prev ion-row ion-col:first-child ion-note,
+  .yb .swiper-slide-prev ion-row ion-col:last-child ion-note:first-child{ color: color($colors,gary)}
+  .yb .swiper-slide-active ion-row ion-col:first-child ion-note,
+  .yb .swiper-slide-active ion-row ion-col:last-child ion-note:first-child{ color: color($colors,danger)}
+  .yb .swiper-slide-next ion-row ion-col:first-child ion-note,
+  .yb .swiper-slide-next ion-row ion-col:last-child ion-note:first-child{ color: color($colors,base)}
+  .yb ion-row ion-col:last-child .note.note-ios:last-child {text-decoration: line-through;}
+
+  .icon-img{background-position: center center;background-size: 22px 22px;background-repeat: no-repeat;margin: 0!important;}
+  .icon-img.icar-logo{min-width: 40px; background-size: contain;}
+  .icon-img.icon-tuijian{background-image: url(../assets/img/home/home_tuijian.png);}
+  .icon-img.icon-chanpin{background-image: url(../assets/img/home/home_chanpin.png);}
+  .icon-img.icon-yanbao{background-image: url(../assets/img/home/home_yanbao.png);}
+  .icon-img.icon-dongtai{background-image: url(../assets/img/home/home_dongtai.png);}
+  /**
+  * V2
+  */
+  .icon-grid .tab-1,.icon-grid .tab-2,.icon-grid .tab-3{ height: 4.5rem; margin-bottom: .5em; background-repeat: no-repeat;background-position: center center; background-size: contain;}
+  .tab-1{ background-image: url(../assets/img/home/tab_1_v2.png);}
+  .tab-2{ background-image: url(../assets/img/home/tab_2_v2.png);}
+  .tab-3{ background-image: url(../assets/img/home/tab_3_v2.png);}
+  .font-small{ font-size: 1.2rem;}
+  .title-v2{ font-weight: 600; text-align: center; }
+  .title-v2 ion-label{ font-size: 1.7rem; position: relative;}
+  .title-v2 ion-label::after, .title-v2 ion-label::before{content:'';z-index: -1; background-color: color($colors, gary); position: absolute; height: 1px; top: 50%; }
+  .title-v2 ion-label::after{ width: calc(40% - 1em); right: 0;}
+  .title-v2 ion-label::before{ width: calc(40% - 1em); left: 0;}
+  .content-ios, .content-md, .content-wp{background-color: #f3f3f3 !important;}
+  .icon-grid ion-col[col-12]{ padding: 0 16px 8px 16px;}
+  .icon-grid ion-col[col-12] img{width: 100%; border-radius: 5px;}
+  .wx-tip{ padding: 8px 16px; margin:0; background-color: #ffffff; font-size: 1.8rem;}
+  .wx-tip ion-note{ background-color: color($colors, base); color: white; font-weight: 700; padding: 0 8px;}
+  .xwdt.item-ios ion-thumbnail img{ width: 95px;}
+  .xwdt.item-ios h2{ font-size: 1.5rem; margin-bottom: .5em;}
+}

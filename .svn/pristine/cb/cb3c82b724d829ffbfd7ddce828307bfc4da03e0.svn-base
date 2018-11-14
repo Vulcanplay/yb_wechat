@@ -1,0 +1,32 @@
+page-ewp-order-datum{
+  h2.datum-title{font-size: 1.6rem; font-weight: bold;}
+  .list-ios{border-bottom: .8rem solid #f5f5f5;}
+  .pictures ion-col {
+    position: relative;
+    height: 7.5rem;
+    margin: 3px;
+    border: .55px solid color($colors, dark);
+    box-sizing: border-box;
+    border-radius: 2px;
+  }
+  .pictures ion-col img {
+    width: 100%;
+    height: 100%;
+  }
+  .add {
+    position: relative;
+    font-size: 35px;
+    color: #5c5c5c;
+    text-align: center;
+    line-height: 7.5rem;
+    margin: 3px;
+    vertical-align: middle;
+    border-radius: 2px;
+  }
+
+  .remove {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+  }
+}

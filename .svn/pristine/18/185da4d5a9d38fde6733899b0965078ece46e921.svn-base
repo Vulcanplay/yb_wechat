@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>延保订单</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list no-margin>
+    <ion-item class="vehicle">
+      <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(ybOffer.brandLogo)"></ion-icon>
+      <h2><ion-note color="dark">{{ybPrice.C_YBJGINFO003}}{{ybPrice.C_YBJGINFO005}}</ion-note></h2>
+    </ion-item>
+  </ion-list>
+  <ion-row class="date-km">
+    <ion-col col-6>
+      <ion-icon class="iconfont icon-rili" color="garydark"></ion-icon>
+      <h3><ion-note color="dark6">{{ybOffer.firstTime}}</ion-note></h3>
+      <p><ion-note color="garydark">初登日期</ion-note></p>
+    </ion-col>
+    <ion-col col-6>
+      <ion-icon class="iconfont icon-panel" color="garydark"></ion-icon>
+      <h3><ion-note color="dark6">{{ybOffer.mileage}} km</ion-note></h3>
+      <p><ion-note color="garydark">当前里程</ion-note></p>
+    </ion-col>
+  </ion-row>
+  <ion-list no-margin class="list-block">
+    <h2 class="title-card">沃享延保：</h2>
+    <ion-item>
+      <ion-checkbox color="base"></ion-checkbox>
+      <ion-label>发动机、变速箱</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="base"></ion-checkbox>
+      <ion-label>发动机、变速箱、变速箱、变速箱</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="base"></ion-checkbox>
+      <ion-label>发动机、变速箱、变速箱、变速箱、变速箱</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="base"></ion-checkbox>
+      <ion-label>发动机、变速箱、变速箱、变速箱、变速箱、变速箱、变速箱</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-note item-left color="dark6" class="font-mini">车辆延保套餐说明</ion-note>
+        <ion-icon (click)="$event.stopPropagation();alert(1);" class="information" color="garydark" name="md-information-circle"></ion-icon>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-row class="card-v">
+    <ion-col no-padding col-12>
+      <h2>卡券：</h2>
+    </ion-col>
+    <ion-col col-6 padding>
+      <div class="c-details item-selected">
+        <div class="c-msg c-dong">
+          <div class="c-top-dong"></div>
+          <div class="c-price">
+            <em><ion-icon class="iconfont icon-custom-rmb"></ion-icon>25</em>
+          </div>
+          <div class="c-limit">
+                <span>
+                满500
+                </span>
+          </div>
+        </div>
+        <div class="c-type c-type-dong">
+          <span>有效期至2018-03-12</span>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col col-6 padding>
+      <div class="c-details">
+        <div class="c-msg c-dong">
+          <div class="c-top-dong"></div>
+          <div class="c-price">
+            <em><ion-icon class="iconfont icon-custom-rmb"></ion-icon>25</em>
+          </div>
+          <div class="c-limit">
+                <span>
+                满500
+                </span>
+          </div>
+        </div>
+        <div class="c-type c-type-dong">
+          <span>有效期至2018-03-12</span>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-list no-margin class="list-block info">
+    <h2 class="title-card">费用明细：</h2>
+    <ion-item>
+      <ion-label>延保价格</ion-label>
+      <ion-note item-end color="dark">{{ybPrice.C_YBJGINFO016.toFixed(2)}}元</ion-note>
+    </ion-item>
+    <ion-item class="item-last">
+      <ion-checkbox class="circle" color="base"></ion-checkbox>
+      <ion-label>
+        <ion-note item-left color="dark6" class="font-mini">我已充分阅读<ion-note color="oranger">《车辆延保服务协议》</ion-note>所有内容，在完全理解的基础上在此勾选表示同意上述条款。</ion-note>
+      </ion-label>
+    </ion-item>
+    <div text-center class="call">
+      <h4>如有疑问，请致电：110120119-233</h4>
+      <p><ion-note color="garydark">服务时间 00:00 - 00:00</ion-note></p>
+    </div>
+  </ion-list>
+</ion-content>
+<ion-footer ion-row no-margin padding-horizontal>
+  <button (click)="payOrder()" full ion-button color="base">提交订单</button>
+</ion-footer>

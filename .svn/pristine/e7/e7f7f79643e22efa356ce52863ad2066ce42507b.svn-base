@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+import {ModalController, NavController, NavParams} from 'ionic-angular';
+import {ConfirmOrderPage} from "../confirm-order/confirm-order";
+
+@Component({
+  selector: 'page-ewp-shopping-cart',
+  templateUrl: 'shopping-cart.html'
+})
+export class ShoppingCartPage {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  }
+  confirmOrder(){
+    this.navCtrl.push(ConfirmOrderPage);
+  }
+}

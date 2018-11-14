@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+
+    <ion-title>延保定制</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="no-car" [hidden]="islogin==1?'':'hidden'">
+    <ion-row>
+      <ion-col text-center tappable (click)="details()">
+        <h2>请填写车辆信息</h2>
+        <p>根据您的车辆推荐最合适的延保项目</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+    <ion-list margin-vertical [hidden]="islogin==0?'':'hidden'">
+      <button ion-item>
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground('http://avatar.csdn.net/6/9/2/3_diwuch.jpg')"></ion-icon>
+        <ion-label> 品牌车系配置 </ion-label>
+      </button>
+    </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label>延保时长</ion-label>
+      </ion-item>
+      <ion-item>
+        <button ion-button item-start small padding-horizontal color="base">2年</button>
+        <ion-label class="font-small">至2020年05月01日</ion-label>
+      </ion-item>
+      <ion-item margin-top>
+        <ion-label>核心件</ion-label>
+      </ion-item>
+      <ion-item>
+        <button ion-button item-start small padding-horizontal color="base">2大件</button>
+        <ion-label class="font-small">发动机、变速箱</ion-label>
+      </ion-item>
+      <ion-item>
+        <button ion-button item-start small padding-horizontal color="gary">6大件</button>
+        <ion-label class="font-small" [ngClass]="power ? 'normal' : ''">发动机、变速箱、变速箱、变速箱、变速箱、变速箱</ion-label>
+        <button item-end ion-button small color="light" (click)="powerCtrl()">
+          <ion-icon [name]="power ? 'ios-arrow-up-outline' : 'ios-arrow-down-outline'"></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item margin-top>
+        <ion-label class="font-large">沃享价格</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-note item-start color="oranger">
+          <ion-icon class="iconfont icon-custom-rmb"></ion-icon>88888</ion-note>
+        <ion-note item-start color="gary" class="line-through font-small">市场价
+          <ion-icon class="iconfont icon-custom-rmb"></ion-icon>88888</ion-note>
+      </ion-item>
+      <button ion-item margin-top (click)="process()">
+        <ion-icon item-left color="base" class="iconfont icon-liucheng"></ion-icon>
+        <ion-label>投保流程</ion-label>
+      </button>
+      <button ion-item (click)="serviceContract()">
+        <ion-icon item-left color="base" class="iconfont icon-custom-hetong"></ion-icon>
+        <ion-label>《沃享延保服务合同》</ion-label>
+      </button>
+      <ion-item>
+        <ion-checkbox color="oranger" [(ngModel)]="confirmServiceContract"></ion-checkbox>
+        <ion-label class="font-small normal">我已充分阅读《沃享延保服务合同》里的所有内容，在完全理解的基础上勾选表示同意上述条款。</ion-label>
+      </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer class="white-bg"  [hidden]="islogin==0?'':'hidden'">
+  <div padding-horizontal (click)="pay()">
+    <button ion-button block color="base">去支付</button>
+  </div>
+</ion-footer>

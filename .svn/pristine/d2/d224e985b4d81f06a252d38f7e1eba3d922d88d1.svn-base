@@ -1,0 +1,290 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>补充资料</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <!-- 车辆信息 -->
+  <ion-list no-margin>
+    <ion-item>
+      <h2 class="datum-title">车辆信息</h2>
+    </ion-item>
+    <div>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>车牌号</ion-label>
+        <ion-input type="text" text-right placeholder="车牌号" [(ngModel)]="params.car.KHCAR006"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>车架号</ion-label>
+        <ion-input type="text" text-right placeholder="车架号" [(ngModel)]="params.car.KHCAR005"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>发动机号</ion-label>
+        <ion-input type="text" text-right placeholder="发动机号" [(ngModel)]="params.car.KHCAR007"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>排量</ion-label>
+        <ion-input type="text" text-right placeholder="排量" [(ngModel)]="params.car.KHCAR008"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>购买价(含税)</ion-label>
+        <ion-input type="text" text-right placeholder="购买价" [(ngModel)]="params.car.KHCAR016"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>是否涡轮增压</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="params.car.KHCAR014">
+          <ion-option value=0>是</ion-option>
+          <ion-option value=1>否</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-note color="oranger">*</ion-note>是否四轮驱动</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="params.car.KHCAR015">
+          <ion-option value=0>是</ion-option>
+          <ion-option value=1>否</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>车辆类型</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="params.car.KHCAR029">
+          <ion-option value=0>轿车</ion-option>
+          <ion-option value=1>越野</ion-option>
+          <ion-option value=2>多用常用车</ion-option>
+          <ion-option value=3>SUV(MPV)</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>车辆用途类型</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="params.car.KHCAR022">
+          <ion-option value=0>家用</ion-option>
+          <ion-option value=1>网约车</ion-option>
+          <ion-option value=2>出租车</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-note color="oranger">*</ion-note>是否进口</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="params.car.KHCAR028">
+          <ion-option value=0>是</ion-option>
+          <ion-option value=1>否</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>证件类型</ion-label>
+          <ion-select cancelText="取消" okText="确定" [(ngModel)]="params.car.KHCAR023">
+            <ion-option value=0>身份证</ion-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>身份证号</ion-label>
+        <ion-input type="text" text-right placeholder="身份证号" [(ngModel)]="params.car.KHCAR024" (ionChange)="idCardChange()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>驾驶证号</ion-label>
+        <ion-input type="text" text-right placeholder="驾驶证号" [(ngModel)]="params.car.KHCAR025"></ion-input>
+      </ion-item>
+      <ion-item detail-push>
+        <ion-label>初次登记地点</ion-label>
+        <ion-input type="text" [(ngModel)]="params.car.KHCAR009" text-right placeholder="初次登记地点"></ion-input>
+      </ion-item>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>原厂保修起始日期</ion-label>
+        <ion-datetime type="text" [(ngModel)]="params.car.KHCAR018" (ionChange)="dateChange()" text-right min="1970-01-01" max="{{toDay}}" displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>原厂保修结束日期</ion-label>
+        <ion-datetime type="text" [(ngModel)]="params.car.KHCAR019" text-right min="{{params.car.KHCAR018}}" max="2030-01-01" displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>新车出厂日期</ion-label>
+        <ion-datetime type="text" [(ngModel)]="params.car.KHCAR027" text-right min="1970-01-01" max="{{toDay}}" displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>购车发票日期</ion-label>
+        <ion-datetime type="text" [(ngModel)]="params.car.KHCAR021" min="{{params.car.KHCAR027}}" max="{{toDay}}" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>新车购车发票抬头</ion-label>
+        <ion-input type="text" [(ngModel)]="params.car.KHCAR017" text-right placeholder="发票抬头"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>当前行驶公里数</ion-label>
+        <ion-input type="text" [(ngModel)]="params.car.KHCAR011" text-right placeholder="公里数"></ion-input>
+      </ion-item>
+    </div>
+  </ion-list>
+  <!-- 订购人信息 -->
+  <ion-list no-margin>
+    <ion-item>
+      <h2 class="datum-title">订购人</h2>
+    </ion-item>
+    <div>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>姓名</ion-label>
+        <ion-input type="text" text-right placeholder="姓名" [(ngModel)]="params.customer.KHXX002"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>联系电话</ion-label>
+        <ion-input type="text" text-right placeholder="电话" [(ngModel)]="params.customer.KHXX007"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>联系固话</ion-label>
+        <ion-input type="text" text-right placeholder="固话" [(ngModel)]="params.customer.KHXX008"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-note color="oranger">*</ion-note>登记证件类型</ion-label>
+        <ion-select cancelText="取消" okText="确定" [(ngModel)]="params.customer.KHXX011">
+          <ion-option value=0>身份证</ion-option>
+          <ion-option value=1>台胞证</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-note color="oranger">*</ion-note>证件号码</ion-label>
+        <ion-input type="text" text-right placeholder="证件号" [(ngModel)]="params.customer.KHXX003"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-note color="oranger">*</ion-note>家庭地址</ion-label>
+        <ion-input type="text" text-right placeholder="家庭地址" [(ngModel)]="params.customer.KHXX009"></ion-input>
+      </ion-item>
+    </div>
+  </ion-list>
+  <!-- 资料补充 -->
+  <ion-list no-margin>
+    <ion-item>
+      <h2 class="datum-title">资料补充</h2>
+    </ion-item>
+    <div>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+            <p>身份证正面</p>
+          </ion-col>
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+            <p>身份证反面</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+            <p>购车发票</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+            <p>行驶证</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+            <p>新车合格证 #1</p>
+          </ion-col>
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+            <p>新车合格证 #2</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+            <p>二手车交易发票 #2</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+            <p>当日里程表读数</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+            <p>二手车认证报告 #1</p>
+          </ion-col>
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+            <p>二手车认证报告 #2</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row class="pictures">
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+            <p>其他 #1</p>
+          </ion-col>
+          <ion-col tappable class="add">
+            <ion-icon name="camera"></ion-icon>
+            <p>其他 #2</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-list>
+  <!-- 延保信息 -->
+  <!--<ion-list no-margin>
+    <ion-item>
+      <h2 class="datum-title">延保信息</h2>
+    </ion-item>
+    <div>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>原厂保修起始日期</ion-label>
+        <ion-datetime min="1970-01-01" max="2030-01-01" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>原厂保修终止日期</ion-label>
+        <ion-datetime min="1970-01-01" max="2030-01-01" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>原厂保修公里数(公里)</ion-label>
+        <ion-input type="number" text-right placeholder="必填"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>延保期至</ion-label>
+        <ion-input type="text" style="font-size: 1rem;" disabled text-right></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>延保年限</ion-label>
+        <ion-input type="text" disabled text-right></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>赔偿金额</ion-label>
+        <ion-input type="text" disabled text-right></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>原价</ion-label>
+        <ion-input type="text" disabled text-right></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>现价</ion-label>
+        <ion-input type="text" disabled text-right></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>延保项</ion-label>
+        <ion-input type="text" disabled text-right></ion-input>
+      </ion-item>
+    </div>
+  </ion-list>-->
+</ion-content>
+<ion-footer ion-row no-margin padding-horizontal>
+  <button (click)="submit()" full ion-button color="base">保存</button>
+</ion-footer>

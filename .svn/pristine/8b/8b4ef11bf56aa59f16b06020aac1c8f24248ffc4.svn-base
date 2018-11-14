@@ -1,0 +1,21 @@
+import { Component } from '@angular/core';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
+@Component({
+  selector: 'page-ewp',
+  templateUrl: 'ewp.html'
+})
+export class EWPPage {
+  tabsYSBTag: any = 1;
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,) {
+
+  }
+
+  ionViewWillEnter() {
+  }
+
+  tabsYSB(tag){
+    this.tabsYSBTag = tag;
+  }
+}

@@ -1,0 +1,10 @@
+.tab-c-share{
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  left: calc(50% - 30px);
+  bottom: 5px;
+  z-index: 10;
+  background-size: 60px !important;
+  background: url(../assets/img/tab/icon_tabs_share.png) 100% no-repeat;}
+.tabs-ios .tabbar{background-color: #f8f8f8 !important; }

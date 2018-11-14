@@ -1,0 +1,77 @@
+import { Component } from '@angular/core';
+import { ModalController, NavController,NavParams } from 'ionic-angular';
+import { PreviewPicturePage } from "../../../shared/preview-picture/preview-picture";
+import { ContractService } from "../../mine/contract/contractService";
+import {SB_HT_SERVE_URL, YB_HT_SERVE_URL} from "../../../providers/Constants";
+import {NativeService} from "../../../providers/NativeService";
+
+@Component({
+  selector: 'page-mine-contract',
+  templateUrl: 'contract.html',
+  providers: [ContractService]
+
+})
+export class ContractPage {
+  public contractList: any[] = [];
+  public ybServeUrl:string = '';
+  public sbServeUrl:string = '';
+  public status:number = 0;
+  constructor(public navCtrl: NavController,
+              public modalCtrl: ModalController,
+              public navParams: NavParams,
+              public nativeService: NativeService,
+              public contractService: ContractService) {
+  }
+
+  ionViewWillEnter(){
+    this.ybServeUrl = YB_HT_SERVE_URL;
+    this.sbServeUrl = SB_HT_SERVE_URL;
+    this.init(this.status);
+  }
+
+  /**
+   * 加载
+   * */
+  init(status){
+    this.contractList = [];
+    if (status == 0){
+      this.contractService.getYBContractData({
+        userid: this.navParams.get('userId')
+      }).subscribe(r => {
+        if (r.Code == 200) {
+          this.contractList = r.DataList.Table;
+        } else {
+          this.nativeService.alertTip(r.Message);
+        }
+      });
+    } else {
+      this.contractService.getSBContractData({
+        userid: this.navParams.get('userId')
+        //userid: "BA74CDD5-1E8A-4FE9-A6CE-1EEF3BDF55EA"
+      }).subscribe(r => {
+        if (r.Code == 200) {
+          this.contractList = r.DataList.Table;
+        } else {
+          this.nativeService.alertTip(r.Message);
+        }
+      });
+    }
+
+  }
+
+  power(obj){
+    obj.togglePower = !obj.togglePower;
+  }
+
+  viewPhoto(picturePaths) {
+    this.modalCtrl.create(PreviewPicturePage, { 'initialSlide': 1, 'picturePaths': [picturePaths] }).present();
+  }
+
+  /**
+   * 状态切换
+   * */
+  filterTabs(status) {
+    this.status = status;
+    this.init(status);
+  }
+}

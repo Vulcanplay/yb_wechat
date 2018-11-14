@@ -1,0 +1,156 @@
+import { Component } from '@angular/core';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
+import { OrderService } from "./OrderService";
+import { PaymentOrderPage } from "../../ewp/payment-order/payment-order";
+import { DomSanitizer } from "@angular/platform-browser";
+import {NativeService} from "../../../providers/NativeService";
+import {SanBaoOrderDetailsPage} from "./sanbao-details/details";
+import {YanBaoOrderDetailsPage} from "./yanbao-details/details";
+
+@Component({
+  selector: 'page-order',
+  templateUrl: 'order.html'
+})
+export class OrderPage {
+  //标题
+  private barTitle: string;
+  //延保列表
+  private ybOrderList: any[] = [];
+  //三包列表
+  private sbOrderList: any[] = [];
+  //订单类型
+  private orderType: any;
+  //订单状态
+  private status: any = this.navParams.get('status');
+  //文本检索
+  private searchText: string = "";
+  //用户信息
+  private userId: string = this.navParams.get('userId');
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              public _sanitizer: DomSanitizer,
+              public orderService: OrderService,
+              public nativeService: NativeService) {
+  }
+  ionViewWillEnter() {
+    this.orderType = this.navParams.get("type");
+    this.init();
+  }
+  /**
+   * 初始化
+   * */
+  init(){
+    switch (this.orderType){
+      case 0:
+        this.barTitle = "延保订单";
+        this.ybOrderList = [];
+        //延保订单
+        this.getYBOrderList(this.status);
+        break;
+      case 1:
+        this.barTitle = "喷漆券订单";
+        //TODO
+        //喷漆订单
+        break;
+      case 2:
+        this.barTitle = "三包订单";
+        this.sbOrderList = [];
+        //TODO
+        //三包订单
+        this.getSBOrderList(this.status);
+        break;
+    }
+  }
+  /**
+   * 获取延保订单
+   * @params
+   * userId
+   * paystatus
+   * -1全部订单 0 已支付订单  1未支付
+   * */
+  getYBOrderList(status) {
+    this.orderService.getYBOrderData({
+      userId: this.userId,
+      paystatus: status
+    }).subscribe(r => {
+      if(r.Code == 200) {
+        //向数组添加数据
+        this.ybOrderList = r.DataList.Table;
+      } else {
+        this.nativeService.alertTip(r.Message);
+      }
+    });
+  }
+  /**
+   * 获取三包订单
+   * @params
+   * userId
+   * paystatus
+   * -1全部订单 0 已支付订单  1未支付
+   * */
+  getSBOrderList(status) {
+    this.orderService.getSBOrderData({
+      userId: this.userId,
+      //userId: "5815C966-AB6E-33EE-21F1-AC0EF559180D",
+      payStatus: status
+    }).subscribe(r => {
+      if(r.Code == 200) {
+        //向数组添加数据
+        this.sbOrderList = r.DataList.Table;
+      } else {
+        this.nativeService.alertTip(r.Message);
+      }
+    });
+  }
+
+  orderPay(orderId) {
+    this.navCtrl.push(PaymentOrderPage, { orderId: orderId });
+  }
+
+  getBackground(image) {
+    return this._sanitizer.bypassSecurityTrustStyle(`url(${image})`);
+  }
+
+  /**
+   * 状态切换
+   * */
+  filterTabs(status) {
+    this.status = status;
+    this.init();
+  }
+
+  /**
+   * 延保详情
+   * */
+  ybDetails(orderId){
+    this.orderService.getYBOrderDetails({
+      orderId: orderId,
+    }).subscribe(r => {
+      if(r.Code == 200){
+        this.navCtrl.push(YanBaoOrderDetailsPage, {item: r.DataList.Table[0]});
+      } else {
+        this.nativeService.alertTip(r.Message);
+      }
+    });
+  }
+  /**
+   * 三包详情
+   * */
+  sbDetails(orderId){
+    this.orderService.getSBOrderDetails({
+      /*sanbaoOrderId: "DB7B502A-91EF-482B-915C-47DC94FFC35A",
+      userid: "5815C966-AB6E-33EE-21F1-AC0EF559180D",*/
+      sanbaoOrderId: orderId,
+      userid: this.userId,
+      paystatus: this.status
+    }).subscribe(r => {
+      if(r.Code == 200){
+        this.navCtrl.push(SanBaoOrderDetailsPage, {item: r.DataList.Table[0]});
+      } else {
+        this.nativeService.alertTip(r.Message);
+      }
+    });
+  }
+}

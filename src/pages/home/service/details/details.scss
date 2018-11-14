@@ -1,0 +1,29 @@
+page-ewp-details {
+  .no-car ion-col{
+    height: 12rem;
+    background: url(../assets/img/ewp/no_car_bg.png) no-repeat center center;
+    background-size: 100%;
+    border-radius: 10px;
+    margin: 5px 10px;
+  }
+  .no-car h2,.no-car p{ margin: 0; line-height: 6rem;}
+  .no-car h2{ color:color($colors, oranger);}
+  .no-car p{ color:color($colors, white);}
+  ion-slides{ height: 17.5rem;}
+  ion-slides ion-slide{background-position: center center;background-size: cover; background-repeat: no-repeat;}
+  .swiper-pagination-bullet-active{background-color: color($colors, dark)}
+
+  .ewp-details-title-item h2{ font-size: 1.5rem; padding: 5px;}
+  .line-through{text-decoration: line-through;}
+
+  .yb-sm{background-color: white; border-top:.55px solid $custom-list-border-color;}
+  .yb-sm [col-4][text-right]{line-height: 35px;color: color($colors,icon-gary)}
+  .yb-sm [col-8] ion-buttons button{padding: 4px 2em;}
+  .yb-sm [col-8]:last-child ion-buttons button{padding: 4px 1em;}
+  .yb-sm [col-8]:last-child ion-buttons button[disabled]{ opacity: .5;}
+  .font-small{font-size: 1.2rem;}
+
+  .icon-img{background-position: center center;background-size: 22px 22px;background-repeat: no-repeat;margin: 0!important;}
+  .icon-img.icar-logo{min-width: 40px; background-size: contain;}
+  .content-ios, .content-md, .content-wp{background-color: #f3f3f3 !important;}
+}

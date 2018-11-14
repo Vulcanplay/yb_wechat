@@ -1,0 +1,7 @@
+<ion-tabs  #mainTabs  selectedIndex={{selectedIndex}} >
+  <ion-tab [root]="tab1Root" tabTitle="首页"    tabIcon="home"  tabsHideOnSubPages></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="定制延保" tabIcon="ewp"   tabsHideOnSubPages></ion-tab>
+  <!-- <ion-tab [root]="tab3Root" tabTitle="检测网点" tabIcon="site"  tabsHideOnSubPages></ion-tab> -->
+  <ion-tab [root]="tab3Root" tabTitle="我的" tabIcon="mine"      tabsHideOnSubPages></ion-tab>
+</ion-tabs>
+<!-- <ion-tabs #mainTabs selectedIndex=0 ></ion-tabs> -->

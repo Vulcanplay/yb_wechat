@@ -1,0 +1,65 @@
+import { Component } from '@angular/core';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
+import {NativeService} from "../../providers/NativeService";
+import {OrderPage} from "../mine/order/order";
+import { Storage } from "@ionic/storage";
+@Component({
+  selector: 'page-ewp',
+  templateUrl: 'ewp.html'
+})
+export class EWPPage {
+  userInfo = {
+    loginId:"",
+    loginname:null,
+    code:null,
+    mjinfoId:"",
+    mjname:null,
+    mjnike:null,
+    mjsex:null,
+    mjareaname:null,
+    mjphone:null,
+    mjcardtype:null,
+    mjcardNO:null,
+    mjaddress:null,
+    mjpostcode:null,
+    mjmail:null
+  };
+  isHasLogin: boolean = false;
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              public storage: Storage,
+              public nativeService: NativeService) {
+  }
+
+  ionViewDidEnter() {
+    this.storage.get('wx_user').then(userInfo => {
+      if (userInfo != null) {
+        this.userInfo = userInfo;
+        this.isHasLogin = true;
+      }
+    });
+  }
+
+  /**
+   * 订单
+   * @params status
+   * @订单状态
+   * 全部 -1
+   * 已支付 0
+   * 未支付 1
+   * @params type
+   * @订单类型
+   * 延保 0
+   * 喷漆 1
+   * 三包 2
+   * */
+  order(status, type) {
+    if (this.isHasLogin) {
+      this.navCtrl.push(OrderPage, { status: status, type: type, userId: this.userInfo.mjinfoId });
+    } else {
+      this.nativeService.alertTip("请先登录~");
+      this.navCtrl.parent.select(2);
+    }
+  }
+}

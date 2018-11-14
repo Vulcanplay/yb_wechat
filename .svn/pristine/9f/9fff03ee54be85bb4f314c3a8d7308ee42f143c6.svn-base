@@ -1,0 +1,34 @@
+import { Component } from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
+import {MineService} from "../MineService";
+
+@Component({
+  selector: 'page-mine-message',
+  templateUrl: 'message.html'
+})
+export class MessagePage {
+  filterTabsCtrl:any = 0;
+  systemMessageData:any[] = [];
+  orderMessageData:any[] = [];
+
+  constructor(public navCtrl: NavController,
+              public mineService: MineService,
+              public navParams:NavParams) {
+  }
+  ionViewWillEnter(){
+    this.getMessage();
+  }
+
+  getMessage(){
+    if (this.filterTabsCtrl == 0){
+      this.mineService.getSysMessageData({id:this.navParams.get('userid')}).subscribe(r=>{this.systemMessageData = r.data});
+    }else{
+      this.mineService.getOrderMessageData({id:this.navParams.get('userid')}).subscribe(r=>{this.orderMessageData = r.data});
+    }
+  }
+
+  filterTabs(index){
+    this.filterTabsCtrl = index;
+    this.getMessage();
+  }
+}

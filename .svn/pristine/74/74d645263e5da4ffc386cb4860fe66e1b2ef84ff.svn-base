@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button small clear (click)="filterCity()">北京&nbsp;
+        <ion-icon name="md-arrow-dropdown"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides autoplay="3000" loop="true" pager="true" paginationType="bullets" (ionSlideDidChange)="slideChanged()" zoom="false"
+    class="banner-ion-slides">
+    <ion-slide style="background-image: url(./assets/img/home/home_slider_v2_1.jpg)"></ion-slide>
+  </ion-slides>
+  <ion-grid class="white-bg" no-padding>
+    <ion-row text-center class="icon-grid">
+      <ion-col tappable (click)="working()">
+        <div class="tab-1"></div>
+        <p>三包服务</p>
+      </ion-col>
+      <ion-col tappable (click)="yb()">
+        <div class="tab-2"></div>
+        <p>汽车延保</p>
+      </ion-col>
+      <ion-col tappable (click)="working()">
+        <div class="tab-3"></div>
+        <p>金融服务</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list no-margin margin-top>
+    <ion-item class="title-v2" no-lines>
+      <ion-label>最新产品</ion-label>
+    </ion-item>
+    <ion-grid class="home-product white-bg">
+      <ion-row>
+        <!-- <ion-col col-6 *ngFor="let np of newProduct" class="new" tappable>
+          
+          <div class="product-box" [style.background-image]="getBackground(np.YBCP003)" (click)="productone(np.YBCP001,np.YBJG001)">
+          </div>
+          <ion-note color="dark">{{np.YBCP002.slice(0,2)}}</ion-note><br/>
+          <ion-note color="oranger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>{{np.YBJG003}}</ion-note>
+        </ion-col> -->
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-list no-margin margin-top>
+    <ion-item class="title-v2" no-lines>
+      <ion-label>延保专区</ion-label>
+    </ion-item>
+    <ion-grid class="white-bg">
+      <ion-row text-center class="icon-grid">
+        <ion-col col-12>
+          <img src="../assets/img/home/home_ybzq.jpg"/>
+        </ion-col>
+        <!-- <ion-col tappable (click)="myCar()">
+          <ion-icon class="iconfont icon-tubiao19" color="base"></ion-icon>
+          <p>我的爱车</p>
+        </ion-col> -->
+        <ion-col tappable (click)="myOrder()">
+          <ion-icon class="iconfont icon-dingdan" color="base"></ion-icon>
+          <p>延保订单</p>
+        </ion-col>
+        <ion-col tappable (click)="ask()">
+          <ion-icon class="iconfont icon-wenda1" color="base"></ion-icon>
+          <p>快问快答</p>
+        </ion-col>
+        <ion-col tappable (click)="working()">
+          <ion-icon class="iconfont icon-gonglve" color="base"></ion-icon>
+          <p>延保攻略</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
+  <ion-list no-margin margin-top>
+    <ion-item class="title-v2" no-lines>
+      <ion-label>沃享提醒</ion-label>
+    </ion-item>
+    <h2 class="wx-tip">已有
+      <ion-note>6</ion-note>
+      <ion-note>1</ion-note>
+      <ion-note>1</ion-note>
+      <ion-note>2</ion-note>
+      位购买延保服务
+    </h2>
+    <ion-grid class="white-bg">
+      <ion-row text-center class="icon-grid">
+        <ion-col col-12>
+          <img src="../assets/img/home/home_ybzq.jpg"/>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+  <ion-list no-margin margin-top>
+    <ion-item class="title-v2" no-lines>
+      <ion-label>新闻动态</ion-label>
+    </ion-item>
+    <button ion-item detail-none class="xwdt" (click)="article(1,'延保小投入，关键时刻大作用')">
+      <ion-thumbnail item-start>
+        <img src="https://p3.pstatp.com/list/190x124/11f800018a804eae8a87" width="95px"/>
+      </ion-thumbnail>
+      <h2 class="normal">延保小投入，关键时刻大作用</h2>
+      <p class="font-small"><ion-note color="gary">发布人：青年与车</ion-note>&emsp;<ion-note color="gary">发布时间：33分钟前</ion-note></p>
+    </button>
+    <button ion-item detail-none class="xwdt" (click)="article(2,'延保，它真的很重要！')">
+      <ion-thumbnail item-start>
+        <img src="https://p9.pstatp.com/list/190x124/21330004ae0104b10825" width="95px"/>
+      </ion-thumbnail>
+      <h2 class="normal">延保，它真的很重要！</h2>
+      <p class="font-small"><ion-note color="gary">发布人：玩车堂</ion-note>&emsp;<ion-note color="gary">发布时间：1天前</ion-note></p>
+    </button>
+  </ion-list>
+</ion-content>

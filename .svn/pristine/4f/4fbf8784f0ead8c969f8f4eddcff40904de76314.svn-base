@@ -1,0 +1,60 @@
+<ion-content class="person-view">
+  <header style="background-image: url('./assets/img/mine/visiting.png')">
+    <ion-row>
+      <ion-col col-4>
+        <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2999168145,825785497&amp;fm=27&amp;gp=0.jpg" width="90px" height="90px" class="radius-50">
+      </ion-col>
+      <ion-col col-6>
+        <p class="farr-font ng-binding">刘忠磊</p>
+        <h4 class="farr-font ng-binding">182 1054 8952</h4>
+        <img src="./assets/img/mine/silver.png" class="margin-top-5" width="95" height="25" style="">
+      </ion-col>
+      <button ion-button clear small class="edit" (click)="personal()"><ion-icon name="ios-create-outline"></ion-icon></button>
+    </ion-row>
+  </header>
+  <div class="hr"></div>
+  <ion-row class="finance" text-center>
+    <ion-col col-4>
+      <ion-note color="danger">0</ion-note><br/>
+      <ion-note color="dark6">积分</ion-note>
+    </ion-col>
+    <ion-col col-4>
+      <ion-note color="danger">88.66</ion-note><br/>
+      <ion-note color="dark6">积金</ion-note>
+    </ion-col>
+    <ion-col col-4>
+      <ion-note color="danger">10000.00</ion-note><br/>
+      <ion-note color="dark6">储值</ion-note>
+    </ion-col>
+  </ion-row>
+  <div class="hr"></div>
+  <ion-row text-center>
+    <ion-col col-4>
+      <img src="./assets/img/mine/mall.png" width="28" height="28"/><br/>
+      <ion-note color="dark6">商城订单</ion-note>
+    </ion-col>
+    <ion-col col-4>
+      <img src="./assets/img/mine/appointment.png" width="28" height="28"/><br/>
+      <ion-note color="dark6">预约订单</ion-note>
+    </ion-col>
+    <ion-col col-4>
+      <img src="./assets/img/mine/maintenance.png" width="28" height="28"/><br/>
+      <ion-note color="dark6">维修订单</ion-note>
+    </ion-col>
+  </ion-row>
+  <div class="hr"></div>
+  <ion-row text-center>
+    <ion-col col-4>
+      <img src="./assets/img/mine/certificate.png" width="48" height="34"/><br/>
+      <ion-note color="dark6">我的卡券</ion-note>
+    </ion-col>
+    <ion-col col-4>
+      <img src="./assets/img/mine/member.png" width="48" height="34"/><br/>
+      <ion-note color="dark6">会员权益</ion-note>
+    </ion-col>
+    <ion-col col-4>
+      <img src="./assets/img/mine/car.png" width="48" height="34"/><br/>
+      <ion-note color="dark6">我的爱车</ion-note>
+    </ion-col>
+  </ion-row>
+</ion-content>

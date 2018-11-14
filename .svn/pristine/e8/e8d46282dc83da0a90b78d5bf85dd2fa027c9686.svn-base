@@ -1,0 +1,152 @@
+<ion-header>
+    <ion-navbar>
+       <ion-buttons start (click)="dismiss()">
+        <button ion-button>
+          <i class="iconfont lg icon-custom-arrowleft"></i>
+        </button>
+      </ion-buttons>
+      <ion-title>选择品牌</ion-title>
+    </ion-navbar>
+  </ion-header>
+<ion-content>
+  <!--<ion-item-divider id="brand-hot">热门品牌</ion-item-divider>
+  <ion-grid class="white-bg">
+    <ion-row text-center>
+      <ion-col col-3 tappable (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of hotcar">
+        <div class="img-contain" [style.background-image]="getBackground(my.LOGO)"></div>
+        <ion-note color="dark">{{my.NAME.slice(0,2)}}</ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-grid>-->
+  <ion-list no-margin>
+    <ion-item-group id="brand-A">
+      <ion-item-divider>A</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of A">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-B">
+      <ion-item-divider>B</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of B">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-D">
+      <ion-item-divider>D</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of D">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-F">
+      <ion-item-divider>F</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of F">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-G">
+      <ion-item-divider>G</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of G">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-H">
+      <ion-item-divider>H</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of H">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-J">
+      <ion-item-divider>J</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of J">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-K">
+      <ion-item-divider>K</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of K">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-L">
+      <ion-item-divider>L</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of L">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-M">
+      <ion-item-divider>M</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of M">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-Q">
+      <ion-item-divider>Q</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of Q">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-R">
+      <ion-item-divider>R</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of R">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-T">
+      <ion-item-divider>T</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of T">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-X">
+      <ion-item-divider>X</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of X">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+    <ion-item-group id="brand-Z">
+      <ion-item-divider>Z</ion-item-divider>
+      <button ion-item detail-none (click)="filterConfigureModal(my.ID, my.NAME, my.LOGO)" *ngFor="let my of Z">
+        <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(my.LOGO)"></ion-icon>
+        <ion-label>{{my.NAME}}</ion-label>
+      </button>
+    </ion-item-group>
+
+  </ion-list>
+</ion-content>
+<div class="brandbox-shortcuts">
+  <a brandbox-link href="#brand-hot">#</a>
+  <a brandbox-link href="#brand-A">A</a>
+  <a brandbox-link href="#brand-B">B</a>
+
+  <a brandbox-link href="#brand-D">D</a>
+
+  <a brandbox-link href="#brand-F">F</a>
+  <a brandbox-link href="#brand-G">G</a>
+  <a brandbox-link href="#brand-H">H</a>
+  <a brandbox-link href="#brand-K">K</a>
+  <a brandbox-link href="#brand-J">J</a>
+  <a brandbox-link href="#brand-K">K</a>
+  <a brandbox-link href="#brand-L">L</a>
+  <a brandbox-link href="#brand-M">M</a>
+  <a brandbox-link href="#brand-Q">Q</a>
+  <a brandbox-link href="#brand-R">R</a>
+  <a brandbox-link href="#brand-T">T</a>
+
+  <a brandbox-link href="#brand-X">X</a>
+
+  <a brandbox-link href="#brand-Z">Z</a>
+</div>

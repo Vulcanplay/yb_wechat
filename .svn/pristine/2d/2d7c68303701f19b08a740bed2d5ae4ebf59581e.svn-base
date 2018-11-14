@@ -1,0 +1,12 @@
+page-service-contract-yb {
+  h2{ font-weight: bolder; font-size: 1.6em; margin-bottom: 2rem;}
+  h3{ font-size: 1.1em; font-weight: bold; margin: .8em 0;}
+  h3 span{ font-size: .9em; font-weight: 100;}
+  p{ font-size: 1em;}
+  .signature{ margin: 3rem 0; position: relative;height: 5rem;line-height: 5rem;}
+  .signature img{position: absolute;top: 0;left: 30%;}
+  .zhang{ position: absolute; right: 0; top: calc(1em + 30px); width: 25%; }
+  .logo{}
+  .logo.tb{background: url(../assets/img/home/services_logo_tb.png) no-repeat top left !important;background-size: 30% !important;padding-top: 4rem;}
+  .logo.rb{background: url(../assets/img/home/services_logo_rb.png) no-repeat top left !important;background-size: 30% !important;padding-top: 4rem;}
+}

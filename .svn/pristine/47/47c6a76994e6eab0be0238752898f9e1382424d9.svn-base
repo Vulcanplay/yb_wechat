@@ -1,0 +1,17 @@
+import { Component } from '@angular/core';
+import {ModalController, NavController} from 'ionic-angular';
+import {HomeFinanceAuxiliaryInformationPage} from "../auxiliary-information/auxiliary-information";
+
+@Component({
+  selector: 'page-home-finance-basic-information',
+  templateUrl: 'basic-information.html'
+})
+export class HomeFinanceBasicInformationPage {
+
+  constructor(public navCtrl: NavController,
+              public modalCtrl: ModalController) {
+  }
+  next(){
+    this.navCtrl.push(HomeFinanceAuxiliaryInformationPage);
+  }
+}

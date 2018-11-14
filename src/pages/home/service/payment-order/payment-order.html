@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>收银台</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list no-margin margin-top>
+    <ion-item>
+      <ion-label>订单金额</ion-label>
+      <ion-note item-end color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+    </ion-item>
+    <button ion-item class="ewp-details-item" (click)="showAlert()">
+      <ion-icon item-left color="secondary" class="iconfont icon-custom-pay-wechat"></ion-icon>
+      <ion-label>微信支付</ion-label>
+    </button>
+  </ion-list>
+</ion-content>

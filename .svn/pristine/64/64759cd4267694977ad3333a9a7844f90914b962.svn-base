@@ -1,0 +1,21 @@
+
+<ion-content>
+  <ion-header>
+    <ion-toolbar color="white">
+      <ion-title>支付结果</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only color="dark" (click)="dismiss()">
+          <ion-icon name="ios-close-outline"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <div class="alert-content" text-center>
+    <ion-icon color="secondary" class="iconfont icon-custom-success"></ion-icon>
+    <h2>支付成功！</h2>
+    <ion-buttons>
+      <button col-5 ion-button small color="gary" outline (click)="dismiss()">返回</button>
+      <button col-5 ion-button small color="base" outline>确定</button>
+    </ion-buttons>
+  </div>
+</ion-content>

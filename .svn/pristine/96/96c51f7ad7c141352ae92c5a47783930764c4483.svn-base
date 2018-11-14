@@ -1,0 +1,48 @@
+
+@font-face {font-family: "Ionicons";
+  src: url('../assets/icon/tab/iconfont.eot'); /* IE9*/
+  src: url('../assets/icon/tab/iconfont.eot') format('embedded-opentype'), /* IE6-IE8 */
+  url('../assets/icon/tab/iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../assets/icon/tab/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.ion-md-home:before{ content: "\e911"; }
+
+.ion-ios-home:before { content: "\e911"; }
+
+.ion-ios-home-outline:before { content: "\e911"; }
+
+
+.ion-md-ewp:before{ content: "\e922"; }
+
+.ion-ios-ewp:before { content: "\e922"; }
+
+.ion-ios-ewp-outline:before { content: "\e922"; }
+
+
+.ion-md-site:before{ content: "\e933"; }
+
+.ion-ios-site:before { content: "\e933"; }
+
+.ion-ios-site-outline:before { content: "\e933"; }
+
+
+.ion-md-mine:before{ content: "\e944"; }
+
+.ion-ios-mine:before { content: "\e944"; }
+
+.ion-ios-mine-outline:before { content: "\e944"; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

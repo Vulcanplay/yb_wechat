@@ -1,0 +1,9 @@
+page-mine-message{
+  .item-ios h2{
+    font-size: 1.5rem;
+    padding:.5rem 0;
+  }
+  .item-ios p{
+    font-size:1.3rem;
+  }
+}

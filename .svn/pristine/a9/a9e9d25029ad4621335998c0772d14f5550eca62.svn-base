@@ -1,0 +1,40 @@
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import {NativeService} from "../../../providers/NativeService";
+import {MineService} from "../MineService";
+@Component({
+  selector: 'page-mine-personal-data',
+  templateUrl: 'personal-data.html'
+})
+export class PersonalDataPage {
+  constructor(public navCtrl: NavController,
+              public nativeService: NativeService,
+              public mineService: MineService,
+              public navParams: NavParams,) {
+  }
+
+  ionViewDidEnter() {
+  }
+
+  /**
+   * 提交修改
+   * */
+  submit() {
+    /*if(this.userData.name === ""){
+      this.nativeService.alertTip("姓名不能为空~");
+      return false;
+    } else if(this.userData.name.length > 8) {
+      this.nativeService.alertTip("姓名不能超过8个汉字~");
+      return false;
+    } else {
+      this.mineService.updateMineInfo(this.userData).subscribe(r => {
+        if(r.Code == 200){
+          this.nativeService.alertTip(r.Message);
+        } else {
+          this.nativeService.alertTip(r.Message);
+        }
+      });
+    }*/
+  }
+
+}

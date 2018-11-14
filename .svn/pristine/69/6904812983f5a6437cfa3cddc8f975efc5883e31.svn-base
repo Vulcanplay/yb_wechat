@@ -1,0 +1,114 @@
+import { Component } from '@angular/core';
+import { ModalController, NavController, NavParams, ViewController } from "ionic-angular";
+import { FilterConfigurePage } from "./configure/configure";
+import { DomSanitizer } from "@angular/platform-browser";
+import { FilterBrandSeries } from "../filter-brand-series/FilterBrandSeries";
+import { BrandType } from "../../model/Type";
+import { ProductParams } from "../../model/UserInfo";
+import { FILE_SERVE_URL } from "../../providers/Constants";
+@Component({
+  selector: 'page-filter-brand-series',
+  templateUrl: 'filter-brand-series.html',
+  providers: [FilterBrandSeries]
+})
+export class FilterBrandSeriesPage {
+  public hotcar: any[];
+  private productParams: ProductParams = {
+    type: '',
+    carseriesId: '',
+    carseriesName: '',
+    brandid: '',
+    brandname: '',
+    groupid: '',
+    MJCL029: ''
+  };
+  public brandType: BrandType;
+  A: any[];
+  B: any[];
+  C: any[];
+  D: any[];
+  E: any[];
+  F: any[];
+  G: any[];
+  H: any[];
+  I: any[];
+  J: any[];
+  K: any[];
+  L: any[];
+  M: any[];
+  N: any[];
+  O: any[];
+  P: any[];
+  Q: any[];
+  R: any[];
+  S: any[];
+  T: any[];
+  U: any[];
+  V: any[];
+  W: any[];
+  X: any[];
+  Y: any[];
+  Z: any[];
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
+    private _sanitizer: DomSanitizer,
+    public filterBrandSeries: FilterBrandSeries) {
+  }
+
+  ionViewWillEnter() {
+    this.getHotCarList();
+    this.getFilterBrandSeries();
+  }
+
+  getHotCarList() {
+    this.filterBrandSeries.getHotBrandList().subscribe(r => {
+      this.hotcar = r.data.Table;
+    });
+  }
+  getFilterBrandSeries() {
+    this.filterBrandSeries.getFilterBrandSeries().subscribe(r => {
+      this.brandType = r.data;
+      this.A = r.data.A;
+      this.B = r.data.B;
+      this.D = r.data.D;
+      this.F = r.data.F;
+      this.G = r.data.G;
+      this.H = r.data.H;
+      this.J = r.data.J;
+      this.K = r.data.K;
+      this.L = r.data.L;
+      this.M = r.data.M;
+      this.Q = r.data.Q;
+      this.T = r.data.T;
+      this.S = r.data.S;
+      this.Z = r.data.Z;
+    });
+  }
+
+  back() {
+    this.viewCtrl.dismiss(this.productParams);
+  }
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+
+  filterConfigureModal(brandid, brandname) {
+    let modal = this.modalCtrl.create(FilterConfigurePage, { 'brandid': brandid, 'brandname': brandname, 'type': this.navParams.get('type') },
+      {
+        enterAnimation: 'modal-from-right-enter',
+        leaveAnimation: 'modal-from-right-leave'
+      });
+    modal.present();
+    modal.onDidDismiss((data: ProductParams) => {
+      if (data != null) {
+        this.productParams = data;
+        this.back();
+      }
+    });
+  }
+
+  getBackground(image) {
+    return this._sanitizer.bypassSecurityTrustStyle(`url(${image})`);
+  }
+}

@@ -1,0 +1,70 @@
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { LoginInfo } from "../../../model/UserInfo";
+import {
+  Http, Headers, RequestOptions, URLSearchParams, RequestOptionsArgs, RequestMethod
+} from '@angular/http';
+import { HttpService } from "../../../providers/HttpService";
+import { Result } from "../../../model/Result";
+import { debounce } from "rxjs/operator/debounce";
+@Injectable()
+export class SignInService {
+  constructor(public httpServices: HttpService
+  ) {
+
+
+  }
+
+  //登录
+  login(user): Observable<(LoginInfo)> {
+    let param = {
+      'LoginName': user.phone,
+      'Code': user.verificationCode
+    };
+    return this.httpServices.get('login/GetLogin', param).map(r => r.json());
+  }
+
+  //是否有此手机号用户
+  isHasUserInfo(sendinfo): Observable<(Result)> {
+    let param = { 'phone': sendinfo.phone };
+    return this.httpServices.get('login/IsHasUserInfo', param).map(r => r.json())
+
+  }
+
+  //发送验证码
+  sendcode(sendcodeinfo): Observable<(Result)> {
+    let param = {
+      phone: sendcodeinfo.phone,
+      sendtype: sendcodeinfo.sendtype
+    };
+    return this.httpServices.get('Login/GetCode', param).map(r => r.json());
+  }
+
+
+
+  //注册用户
+  SinUser(user): Observable<(Result)> {
+    // let param = {
+    //   'loginphone': user.phone,
+    //   'password': user.password,
+    //   'areId': user.areId,
+    //   'areName': user.areName,
+    //   'type': user.type
+    // };
+    console.log(user);
+    debugger;
+    return this.httpServices.get('Login/SingInfo', user).map(r => r.json());
+  }
+
+  //找回密码
+  ForGotPassword(user): Observable<(Result)> {
+    let param = {
+      'LoginName': user.phone,
+      'Password': user.newPassword,
+      'Code': user.verificationCode
+    };
+    debugger;
+    return this.httpServices.post('login/UpdateLogin', param).map(r => r.json());
+
+  }
+}

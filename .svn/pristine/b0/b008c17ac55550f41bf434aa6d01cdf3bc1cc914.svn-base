@@ -1,0 +1,14 @@
+import {NgModule} from '@angular/core';
+import {IonicModule} from 'ionic-angular';
+import {SitePage} from "./site";
+import {SiteDetailsPage} from "./details/details";
+
+@NgModule({
+  imports: [IonicModule],
+  declarations: [SitePage, SiteDetailsPage],
+  entryComponents: [SitePage, SiteDetailsPage],
+  providers: [],
+  exports: [IonicModule]
+})
+export class SiteModule {
+}

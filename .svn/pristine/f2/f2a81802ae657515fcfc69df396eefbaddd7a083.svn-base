@@ -1,0 +1,59 @@
+page-mine {
+  ion-list{margin-bottom: 8px !important;}
+  .sign-header{
+    position: relative;
+    text-align: center;
+    height: 105px;
+  }
+  .sign-header img{
+    width: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: -1;
+  }
+  .sign-header button{
+    margin-top: 15%;
+    background-color: rgba(#fff, .5);
+    padding: .5em 2em;
+  }
+  .mine-header {
+    margin-top:10px;
+  }
+  .mine-header ion-item {
+    background-color: color($colors, white);
+    color: #000;
+    font-size: 1.4rem;
+  }
+  .mine-header div > ion-note{font-size: 1.3rem;}
+  .description {
+    color: #666666;
+    margin-top: .5em;
+    font-size: 1.2rem
+  }
+  .item-ios ion-icon[item-left], .item-ios ion-icon[item-right], .item-ios ion-icon[item-start], .item-ios ion-icon[item-end] {
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 4px;
+    font-size:2.4rem;
+    line-height: 1.5em;
+  }
+  .order-tabs{
+    border-top: 1px solid #f5f5f5 !important;
+  }
+  .order-tabs ion-grid ion-row ion-col .iconfont{
+    font-size: 3.8rem;
+  }
+  .order-tabs ion-grid ion-row ion-col{
+    font-size: 1.3rem;
+  }
+  .order-tabs ion-badge{
+    position: absolute;
+    right: calc(50% - 2.1111rem);
+    top: 0;
+    margin: 0 !important;
+    font-size: 1rem;
+  }
+  .content-ios, .content-md, .content-wp{background-color: #f3f3f3 !important;}
+}

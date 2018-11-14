@@ -1,0 +1,6 @@
+page-ewp-confirm-order, page-ewp-shopping-cart{
+  .item-ios h2{font-size: 1.5rem;}
+  .item-ios p{font-size: 1rem;color:#999999; margin-top:4px;}
+  .item-ios ion-thumbnail[item-start]{border: 1px solid $custom-list-border-color;padding: 1px; margin: 8px 8px 8px 0;}
+  .item-ios ion-thumbnail[item-start] div{ width: 78px; height: 68px; background-size: contain; background-repeat: no-repeat; background-position: center center;}
+}

@@ -1,0 +1,152 @@
+import { Component, ViewChild } from '@angular/core';
+import { NavController, Slides, NavParams, AlertController } from 'ionic-angular';
+import {OfferPage} from "./service/offer/offer";
+import { DomSanitizer } from "@angular/platform-browser";
+import {HomeService} from "./HomeService";
+import {HomeWorkingPage} from "./working/working";
+import {PAY_URL} from "../../providers/Constants";
+import {TabsPage} from "../tabs/tabs";
+import {Utils} from "../../providers/Utils";
+
+@Component({
+  selector: 'page-home',
+  templateUrl: 'home.html'
+})
+export class HomePage {
+
+  public test:any = {};
+
+  public data: any = {
+    toutiao: [],
+    site: [],
+    product: [],
+    tip: []
+  };
+
+  constructor(public navCtrl: NavController,
+              public _sanitizer: DomSanitizer,
+              public navParams: NavParams,
+              public alertCtrl: AlertController,
+              public homeService: HomeService) {}
+
+  public payTip: any = null;
+  ionViewDidLoad() {
+    if (Utils.getQueryString("payStatus") != ''){
+      this.payTip = {
+        payType: Utils.getQueryString("payType"),
+        orderId: Utils.getQueryString("orderId"),
+        totalFee: Utils.getQueryString("totalFee"),
+        payStatus: Utils.getQueryString("payStatus"),
+      };
+    }
+    this.payTipAction(this.payTip);
+    this.init();
+  }
+
+  slideChanged() {
+
+  }
+
+  working(){
+    this.navCtrl.push(HomeWorkingPage);
+  }
+
+  /**
+   * 跳转延保报价
+   * */
+  yb(){
+    this.navCtrl.push(OfferPage, {tabsYSBTag: 1});
+  }
+  /**
+   * 跳转三包报价
+   * */
+  sb(){
+    this.navCtrl.push(OfferPage, {tabsYSBTag: 2});
+  }
+
+
+  /**
+   * 初始化
+   * */
+  init(){
+    this.homeService.getHomeTouTiao().subscribe(r => {
+      this.data.toutiao = r.DataList.Table;
+      console.log( this.data.toutiao);
+    });
+    this.homeService.getHomeSite({
+      Province: "北京",
+      City: "北京市",
+      Coordinate: "",
+    }).subscribe(r => {this.data.site = r.DataList.Table;});
+    this.homeService.getHomeProduct().subscribe(r => {
+      this.data.product = r.DataList.Table;
+    });
+    this.homeService.getHomeTip().subscribe(r => {
+      this.data.tip = r.DataList.Table;
+    });
+  }
+
+  getBackground(image) {
+    return this._sanitizer.bypassSecurityTrustStyle(`url(${image})`);
+  }
+  /**
+   * 支付检查
+   * */
+  private payTipAction(payTip: any) {
+    if (payTip != null){
+      /**
+       * payStatus
+       * 0=取消支付
+       * 1=支付成功
+       * */
+      if (payTip.payStatus == "0"){
+        this.alertCtrl.create({
+          title: '支付结果',
+          subTitle: "支付失败；["+payTip.orderId+"]；("+payTip.totalFee+"元)",
+          buttons: [{text: '取消'},
+            {
+              text: '重新支付',
+              handler: () => {
+                window.location.href = PAY_URL + "icar/authFreePay.do?payType="+payTip.payType+"&orderId="+payTip.orderId+"&totalFee="+payTip.totalFee+"&backUrl=" + window.location.href.substring(7, window.location.href.indexOf('?') - 1);
+              }
+            }
+          ]
+        }).present();
+      } else {
+        this.submitPayResult(payTip);
+      }
+    } else {
+      return false;
+    }
+  }
+  /**
+   * 提交支付结果
+   * */
+  submitPayResult(payTip: any){
+    this.homeService.submitPayResult({
+      OrderPayId: payTip.orderId,
+      PayPrice: payTip.totalFee,
+      PayState: 0
+    }).subscribe(r => {
+      if (r.Code == 200){
+        this.alertCtrl.create({
+          title: '支付结果',
+          subTitle: "支付成功；["+payTip.orderId+"]；("+payTip.totalFee+"元)",
+          buttons: [{text: '确定'}]
+        }).present();
+      } else {
+        this.alertCtrl.create({
+          title: '支付结果',
+          enableBackdropDismiss: true,
+          subTitle: "支付成功，支付结果提交失败；",
+          buttons: [{
+            text: '重新提交',
+            handler: () => {
+              this.submitPayResult(payTip);
+            }
+          }]
+        }).present();
+      }
+    });
+  }
+}

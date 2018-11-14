@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      我要额度
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <img src="./assets/img/home/finance/jd_3.png" width="100%"/>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label>是否公司法人：</ion-label>
+        <ion-toggle checked="true" color="base"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>是否公司股东：</ion-label>
+        <ion-toggle checked="false" color="base"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>是否有车辆维修/保养记录：</ion-label>
+        <ion-toggle checked="false" color="base"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>是否有银行理财：</ion-label>
+        <ion-toggle checked="false" color="base"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>是否炒股：</ion-label>
+        <ion-toggle checked="false" color="base"></ion-toggle>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <p class="tip">请确认身份信息，如有误请修改</p>
+  <div padding>
+    <button ion-button block color="base" (click)="next()">下一步</button>
+  </div>
+</ion-content>

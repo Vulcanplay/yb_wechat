@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>三包订单详情</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list no-margin>
+    <button ion-item no-lines margin-top detail-none class="top" (click)="itemToggle(1)">
+      <ion-label>车主资料</ion-label>
+      <button item-end ion-button clear small color="dark"><ion-icon [name]="itemPower[1] ? 'ios-arrow-up-outline' : 'ios-arrow-down-outline'"></ion-icon></button>
+    </button>
+    <div [ngClass]="itemPower[1] ? 'show':'hide'">
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>姓名/单位</ion-label>
+        <ion-input type="text" [disabled]="params.OFFERORDERINFO016 == 0" [(ngModel)]="params.OFFERORDERINFO004" text-right placeholder="请输入姓名/单位"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>电话号码</ion-label>
+        <ion-input type="number" [disabled]="params.OFFERORDERINFO016 == 0" [(ngModel)]="params.OFFERORDERINFO022" text-right placeholder="请输入电话号码"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>证件类别</ion-label>
+        <ion-select disabled cancelText="取消" okText="确定" [(ngModel)]="params.OFFERORDERINFO023">
+          <ion-option value="0" selected>身份证</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>证件号</ion-label>
+        <ion-input type="number" [disabled]="params.OFFERORDERINFO016 == 0" text-right [(ngModel)]="params.OFFERORDERINFO024" placeholder="请输入证件号"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>通讯地址</ion-label>
+        <ion-input type="text" [disabled]="params.OFFERORDERINFO016 == 0" text-right [(ngModel)]="params.OFFERORDERINFO041" placeholder="请输入通讯地址"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>车辆品牌</ion-label>
+        <ion-input type="text" disabled text-right [(ngModel)]="params.OFFERORDERINFO008" placeholder="请输入通讯地址"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>车辆车系</ion-label>
+        <ion-input type="text" disabled text-right [(ngModel)]="params.OFFERORDERINFO010" placeholder="请输入通讯地址"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>车架号</ion-label>
+        <ion-input type="text" [disabled]="params.OFFERORDERINFO016 == 0" [(ngModel)]="params.OFFERORDERINFO019" text-right placeholder="必填"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>发动机号</ion-label>
+        <ion-input type="text" [disabled]="params.OFFERORDERINFO016 == 0" [(ngModel)]="params.OFFERORDERINFO020" text-right placeholder="必填"></ion-input>
+      </ion-item>
+      <ion-item detail-push>
+        <ion-label><ion-note color="oranger">*</ion-note>购车发票日期</ion-label>
+        <ion-datetime [disabled]="params.OFFERORDERINFO016 == 0" min="1970-01-01" [(ngModel)]="params.OFFERORDERINFO029" max="{{toDay}}" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>当前行驶公里数</ion-label>
+        <ion-input type="text" [disabled]="params.OFFERORDERINFO016 == 0" [(ngModel)]="params.OFFERORDERINFO027" text-right placeholder="必填"></ion-input>
+      </ion-item>
+    </div>
+    <button ion-item no-lines margin-top detail-none class="top" (click)="itemToggle(2)">
+      <ion-label>三包信息</ion-label>
+      <!--<button *ngIf="params.OFFERORDERINFO016 == 1" item-end ion-button small color="secondary"(click)="$event.stopPropagation();goPay()">去支付</button>-->
+      <button item-end ion-button clear small color="dark"><ion-icon [name]="itemPower[2] ? 'ios-arrow-up-outline' : 'ios-arrow-down-outline'"></ion-icon></button>
+    </button>
+    <div [ngClass]="itemPower[2] ? 'show':'hide'">
+      <ion-item>
+        <ion-label>推荐指导价</ion-label>
+        <ion-input type="text" [disabled]="params.OFFERORDERINFO016 == 0" [(ngModel)]="params.OFFERORDERINFO040" text-right></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label><ion-note color="oranger">*</ion-note>购买价</ion-label>
+        <ion-input type="text" [disabled]="params.OFFERORDERINFO016 == 0" [(ngModel)]="params.OFFERORDERINFO013" text-right placeholder="必填"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>服务项目</ion-label>
+        <ion-input type="text" [disabled]="params.OFFERORDERINFO016 == 0" [(ngModel)]="params.OFFERORDERINFO011" text-right></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>保修起始日期</ion-label>
+        <ion-datetime disabled [(ngModel)]="params.OFFERORDERINFO025" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>保修截止日期</ion-label>
+        <ion-datetime disabled [(ngModel)]="params.OFFERORDERINFO026" text-right displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>三包公里数</ion-label>
+        <ion-input type="text" [disabled]="params.OFFERORDERINFO016 == 0" [(ngModel)]="params.OFFERORDERINFO014" text-right></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>保险公司</ion-label>
+        <ion-input type="text" [disabled]="params.OFFERORDERINFO016 == 0" [(ngModel)]="params.OFFERORDERINFO015" text-right></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>服务期限</ion-label>
+        <ion-input type="text" [disabled]="params.OFFERORDERINFO016 == 0" [(ngModel)]="params.OFFERORDERINFO012" text-right></ion-input>
+      </ion-item>
+    </div>
+    <button ion-item no-lines margin-top detail-none class="top" (click)="itemToggle(3)">
+      <ion-label>合同信息</ion-label>
+      <!--<button *ngIf="params.OFFERCONTRACTINF041 != 0 && params.OFFERORDERINFO016 == 0" item-end ion-button small color="base" (click)="$event.stopPropagation();orderDetailsSignature();">去签字</button>-->
+      <button item-end ion-button clear small color="dark"><ion-icon [name]="itemPower[3] ? 'ios-arrow-up-outline' : 'ios-arrow-down-outline'"></ion-icon></button>
+    </button>
+    <div [ngClass]="itemPower[3] ? 'show':'hide'">
+      <ion-item *ngIf="params.OFFERORDERINFO036 != ''">
+        <ion-label>合同信息</ion-label>
+        <button ion-button item-end color="base" (click)="viewPhoto(params.OFFERORDERINFO036)">查看</button>
+      </ion-item>
+      <ion-item>
+        <ion-label>服务协议信息</ion-label>
+        <button ion-button item-end color="base" (click)="viewPhotoFWXY(params.OFFERORDERINFO035)">服务协议</button>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <div padding-horizontal margin-bottom>
+    <button block *ngIf="params.OFFERCONTRACTINF041 != 0 && params.OFFERORDERINFO016 == 0" ion-button color="base" (click)="$event.stopPropagation();orderDetailsSignature();">去签字</button>
+    <button block *ngIf="params.OFFERORDERINFO016 == 1" ion-button color="secondary"(click)="$event.stopPropagation();goPay()">去支付</button>
+    <button ion-button block color="base" (click)="submit(true)">保存</button>
+  </div>
+</ion-footer>

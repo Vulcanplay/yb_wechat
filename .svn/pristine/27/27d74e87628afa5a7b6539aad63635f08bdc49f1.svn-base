@@ -1,0 +1,167 @@
+import { Component } from "@angular/core";
+import { Storage } from "@ionic/storage";
+import {NavController, ModalController, AlertController, NavParams} from "ionic-angular";
+import { UserInfo, MineParams } from "../../model/UserInfo";
+import { Helper } from "../../providers/Helper";
+import { DEFAULT_AVATAR } from "../../providers/Constants";
+import { NativeService } from "../../providers/NativeService";
+import { SignInPage } from "../login/sign-in/sign-in";
+import { OrderPage } from "./order/order";
+import { AboutPage } from "./about/about";
+import { VehiclePage } from "./vehicle/vehicle";
+import { ContractPage } from "./contract/contract";
+import { MessagePage } from "./message/message";
+import { AddressPage } from "./address/address";
+import { PersonalDataPage } from "./personal-data/personal-data";
+import { MineService } from "./MineService";
+import { Utils } from "../../providers/Utils";
+@Component({
+  selector: 'page-mine',
+  templateUrl: 'mine.html'
+})
+export class MinePage {
+  userInfo = {
+    loginId:"",
+    loginname:null,
+    code:null,
+    mjinfoId:"",
+    mjname:null,
+    mjnike:null,
+    mjsex:null,
+    mjareaname:null,
+    mjphone:null,
+    mjcardtype:null,
+    mjcardNO:null,
+    mjaddress:null,
+    mjpostcode:null,
+    mjmail:null
+  };
+  avatarPath: String = DEFAULT_AVATAR;
+  isHasLogin: boolean = false;
+  LoginType: MineParams;
+
+  constructor(private navCtrl: NavController,
+    private storage: Storage,
+    private helper: Helper,
+    private modalCtrl: ModalController,
+    private mineServices: MineService,
+    private nativeService: NativeService,
+    private params: NavParams,
+    private alertCtrl: AlertController) {
+  }
+
+
+  //清空数据
+  clearData() {
+    this.isHasLogin = false;
+    this.userInfo = {
+      loginId:"",
+      loginname:null,
+      code:null,
+      mjinfoId:"",
+      mjname:null,
+      mjnike:null,
+      mjsex:null,
+      mjareaname:null,
+      mjphone:null,
+      mjcardtype:null,
+      mjcardNO:null,
+      mjaddress:null,
+      mjpostcode:null,
+      mjmail:null
+    }
+  }
+
+  ionViewDidEnter() {
+    this.storage.get('wx_user').then(userInfo => {
+      if (userInfo != null) {
+        this.userInfo = userInfo;
+       // this.avatarPath = userInfo.AvatarPath;
+        this.isHasLogin = true;
+      }
+    });
+  }
+
+  /**
+   * 登录
+   * */
+  singIn() {
+    let profileModal = this.modalCtrl.create(SignInPage);
+    profileModal.present();
+    profileModal.onDidDismiss(data => {
+      if (data != null) {
+        this.userInfo = data;
+        this.isHasLogin = true;
+      }
+    });
+  }
+
+  /**
+   * 订单
+   * @params status
+   * @订单状态
+   * 全部 -1
+   * 已支付 0
+   * 未支付 1
+   * @params type
+   * @订单类型
+   * 延保 0
+   * 喷漆 1
+   * 三包 2
+   * */
+  order(status, type) {
+    if (this.isHasLogin) {
+      this.navCtrl.push(OrderPage, { status: status, type: type, userId: this.userInfo.mjinfoId });
+    }
+  }
+  /**
+   * 我的合同
+   * */
+  contract() {
+    if (this.isHasLogin) {
+      this.navCtrl.push(ContractPage,{userId: this.userInfo.mjinfoId });
+    }
+  }
+  /*message() {
+    if (this.userInfo.mjinfoId != '') {
+      this.navCtrl.push(MessagePage, { userid: this.userInfo.mjinfoId });
+    }
+  }*/
+  /*address() {
+    if (this.userInfo.mjinfoId != '') {
+      this.navCtrl.push(AddressPage, { userid: this.userInfo.mjinfoId });
+    }
+  }*/
+  personal() {
+    if (this.userInfo.mjinfoId != '') {
+      this.navCtrl.push(PersonalDataPage);
+    }
+  }
+  about() {
+    this.navCtrl.push(AboutPage);
+  }
+
+  //退出
+  signOut() {
+    this.alertCtrl.create({
+      title: '确认退出系统',
+      buttons: [{ text: '取消' },
+      {
+        text: '确定',
+        handler: () => {
+          this.storage.remove('wx_user');
+          this.storage.clear();//清除缓存
+          Utils.sessionStorageClear();//清除缓存
+          Utils.sessionStorageRemoveItem('wx_user');
+          this.clearData();
+        }
+      }
+      ]
+    }).present();
+  }
+
+  notice() {
+    this.nativeService.alert('开发中...');
+  }
+
+}

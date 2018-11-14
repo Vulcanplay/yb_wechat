@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{store.ONSHOP002}}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button clear (click)="getMap()">
+        <ion-icon name="ios-navigate-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <img [src]="store.ONSHOP014" style="width: 100%; display: block;"/>
+  <ion-list margin-bottom>
+    <ion-item>
+      <h2>{{store.ONSHOP002}}</h2>
+      <p style="padding-top:8px;">{{store.ONSHOP003}}</p>
+      <a ion-button href="tel:{{store.ONSHOP013}}" clear item-end><ion-icon color="primary" name="md-call"></ion-icon></a>
+    </ion-item>
+  </ion-list>
+
+  <ion-card style="height: 21rem;">
+    <div #map_container class="map_container"></div>
+  </ion-card>
+</ion-content>

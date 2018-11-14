@@ -1,0 +1,57 @@
+import { Component } from '@angular/core';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
+import { OrderService } from "./OrderService";
+import { PaymentOrderPage } from "../../ewp/payment-order/payment-order";
+import { DomSanitizer } from "@angular/platform-browser";
+import {OrderDetailsPage} from "./details/details";
+
+@Component({
+  selector: 'page-order',
+  templateUrl: 'order.html'
+})
+export class OrderPage {
+  //产品列表
+  private orderList: any[] = [];
+  //订单状态
+  private status: any = this.navParams.get('status');
+  //文本检索
+  private searchText: string = "";
+  //用户id
+  private userId: string = this.navParams.get('userid');
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    public _sanitizer: DomSanitizer,
+    private orderService: OrderService) {
+  }
+
+  ionViewWillEnter() {
+    this.getOrderList();
+  }
+  getOrderList() {
+    this.orderService.getOrderData({
+      userId: this.userId,
+      status: this.status,
+      search: this.searchText,
+    }).subscribe(r => {
+      //向数组添加数据
+      this.orderList = r.data;
+    });
+  }
+
+  orderPay(orderId) {
+    this.navCtrl.push(PaymentOrderPage, { orderId: orderId });
+  }
+
+  getBackground(image) {
+    return this._sanitizer.bypassSecurityTrustStyle(`url(${image})`);
+  }
+  filterTabs(status) {
+    this.status = status;
+  }
+
+  details(item) {
+    this.navCtrl.push(OrderDetailsPage, { orderId: item });
+  }
+}

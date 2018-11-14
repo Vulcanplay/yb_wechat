@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="confirm()">
+        <i class="iconfont lg icon-custom-arrowleft"></i>
+      </button>
+    </ion-buttons>
+    <ion-title>注册</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        <i class="iconfont lg icon-custom-home"></i>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="signUpForm">
+    <ion-list no-margin margin-top>
+      <ion-item>
+        <ion-label color="icon-gary"><i class="iconfont lg icon-custom-phone"></i></ion-label>
+        <ion-input type="tel" color="dark" placeholder="手机号" formControlName="phone" clearInput></ion-input>
+      </ion-item>
+<!-- 
+      <ion-item>
+        <ion-label color="icon-gary"><i class="iconfont lg icon-custom-password"></i></ion-label>
+        <ion-input type="password" placeholder="密码" formControlName="password" clearInput></ion-input>
+      </ion-item> -->
+
+      <ion-item>
+        <ion-label color="icon-gary"><i class="iconfont lg icon-custom-yanzhengma"></i></ion-label>
+        <ion-input type="number" placeholder="验证码" clearInput formControlName="verificationCode"></ion-input>
+        <button ion-button item-end clear color="base" class="border-left send-code"  [disabled]="codesubmitted"  (click)='sendcode(signUpForm.value)'>发送验证码</button>
+      </ion-item>
+    </ion-list>
+
+    <!-- <ion-grid>
+      <ion-row>
+        <ion-col tappable>
+          <button ion-button small clear color="gary">会员注册协议</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+
+    <div>
+      <button ion-button full color="base" type="button"  [disabled]="submitted" (click)='SinUser(signUpForm.value||submitted)'>立即注册</button>
+    </div>
+  </form>
+
+</ion-content>

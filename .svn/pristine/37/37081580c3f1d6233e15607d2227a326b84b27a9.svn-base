@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\appworkspace\\test\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-port-xxxhdpi\\screen.png",
+        "source": "E:\\appworkspace\\test\\platforms\\android\\res\\drawable-port-xxxhdpi\\screen.png"
+    },
+    {
+        "merged": "E:\\appworkspace\\YB-YANBAO\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\drawable-port-xxxhdpi\\screen.png",
+        "source": "E:\\appworkspace\\YB-YANBAO\\platforms\\android\\res\\drawable-port-xxxhdpi\\screen.png"
+    }
+]

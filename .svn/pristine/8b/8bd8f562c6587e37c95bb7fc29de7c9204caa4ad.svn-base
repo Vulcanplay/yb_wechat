@@ -1,0 +1,30 @@
+import { Component } from '@angular/core';
+import {ModalController, NavController, NavParams, AlertController} from 'ionic-angular';
+import {EWPOrderDatumPage} from "./datum/datum";
+
+@Component({
+  selector: 'page-ewp-order',
+  templateUrl: 'order.html'
+})
+export class EWPOrderPage {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              public alertCtrl: AlertController) {
+  }
+  /**
+   * 支付订单
+   * */
+  payOrder(){
+    this.alertCtrl.create({
+      title: '支付成功',
+      enableBackdropDismiss: false,
+      buttons: [{
+        text: '确定',
+        handler: () => {
+          this.navCtrl.push(EWPOrderDatumPage);
+        }
+      }]
+    }).present();
+  }
+}

@@ -1,0 +1,55 @@
+import { Component } from '@angular/core';
+import { ModalController, NavController, NavParams, ViewController } from "ionic-angular";
+import { DomSanitizer } from "@angular/platform-browser";
+import {EWPService} from "../../EWPService";
+import {NativeService} from "../../../../../providers/NativeService";
+@Component({
+  selector: 'page-ewp-sb-brand',
+  templateUrl: 'brand.html',
+  providers: [EWPService]
+})
+export class SBGetBrandPage {
+  private sbBrand: any = [];
+  constructor(public navCtrl: NavController,
+              public modalCtrl: ModalController,
+              public navParams: NavParams,
+              public viewCtrl: ViewController,
+              public nativeService: NativeService,
+              public _sanitizer:DomSanitizer,
+              public ewpService: EWPService) {
+  }
+
+  ionViewDidEnter() {
+    this.getBrand();
+  }
+
+  /**
+   * 获取品牌
+   * */
+  getBrand() {
+    this.ewpService.getBrand().subscribe(r => {
+      if (r.Code == 200){
+        this.sbBrand = r.DataList.Table;
+      } else {
+        this.nativeService.alertTip(r.Message);
+        this.dismiss();
+      }
+    });
+  }
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
+  /**
+   * 根据品牌查询车型
+   * */
+  havingDataDismiss(brandId, brandName) {
+    this.viewCtrl.dismiss({
+      brandId: brandId,
+      brandName: brandName
+    });
+  }
+
+  getBackground(image) {
+    return this._sanitizer.bypassSecurityTrustStyle(`url(${image})`);
+  }
+}

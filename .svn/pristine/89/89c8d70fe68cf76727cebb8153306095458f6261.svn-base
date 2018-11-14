@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="bg" style="background-image: url(./assets/img/home/working.png)"></div>
+  <p text-center><ion-note color="gary">页面建设中...敬请期待...</ion-note></p>
+</ion-content>

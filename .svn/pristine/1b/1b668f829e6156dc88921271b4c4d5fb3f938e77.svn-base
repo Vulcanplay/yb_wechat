@@ -1,0 +1,32 @@
+import { Component } from '@angular/core';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
+import { EWPOrderPage } from "./order/order";
+@Component({
+  selector: 'page-ewp',
+  templateUrl: 'ewp.html'
+})
+export class EWPPage {
+  tabsYSBTag: any = 1;
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,) {
+
+  }
+
+  ionViewWillEnter() {
+  }
+
+  /**
+   * 延保订单
+   * */
+  pushOrder(){
+    this.navCtrl.push(EWPOrderPage);
+  }
+
+  /**
+   * 延保三包 标签切换
+   * */
+  tabsYSB(tag){
+    this.tabsYSBTag = tag;
+  }
+}

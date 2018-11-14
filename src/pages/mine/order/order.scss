@@ -1,0 +1,28 @@
+page-order,page-order-details{
+  .sign-header{
+    position: relative;
+    text-align: center;
+    height: 105px;
+  }
+  .sign-header img{
+    width: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: -1;
+  }
+  .sign-header button{
+    margin-top: 10%;
+    background-color: rgba(#fff, .5);
+    padding: .5em 2em;
+  }
+  .icon-img{background-position: center center;background-size: 22px 22px;background-repeat: no-repeat;margin: 0!important;}
+  .icon-img.icar-logo{min-width: 40px; background-size: contain;}
+  .filter-tabs .toolbar-background-ios{background: #ffffff; border-color: transparent;}
+  .content-ios, .content-md, .content-wp{background-color: #f3f3f3 !important;}
+}
+page-order{
+  ion-content .scroll-content{
+    margin-top: 88px;
+  }
+}

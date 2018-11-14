@@ -1,0 +1,7 @@
+page-mine-address-new{
+  .item-city-picker .label.label-ios{
+    flex: initial;
+    max-width: 200px;
+    margin-right:12px;
+  }
+}

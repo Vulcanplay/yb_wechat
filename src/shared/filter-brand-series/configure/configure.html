@@ -1,0 +1,11 @@
+<ion-content>
+  <ion-list margin-top >
+    <ion-item-group>
+      <ion-item-divider>{{brandSeriesParams.brandName}}</ion-item-divider>
+      <button ion-item detail-none *ngFor="let my of series" (click)="dismissToBrand(my.CARSERIESID, my.BRANDID ,my.BRANDNAME, my.CARSERIESNAME)">
+        <ion-label hidden></ion-label>
+        <ion-label>{{my.CARSERIESNAME}}</ion-label>
+      </button>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

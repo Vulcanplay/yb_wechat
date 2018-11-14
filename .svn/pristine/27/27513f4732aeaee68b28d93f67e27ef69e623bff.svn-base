@@ -1,0 +1,254 @@
+import { Component, ElementRef, ViewChild, transition } from '@angular/core';
+import { NavController, Slides, NavParams, Tabs, App, ModalController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { FilterCityPage } from "../../shared/filter-city/filter-city";
+import { HomePackagePage } from "./package/package";
+import { HomeService } from "./HomeService";
+import { DomSanitizer } from "@angular/platform-browser";
+import { EWPPage } from '../ewp/ewp';
+import { VehiclePage } from '../mine/vehicle/vehicle';
+import { SignInPage } from '../login/sign-in/sign-in';
+import { EWPDetailsPage } from '../ewp/details/details';
+import { UserInfo, ProductParams, CityArry, CarInfo, HomeaddCarARR } from '../../model/UserInfo';
+import { HomeWorkingPage } from "./working/working";
+import { HomeAskPage } from "./ask/ask";
+import { HomeRaidersPage } from "./raiders/raiders";
+import { Utils } from '../../providers/Utils';
+import { FILE_SERVE_URL } from "../../providers/Constants";
+import {OrderPage} from "../mine/order/order";
+import {ArticlePage} from "./article/article";
+
+@Component({
+  selector: 'page-home',
+  templateUrl: 'home.html'
+})
+export class HomePage {
+  @ViewChild(Slides) slides: Slides;
+
+  //头条消息
+  private topMessage: any[];
+  //获取消息
+  private newMessage: any[];
+  //最新产品
+  private newProduct: any[];
+  //品牌
+  private ybBrand: any[];
+  //头条长度
+  public slidelen: number;
+  //是否有车
+  public isHascar: boolean = false;
+
+  public cityarry: CityArry = {
+    cityid: '7685C588-5DC1-45E9-A15D-B820FACE7DB2',
+    cityname: '北京'
+  };
+  //我的爱车标签
+  public carInfo: CarInfo = {
+    BRANDCODE: "",
+    BRANDNAME: "",
+    CARSERIESCODE: "",
+    CARSERIESNAME: "",
+    MJCL001: "",
+    MJCL008: Utils.dateFormat(new Date()),
+    MJCL009: "",
+    MJCL010: "",
+    MJCL026: "",
+    MJCL027: "",
+    MJCL028: "",
+    MJCL029:''
+  };
+  private productParams: ProductParams = {
+    type: '',
+    carseriesId: '',
+    carseriesName: '',
+    brandid: '',
+    brandname: '',
+    groupid: '',
+    MJCL029: ''
+  };
+
+  private addcarArr: HomeaddCarARR;
+  //登录的买家主ID
+  public userinfo: UserInfo = {
+    Userid: '',
+    Username: '',// 姓名
+    NikeName: '', //昵称
+    Email: '',//邮箱
+    Phone: '', //手机号
+    Sex: '',//性别
+    AvatarId: '',//图像
+    AvatarPath: '',//图像路径
+    Openid: '',
+    Sfzhm: '',//省份证号码
+    QQ: '',//qq
+    JF: ''
+  };
+
+  constructor(public navCtrl: NavController,
+    private homeService: HomeService,
+    private _sanitizer: DomSanitizer,
+    private storage: Storage,
+    private _tabs: Tabs,
+    private app: App,
+    private modalcontroller: ModalController,
+    private navParams: NavParams) {
+
+  }
+  ionViewDidEnter() {
+    //获取新产品
+    // this.homeService.getNewProduct({ city: '北京' }).subscribe(r => {
+    //   this.newProduct = r.data;
+    // })
+
+    //获取延保品牌
+    // this.homeService.getYBBrand().subscribe(p => {
+    //   this.ybBrand = p.data;
+    // })
+
+    //获取新动态
+    // this.homeService.getYbNewMessage().subscribe(r => {
+    //   this.newMessage = r.data;
+    // })
+    // this.homeService.getYBTopMessage().subscribe(r => {
+    //   this.slidelen = r.data.length;
+    //   this.topMessage = r.data;
+    // })
+    this.getSesionList();
+  }
+
+
+
+  //抓取缓存值
+  getSesionList() {
+    this.storage.get('wx_user').then((wxuser: UserInfo) => {
+      if (wxuser != null) {
+        this.userinfo = wxuser;
+        this.isHasCarAction(this.userinfo);
+      }
+      else {
+        this.isHascar = false;
+      }
+    });
+    this.storage.get('city').then((cityarr: CityArry) => {
+      if (cityarr != null) {
+        this.cityarry.cityid = cityarr.cityid;
+        this.cityarry.cityname = cityarr.cityname;
+      }
+    })
+  }
+
+
+  isHasCarAction(wxuser) {
+    if (wxuser.Userid != '') {
+      this.homeService.getMyCarTopMessage(wxuser.Userid).subscribe(r => {
+        if (r.data.length > 0) {
+          this.carInfo = r.data[0];
+          this.isHascar = true;
+        }
+        else {
+          this.isHascar = false;
+        }
+      })
+    }
+    else {
+      this.isHascar = false;
+    }
+  }
+
+  filterCity() {
+    this.cityarry = {
+      cityid: '',
+      cityname: ''
+    };
+    let modelcotorl = this.modalcontroller.create(FilterCityPage, this.cityarry);
+    modelcotorl.present();
+    modelcotorl.onDidDismiss((data: CityArry) => {
+      if (data != null) {
+        this.cityarry = data;
+        this.storage.set('city', data);
+      }
+    });
+  }
+
+
+  //跳转适合车辆的延保页
+  ybPackage(type, mycar) {
+    let params = {
+      type: type,
+      cars: mycar
+    }
+    this.navCtrl.push(HomePackagePage, params);
+  }
+
+  slideChanged() {
+
+  }
+
+  newProuctUrl() {
+    this.navCtrl.push(EWPPage, this.productParams);
+  }
+
+  //添加爱车跳转
+  // addMycar() {
+  //   let userid = this.userinfo.Userid;
+  //   if (userid != '') {
+  //     let modelcotorl = this.modalcontroller.create(VehiclePage, { type: 'backtype', userid: this.userinfo.Userid });
+  //     modelcotorl.present();
+  //     modelcotorl.onDidDismiss((data: CarInfo) => {
+  //       if (data != null) {
+  //         this.carInfo = data;
+  //       }
+  //     });
+  //   }
+  //   else {
+  //     let modelcotorl = this.modalcontroller.create(SignInPage, { type: 'myhome' });
+  //     modelcotorl.present();
+  //     modelcotorl.onDidDismiss((data: HomeaddCarARR) => {
+  //       if (data != null) {
+  //         this.userinfo = data.users;
+  //         this.carInfo = data.cars;
+  //         this.isHascar = true;
+  //       }
+  //     });
+
+  //   }
+  // }
+  //建设中
+  working() {
+    this.navCtrl.push(HomeWorkingPage);
+  }
+  //问答
+  ask() {
+    this.navCtrl.push(HomeAskPage);
+  }
+  //延保宝典
+  raiders() {
+    this.navCtrl.push(HomeRaidersPage);
+  }
+  //文章
+  article(type,title){
+    this.navCtrl.push(ArticlePage, {type:type,title:title});
+  }
+  //我的订单
+  myOrder() {
+    this.navCtrl.push(OrderPage);
+  }
+  //我的爱车
+  myCar() {
+    this.navCtrl.push(VehiclePage);
+  }
+
+  //跳转详情
+  productone(id, jgid) {
+    this.navCtrl.push(EWPDetailsPage, { 'YBCP001': id, 'YBJG001': jgid })
+  }
+  //跳转延保
+  yb(){
+    this.navCtrl.parent.select(1);
+  }
+  //
+  getBackground(image) {
+    return this._sanitizer.bypassSecurityTrustStyle(`url(${FILE_SERVE_URL + image})`);
+  }
+
+}

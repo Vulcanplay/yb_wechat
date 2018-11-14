@@ -1,0 +1,37 @@
+page-ewp-yb-order{
+  .vehicle{width: 98%; margin: 0 auto;}
+  .vehicle .icon-img{background-position: center center;background-size: 100%; background-repeat: no-repeat;margin: 0!important;margin-right: 12px !important;}
+  .vehicle .icon-img.icar-logo{min-width: 75px; min-height: 75px;}
+  .vehicle h2{margin-bottom: .5em; font-size: 1.6rem; font-weight: bold;}
+  .vehicle p{margin-top: .5em;}
+
+  .date-km{text-align: center; border-bottom: .8rem solid #f5f5f5;}
+  .date-km ion-icon{font-size: 4.5rem; margin: .3em 0 .5em 0;}
+  .date-km h3{ margin: 0; font-size: 1.7rem;}
+
+  .list-block .title-card{ margin-top: .8em; margin-bottom: .4em; font-size: 1.88rem; margin-left: 16px; color:#666666; font-weight: 700;}
+  .list-block.list-ios > .item-block:last-child, .list-block.list-ios > .item-wrapper:last-child .item-block{border-bottom: .8rem solid #f5f5f5;}
+  .list-block.info.list-ios .item-block .item-inner{border: none;}
+  .list-block .call h4{ font-size: 1.6rem; margin: .8em 0;}
+
+  .card-v{ border-bottom: .8rem solid #f5f5f5;}
+  .card-v h2{margin-top: .8em; margin-bottom: .4em; font-size: 1.88rem; margin-left: 16px; color:#666666; font-weight: 700;}
+  .c-dong {border-left: 1px solid #74d2d4; border-right: 1px solid #74d2d4; background-color: #74d2d4;}
+  .c-msg {cursor: pointer; height: 50px;width: 100%;position: relative;}
+  .item-selected .c-msg{ height: 48px; }
+  .c-top-dong { height: 3px; width: 100%; background: #fff url(../assets/img/ewp/virtual-spite.png) -36px -6px no-repeat; }
+  .c-msg .c-price {color: #fff;font: 24px Arial,Verdana,'Microsoft YaHei',SimSun; display: inline; position: relative; top: 8px; margin-left: 12px; vertical-align: bottom;}
+  .c-msg .c-limit{color: #f5f5f5;font-size: 12px; display: inline; position: relative; top: 7px; }
+  .item-selected .c-dong {border-left: 0; border-right: 0;}
+  .c-details.item-selected {box-sizing: border-box;border: 2px solid #e43a3d;background-image: url(../assets/img/ewp/coupon-selected.png);background-repeat: no-repeat;background-position: bottom right;}
+  .item-selected .c-dong .c-top-dong {height: 0;}
+  .item-selected .c-type-dong {border: 0!important;}
+  .c-details .c-type-dong {color: #74d2d4;border: 1px solid #cef0f1;}
+  .c-details .c-type span.c-type-l {margin: 0 5px 0 12px;}
+  .c-details .c-type {height: 30px;width: 100%;padding-left: 5px;padding-top: 5px;font-size: .9rem;}
+  .item-selected .c-type{height: 28px;}
+
+  .item.item-ios .checkbox-ios{margin-right:.7em;}
+  .information{position: absolute;font-size: 2rem !important;top: 30%;left: auto;}
+  ion-label {white-space: normal;}
+}

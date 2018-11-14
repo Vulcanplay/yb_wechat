@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>网点列表</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button detail-none ion-item (click)="storeDetails(item)" *ngFor="let item of storeArray">
+      <ion-thumbnail item-start>
+        <img [src]="item.ONSHOP014" width="75px"/>
+      </ion-thumbnail>
+      <h2>{{item.ONSHOP002}}</h2>
+      <p style="padding-top:8px;">{{item.ONSHOP003}}</p>
+      <a ion-button href="tel:{{item.ONSHOP013}}" clear item-end><ion-icon color="primary" name="md-call"></ion-icon></a>
+    </button>
+  </ion-list>
+</ion-content>

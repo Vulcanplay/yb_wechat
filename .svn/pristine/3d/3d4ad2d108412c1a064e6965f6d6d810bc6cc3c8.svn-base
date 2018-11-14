@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      延保宝典
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div margin>
+    <img src="./assets/img/home/raiders_1.png" width="100%"/>
+  </div>
+  <div margin>
+    <img src="./assets/img/home/raiders_2.png" width="100%"/>
+  </div>
+  <div margin>
+    <img src="./assets/img/home/raiders_3.png" width="100%"/>
+  </div>
+</ion-content>

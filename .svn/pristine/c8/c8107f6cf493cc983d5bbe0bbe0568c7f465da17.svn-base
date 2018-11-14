@@ -1,0 +1,14 @@
+page-cart {
+  .add-sub .button-small-ios{
+    height: 1.4em;
+    font-size: 1.3rem;
+    padding: 0 0.4em;
+    margin: 0;
+  }
+  .add-sub .button-small-ios[ion-button][disabled]{opacity: 1;}
+  .item.item-ios .checkbox-ios{margin-right:.7em;}
+  ion-footer{
+    border-top: 1px solid #f5f5f5;
+  }
+  ion-footer div[col-8]{ line-height: 33px;}
+}

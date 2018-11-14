@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      客服快答
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <h2 margin-vertical><ion-icon color="base" class="iconfont icon-wenda"></ion-icon>沃享延保有问必答</h2>
+  <ion-list no-margin *ngFor="let item of _data">
+    <button ion-item detail-none (click)="power(item)">
+      <ion-label>
+        <ion-note color="base">{{item.id}}.</ion-note>
+        {{item.title}}
+      </ion-label>
+      <ion-icon color="base" item-end [name]="!item.power ? 'ios-add' : 'ios-remove'"></ion-icon>
+    </button>
+    <div padding-horizontal *ngIf="item.power">
+      <p *ngFor="let c of item.content">{{c.c}}</p>
+    </div>
+  </ion-list>
+</ion-content>

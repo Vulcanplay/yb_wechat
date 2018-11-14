@@ -1,0 +1,230 @@
+webpackJsonp([1,5],{
+
+/***/ 650:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PreviewPicturePageModule", function() { return PreviewPicturePageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__preview_picture__ = __webpack_require__(96);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var PreviewPicturePageModule = (function () {
+    function PreviewPicturePageModule() {
+    }
+    return PreviewPicturePageModule;
+}());
+PreviewPicturePageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__preview_picture__["a" /* PreviewPicturePage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__preview_picture__["a" /* PreviewPicturePage */]),
+        ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_2__preview_picture__["a" /* PreviewPicturePage */]
+        ]
+    })
+], PreviewPicturePageModule);
+
+//# sourceMappingURL=preview-picture.module.js.map
+
+/***/ }),
+
+/***/ 655:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectPicturePageModule", function() { return SelectPicturePageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__select_picture__ = __webpack_require__(660);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__preview_picture_preview_picture_module__ = __webpack_require__(650);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+var SelectPicturePageModule = (function () {
+    function SelectPicturePageModule() {
+    }
+    return SelectPicturePageModule;
+}());
+SelectPicturePageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["L" /* NgModule */])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__select_picture__["a" /* SelectPicturePage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__select_picture__["a" /* SelectPicturePage */]), __WEBPACK_IMPORTED_MODULE_3__preview_picture_preview_picture_module__["PreviewPicturePageModule"]
+        ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_2__select_picture__["a" /* SelectPicturePage */]
+        ]
+    })
+], SelectPicturePageModule);
+
+//# sourceMappingURL=select-picture.module.js.map
+
+/***/ }),
+
+/***/ 660:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SelectPicturePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_NativeService__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__preview_picture_preview_picture__ = __webpack_require__(96);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * Generated class for the SelectPicturePage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+var SelectPicturePage = (function () {
+    function SelectPicturePage(modalCtrl, alertCtrl, actionSheetCtrl, nativeService) {
+        this.modalCtrl = modalCtrl;
+        this.alertCtrl = alertCtrl;
+        this.actionSheetCtrl = actionSheetCtrl;
+        this.nativeService = nativeService;
+        this.max = 4; //最多可选择多少张图片，默认为4张
+        this.allowAdd = true; //是否允许新增
+        this.allowDelete = true; //是否允许删除
+        this.fileObjList = []; //图片列表,与fileObjListChange形成双向数据绑定
+        this.fileObjListChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["w" /* EventEmitter */]();
+    }
+    SelectPicturePage.prototype.addPicture = function () {
+        var that = this;
+        that.actionSheetCtrl.create({
+            buttons: [
+                {
+                    text: '从相册选择',
+                    handler: function () {
+                        that.nativeService.getMultiplePicture({
+                            maximumImagesCount: (that.max - that.fileObjList.length),
+                            destinationType: 1 //期望返回的图片格式,1图片路径
+                        }).subscribe(function (imgs) {
+                            for (var _i = 0, _a = imgs; _i < _a.length; _i++) {
+                                var img = _a[_i];
+                                that.getPictureSuccess(img);
+                            }
+                        });
+                    }
+                },
+                {
+                    text: '拍照',
+                    handler: function () {
+                        that.nativeService.getPictureByCamera({
+                            destinationType: 1 //期望返回的图片格式,1图片路径
+                        }).subscribe(function (img) {
+                            that.getPictureSuccess(img);
+                        });
+                    }
+                },
+                {
+                    text: '取消',
+                    role: 'cancel'
+                }
+            ]
+        }).present();
+    };
+    SelectPicturePage.prototype.deletePicture = function (i) {
+        var _this = this;
+        if (!this.allowDelete) {
+            return;
+        }
+        this.alertCtrl.create({
+            title: '确认删除？',
+            buttons: [{ text: '取消' },
+                {
+                    text: '确定',
+                    handler: function () {
+                        _this.fileObjList.splice(i, 1);
+                    }
+                }
+            ]
+        }).present();
+    };
+    SelectPicturePage.prototype.viewerPicture = function (index) {
+        var picturePaths = [];
+        for (var _i = 0, _a = this.fileObjList; _i < _a.length; _i++) {
+            var fileObj = _a[_i];
+            picturePaths.push(fileObj.origPath);
+        }
+        this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3__preview_picture_preview_picture__["a" /* PreviewPicturePage */], { 'initialSlide': index, 'picturePaths': picturePaths }).present();
+    };
+    SelectPicturePage.prototype.getPictureSuccess = function (img) {
+        var fileObj = { 'origPath': img, 'thumbPath': img };
+        this.fileObjList.push(fileObj);
+        this.fileObjListChange.emit(this.fileObjList);
+    };
+    return SelectPicturePage;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Number)
+], SelectPicturePage.prototype, "max", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Boolean)
+], SelectPicturePage.prototype, "allowAdd", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Boolean)
+], SelectPicturePage.prototype, "allowDelete", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])(),
+    __metadata("design:type", Array)
+], SelectPicturePage.prototype, "fileObjList", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Output */])(),
+    __metadata("design:type", Object)
+], SelectPicturePage.prototype, "fileObjListChange", void 0);
+SelectPicturePage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        selector: 'page-select-picture',template:/*ion-inline-start:"D:\YB_C\test\src\shared\select-picture\select-picture.html"*/'<div class="clear-fix" style="padding-top: 2px;" *ngIf="fileObjList">\n\n  <div *ngFor="let fileObj of fileObjList, let i = index" class="pictures">\n\n    <span *ngIf="allowDelete" class="remove" tappable (click)="deletePicture(i)">×</span>\n\n    <img src="{{fileObj.thumbPath}}" tappable (click)="viewerPicture(i)">\n\n  </div>\n\n  <div *ngIf="fileObjList.length<max&&allowAdd" tappable (click)="addPicture()" class="pictures add">\n\n    <ion-icon name="camera"></ion-icon>\n\n  </div>\n\n</div>\n\n'/*ion-inline-end:"D:\YB_C\test\src\shared\select-picture\select-picture.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ModalController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_NativeService__["a" /* NativeService */]])
+], SelectPicturePage);
+
+//# sourceMappingURL=select-picture.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=1.js.map

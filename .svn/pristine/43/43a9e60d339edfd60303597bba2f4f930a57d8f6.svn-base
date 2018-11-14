@@ -1,0 +1,8 @@
+<ion-tabs #mainTabs selectedIndex={{selectedIndex}}>
+  <button class="tab-c-share" (click)="tabShare()"></button>
+  <ion-tab [root]="tab1Root" tabTitle="首页" tabIcon="home" tabsHideOnSubPages></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="类目" tabIcon="list" tabsHideOnSubPages></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="福利" class="share"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="购物车" tabIcon="cart" tabsHideOnSubPages></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="我的" tabIcon="person" tabsHideOnSubPages></ion-tab>
+</ion-tabs>

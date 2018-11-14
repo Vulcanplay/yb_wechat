@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      我的卡券
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-row class="shop">
+    <ion-col col-12 *ngFor="let item of ticketArray">
+      <div class="bg">
+        <h2>{{item.KHTIP010}}</h2>
+        <p text-right><ion-icon class="iconfont icon-custom-rmb"></ion-icon>{{item.KHTIP011}}</p>
+      </div>
+    </ion-col>
+  </ion-row>
+  <div *ngIf="ticketArray.length == 0" text-center margin-vertical><ion-note color="icon-gary">暂无优惠券</ion-note></div>
+</ion-content>

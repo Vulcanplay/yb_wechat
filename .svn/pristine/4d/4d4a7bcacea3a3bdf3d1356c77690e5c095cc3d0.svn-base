@@ -1,0 +1,27 @@
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import {NativeService} from "../../../../providers/NativeService";
+@Component({
+  selector: 'page-home-store-details',
+  templateUrl: 'details.html'
+})
+export class HomeStoreDetailsPage {
+  public store: any = {};
+  constructor(public navCtrl: NavController,
+              public nc: NativeService,
+              public navParams: NavParams) {}
+  ionViewDidEnter() {
+    this.store = this.navParams.get("store");
+  }
+  getMap(){
+    let lat = this.store.ONSHOP006.substring(0, this.store.ONSHOP006.indexOf(';') - 1);
+    let log = this.store.ONSHOP006.substring(this.store.ONSHOP006.indexOf(';') + 1, this.store.ONSHOP006.length);
+    let options = {
+      latitude: lat, // 纬度，浮点数，范围为90 ~ -90
+      longitude: log, // 经度，浮点数，范围为180 ~ -180。
+      name: this.store.ONSHOP003, // 位置名
+      address: this.store.ONSHOP002
+    };
+    this.nc.openLocation(options);
+  }
+}

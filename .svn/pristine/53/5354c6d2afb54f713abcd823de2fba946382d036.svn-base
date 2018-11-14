@@ -1,0 +1,105 @@
+page-mine {
+  .sign-header{
+    position: relative;
+    text-align: center;
+    height: 105px;
+  }
+  .sign-header img{
+    width: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: -1;
+  }
+  .sign-header button{
+    margin-top: 10%;
+    background-color: rgba(#fff, .5);
+    padding: .5em 2em;
+  }
+  .person-view header{
+    width: 97%;
+    margin: 1% 1.5%;
+    height: 180px;
+    background-size: 100% 100%;
+    position: relative;
+  }
+  .person-view header .row{
+    height: 180px;
+  }
+  .person-view header .row ion-col[col-4]{
+    text-align: center;
+    height: 170px;
+  }
+  .person-view header .row ion-col[col-4] img{
+    border:3px solid #fbb947;
+    margin-top: 35px;
+    border-radius: 50%;
+  }
+  .person-view header .row ion-col[col-6]{
+    margin-top: 30px;
+    font-weight: bold;
+  }
+  .person-view header .row ion-col[col-6] p{
+    margin: 0;
+    padding: 5px 0;
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgb(245, 191, 86)), to(rgba(191, 176, 44, 0.92)));color: #fff;
+    letter-spacing: .1em;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .person-view header .row ion-col[col-6] p:first-child{
+    color:#311800;
+    font-size: 18px;
+  }
+  .person-view header .row ion-col[col-6] p:last-child{
+    margin-top: 10px;
+    font-size: 90%;
+  }
+  .person-view header .row ion-col[col-6] p:last-child i{font-size: 16px;}
+  .person-view header .row ion-col[col-6] p.gold{color:#fb9a00;}
+  .person-view header .row ion-col[col-6] p.silver{color:#313236;}
+  .person-view header .row ion-col[col-6] p.copper{color:#3f1104;}
+  .person-view header .row ion-col[col-6] h4{
+    margin: 8px 0 16px;
+    font-size:14px;
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgb(245, 191, 86)), to(rgba(191, 176, 44, 0.92)));
+    text-shadow: 4px 4px 0px rgba(216, 181, 113, .3), 7px 7px 0px rgba(216, 181, 113, .1);color: #fff;
+    letter-spacing: .1em;
+    font-weight: bold;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;}
+  .person-view .finance b.assertive{
+    font-size: 15px;
+  }
+  .person-view .finance b.dark, .person-view .order b.dark, .person-view .nav b.dark{
+    font-size: 13px;
+    color:#000 !important;
+    font-weight: 100;
+  }
+  .person-view .col{padding:10px !important;}
+
+  .edit{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 25px;
+    color: #736636;
+  }
+  .hr{
+    width: 100%;
+    height: 10px;
+    background-color: #f8f8f8;
+  }
+  .finance ion-note[color="danger"]{
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 26px;
+  }
+  ion-row[text-center]{
+    padding: 3px;
+  }
+  ion-row[text-center] ion-note[color="dark6"]{
+    font-size: 1.3rem;
+    line-height: 24px;
+  }
+}

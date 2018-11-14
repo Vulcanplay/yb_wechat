@@ -1,0 +1,84 @@
+import { Component } from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
+import { ShoppingCartPage } from "../../ewp/shopping-cart/shopping-cart";
+import { ConfirmOrderPage } from "../../ewp/confirm-order/confirm-order";
+import { HomeService } from "../HomeService";
+import { CityArry, CarInfo, } from '../../../model/UserInfo';
+@Component({
+  selector: 'page-home-package',
+  templateUrl: 'package.html'
+})
+export class HomePackagePage {
+  public packageData: any[] = [];
+
+  public type: any;  //1 年保推荐   2、公里推荐  3价格推荐  4销量推荐
+
+  public car: CarInfo;  //车辆参数
+
+  public packageParams:any = {
+    YBJG003: '',
+    YBJG008: '',
+    YBCP009: '',
+  };
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public homeService: HomeService) { }
+
+  ionViewWillEnter() {
+    this.getAllParams();
+    this.getPackageData();
+  }
+
+
+  //获取参数
+  getAllParams() {
+    this.type = this.navParams.get("type");
+    switch (this.type){
+      case 1:
+        this.packageParams = {
+          YBJG003: '2000',
+          YBJG008: '',
+          YBCP009: '',
+        }
+        break;
+      case 2:
+        this.packageParams = {
+          YBJG003: '',
+          YBJG008: '2000',
+          YBCP009: '',
+        }
+        break;
+      case 3:
+        this.packageParams = {
+          YBJG003: '',
+          YBJG008: '',
+          YBCP009: '1',
+        }
+        break;
+      case 4:
+        this.packageParams = {
+          YBJG003: '',
+          YBJG008: '',
+          YBCP009: '',
+        }
+        break;
+    }
+  }
+
+
+  //获取列表
+  getPackageData() {
+    this.homeService.getYBPackage({
+    }).subscribe(r => {
+      this.packageData = r.data.Table;
+    })
+  }
+
+  shoppingCart() {
+    this.navCtrl.push(ShoppingCartPage);
+  }
+  confirmOrder() {
+    this.navCtrl.push(ConfirmOrderPage);
+  }
+}

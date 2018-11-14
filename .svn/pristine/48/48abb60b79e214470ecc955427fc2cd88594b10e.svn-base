@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      个人资料
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list no-margin>
+      <ion-item>
+        <ion-label>昵称</ion-label>
+        <ion-input text-right type="text" placeholder="请输入昵称"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>姓名</ion-label>
+        <ion-input text-right type="text" placeholder="请输入姓名"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>性别</ion-label>
+        <ion-select cancelText="取消" okText="确定">
+          <ion-option selected value=0>女</ion-option>
+          <ion-option value=1>男</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>生日</ion-label>
+        <ion-datetime text-right min="1970-01-01" placeholder="请选择生日" displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确定"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>联系手机号</ion-label>
+        <ion-input text-right type="text" placeholder="请输入手机号"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>注册手机号：18210376232</ion-label>
+        <button ion-button item-end color="base">更换</button>
+      </ion-item>
+
+    </ion-list>
+    <div margin-top padding>
+      <button ion-button full color="danger" type="submit" (click)="submit()">提交</button>
+    </div>
+</ion-content>

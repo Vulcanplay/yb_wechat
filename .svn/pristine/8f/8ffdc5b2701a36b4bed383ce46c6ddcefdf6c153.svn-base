@@ -1,0 +1,117 @@
+import { Component } from '@angular/core';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
+import { EWPOrderPage } from "./order/order";
+import {WindowViewPage} from "../../shared/window-view/window-view";
+import {FilterBrandSeriesPage} from "../../shared/filter-brand-series/filter-brand-series";
+import {SBGetBrandPage} from "./sanbao/brand/brand";
+import {NativeService} from "../../providers/NativeService";
+import {SBGetSeriesPage} from "./sanbao/brand/series/series";
+import {EWPIntroductionPage} from "./introduction/introduction";
+@Component({
+  selector: 'page-ewp',
+  templateUrl: 'ewp.html'
+})
+export class EWPPage {
+  //三包延保切换 Tag
+  private tabsYSBTag: any = 1;
+  //延保选择品牌车型
+  private brandSeriesParams = {
+    defaultText: '请选择品牌型号',
+    seriesId: '',
+    seriesName: '',
+    brandId: '',
+    brandName: ''
+  };
+  //三包获取价格对象
+  private sbData: any = {
+    seriesId: '',
+    seriesName: '',
+    seriesDefaultText: '请选择车型',
+    brandId: '',
+    brandName: '',
+    brandDefaultText: '请选择品牌',
+  };
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              public nativeService: NativeService) {
+  }
+
+  ionViewWillEnter() {
+  }
+
+  /**
+   * 延保订单
+   * */
+  pushYBOrder(){
+    this.navCtrl.push(EWPOrderPage);
+  }
+  /**
+   * 延保选择品牌车型
+   * */
+  ybSelectBrand(){
+    let brandModal = this.modalCtrl.create(FilterBrandSeriesPage,{});
+    brandModal.present();
+    brandModal.onDidDismiss(data => {
+      if (data != null){
+        this.brandSeriesParams.defaultText = '';
+        this.brandSeriesParams = data;
+      }
+    });
+  }
+  /**
+   * 三包选择品牌
+   * */
+  sbSelectBrand(){
+    let sbBrandModal = this.modalCtrl.create(SBGetBrandPage,{});
+    sbBrandModal.present();
+    sbBrandModal.onDidDismiss(data => {
+      if (data){
+        this.sbData.brandDefaultText = '';
+        this.sbData.brandId = data.brandId;
+        this.sbData.brandName = data.brandName;
+        //重置车型数据
+        this.sbData.seriesDefaultText = '请选择车型';
+        this.sbData.seriesId = '';
+        this.sbData.seriesName = '';
+      }
+    })
+  }
+  /**
+   * 三包选择车型
+   * */
+  sbSelectSeries(){
+    if (this.sbData.brandId == ''){
+      this.nativeService.alertTip("请先选择品牌~");
+    } else {
+      let sbSeriesModal = this.modalCtrl.create(SBGetSeriesPage,{brandId: this.sbData.brandId});
+      sbSeriesModal.present();
+      sbSeriesModal.onDidDismiss(data => {
+        if(data){
+          this.sbData.seriesDefaultText = '';
+          this.sbData.seriesId = data.seriesId;
+          this.sbData.seriesName = data.seriesName;
+        }
+      });
+    }
+  }
+  /**
+   * 弹出modal
+   * */
+  alertInfoWindow(){
+    let modal = this.modalCtrl.create(WindowViewPage, {}, {enterAnimation: 'center-modal-from-right-enter', leaveAnimation: 'center-modal-from-right-leave'});
+    modal.present();
+  }
+  /**
+   * 延保三包 标签切换
+   * */
+  tabsYSB(tag){
+    this.tabsYSBTag = tag;
+  }
+  /**
+   * 服务介绍
+   * */
+  introduction(){
+    this.navCtrl.push(EWPIntroductionPage);
+  }
+}

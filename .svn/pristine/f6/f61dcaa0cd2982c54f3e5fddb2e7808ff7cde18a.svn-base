@@ -1,0 +1,13 @@
+import { Component } from '@angular/core';
+import {ModalController, NavController, NavParams} from 'ionic-angular';
+
+@Component({
+  selector: 'page-ewp-order',
+  templateUrl: 'order.html'
+})
+export class EWPOrderPage {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController) {
+  }
+}

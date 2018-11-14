@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      服务网点
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="bg" style="background-image: url(./assets/img/site/site_banner.png)"></div>
+
+  <p text-center><ion-note color="dark">检测网点客服为您服务，请拨打</ion-note></p>
+
+  <p text-center><ion-icon color="base" class="iconfont lg icon-kefudianhua"></ion-icon><a href="tel:40010005545">40010005545</a></p>
+</ion-content>

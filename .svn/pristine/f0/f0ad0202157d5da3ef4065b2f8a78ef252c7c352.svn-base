@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\appworkspace\\test\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\icon.png",
+        "source": "E:\\appworkspace\\test\\platforms\\android\\res\\mipmap-hdpi\\icon.png"
+    },
+    {
+        "merged": "E:\\appworkspace\\YB-YANBAO\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\icon.png",
+        "source": "E:\\appworkspace\\YB-YANBAO\\platforms\\android\\res\\mipmap-hdpi\\icon.png"
+    }
+]

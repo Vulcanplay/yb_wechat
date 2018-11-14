@@ -1,0 +1,3 @@
+page-mine-contract{
+  .filter-tabs .toolbar-background-ios{background: #ffffff; border-color: transparent;}
+}

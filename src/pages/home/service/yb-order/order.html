@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>延保订单</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list no-margin>
+    <ion-item class="vehicle">
+      <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(ybOffer.brandLogo)"></ion-icon>
+      <h2><ion-note color="dark">{{ybOffer.brandName}}{{ybOffer.carseriseName}}</ion-note></h2>
+    </ion-item>
+  </ion-list>
+  <ion-row class="date-km">
+    <ion-col col-6>
+      <ion-icon class="iconfont icon-rili" color="garydark"></ion-icon>
+      <h3><ion-note color="dark6">{{ybOffer.firstTime}}</ion-note></h3>
+      <p><ion-note color="garydark">初登日期</ion-note></p>
+    </ion-col>
+    <ion-col col-6>
+      <ion-icon class="iconfont icon-panel" color="garydark"></ion-icon>
+      <h3><ion-note color="dark6">{{ybOffer.mileage}} km</ion-note></h3>
+      <p><ion-note color="garydark">当前里程</ion-note></p>
+    </ion-col>
+  </ion-row>
+  <ion-list no-margin class="list-block">
+    <h2 class="title-card">沃享延保</h2>
+    <ion-item>
+      <button ion-button small item-start padding-horizontal (click)="setYbPrice(item)" [color]="ybPrice.active ? 'base' : 'light'">{{ybPrice.BXXM004}}</button>
+      <ion-label class="font-small" (click)="alert(ybPrice.BXXM005)">
+        {{ybPrice.BXXM005}}
+      </ion-label>
+      <button item-end ion-button small clear color="dark" (click)="alert(ybPrice.BXXM005)">
+        <ion-icon name="ios-arrow-forward-outline"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-note item-left color="dark6" class="font-mini">车辆延保套餐说明</ion-note>
+        <ion-icon (click)="$event.stopPropagation();alertInfoWindow('延保套餐说明', 2);" class="information" color="garydark" name="md-information-circle"></ion-icon>
+      </ion-label>
+    </ion-item>
+    <ion-item *ngIf="ybPrice.tc">
+      <ion-label>是否包含套餐</ion-label>
+      <ion-toggle color="base" [(ngModel)]="tcSelected" (ionChange)="selected()"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <!--<ion-row class="card-v">
+    <ion-col no-padding col-12>
+      <h2>选择套餐&emsp;<ion-icon style="top: 37%;" (click)="$event.stopPropagation();alertInfoWindow('喷漆券说明', 4);" class="information" color="garydark" name="md-information-circle"></ion-icon></h2>
+    </ion-col>
+
+    <ion-col col-6 padding>
+      <div class="c-details item-selected">
+        <div class="c-msg c-dong">
+          <div class="c-top-dong"></div>
+          <div class="c-price">
+            <em><ion-icon class="iconfont icon-custom-rmb"></ion-icon>25</em>
+          </div>
+          <div class="c-limit">
+                <span>
+                满500
+                </span>
+          </div>
+        </div>
+        <div class="c-type c-type-dong">
+          <span>有效期至2018-03-12</span>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col col-6 padding>
+      <div class="c-details">
+        <div class="c-msg c-dong">
+          <div class="c-top-dong"></div>
+          <div class="c-price">
+            <em><ion-icon class="iconfont icon-custom-rmb"></ion-icon>25</em>
+          </div>
+          <div class="c-limit">
+                <span>
+                满500
+                </span>
+          </div>
+        </div>
+        <div class="c-type c-type-dong">
+          <span>有效期至2018-03-12</span>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>-->
+  <ion-list no-margin class="list-block info">
+    <h2 class="title-card">费用明细</h2>
+    <ion-item class="item-block-min">
+      <ion-label>延保价格</ion-label>
+      <ion-note item-end color="dark">{{ybPrice.PRODUCT007 != null ? ybPrice.PRODUCT007.toFixed(2) + '元' : '未选择保项'}}</ion-note>
+    </ion-item>
+<!--    <ion-item class="item-block-min">
+      <ion-label>喷漆券</ion-label>
+      <ion-note item-end color="dark">-25.00元</ion-note>
+    </ion-item>-->
+    <!--<ion-item class="item-block-min hr">
+      <ion-label>合计价格</ion-label>
+      <ion-note item-end color="danger">{{ybPrice.PRODUCT007 != null ? ybPrice.PRODUCT007.toFixed(2) + '元' : '未选择保项'}}</ion-note>
+    </ion-item>-->
+    <!--<ion-item class="item-last">
+      <ion-checkbox class="circle" color="base" [(ngModel)]="submitParams.isAgree"></ion-checkbox>
+        <ion-note item-left color="dark6" class="font-mini fwxy-left">我已充分阅读
+          <ion-note color="oranger" (click)="$event.stopPropagation();alertInfoWindow('车辆延保服务协议', 5);">《车辆延保服务协议》</ion-note>
+          所有内容，在完全理解的基础上在此勾选表示同意上述条款。</ion-note>
+    </ion-item>-->
+
+    <button ion-item margin-top (click)="serviceContract()">
+      <ion-label color="oranger">《沃享延保服务合同》</ion-label>
+    </button>
+    <ion-item>
+      <ion-label class="font-small normal">我已充分阅读《沃享延保服务合同》里的所有内容，在完全理解的基础上签字表示同意上述条款。</ion-label>
+      <!--<button ion-button item-right small color="base" (click)="wxybht()"><ion-icon name="ios-arrow-forward-outline"></ion-icon></button>-->
+    </ion-item>
+    <div text-center class="call">
+      <h4>如有疑问，请致电：<a href="tel:4000505345">400-0505-345</a></h4>
+      <p><ion-note color="garydark">服务时间 08:00 - 24:00</ion-note></p>
+    </div>
+  </ion-list>
+</ion-content>
+<ion-footer ion-row no-margin padding-horizontal>
+  <button (click)="submit()" full ion-button color="base">提交订单</button>
+</ion-footer>

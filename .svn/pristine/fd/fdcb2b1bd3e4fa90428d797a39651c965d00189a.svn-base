@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+import { NavController} from 'ionic-angular';
+import {EWPIntroductionDetailPage} from "./detail/introduction-detail";
+
+@Component({
+  selector: 'page-ewp-introduction',
+  templateUrl: 'introduction.html'
+})
+export class EWPIntroductionPage {
+  constructor(public navCtrl: NavController) {
+  }
+  detail(){
+    this.navCtrl.push(EWPIntroductionDetailPage);
+  }
+}

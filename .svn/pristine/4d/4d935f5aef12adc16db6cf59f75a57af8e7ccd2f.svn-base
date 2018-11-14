@@ -1,0 +1,14 @@
+import { Component } from '@angular/core';
+import {ModalController, NavController} from 'ionic-angular';
+
+@Component({
+  selector: 'page-home-raiders',
+  templateUrl: 'raiders.html'
+})
+export class HomeRaidersPage {
+
+  constructor(public navCtrl: NavController,
+              public modalCtrl: ModalController) {
+
+  }
+}

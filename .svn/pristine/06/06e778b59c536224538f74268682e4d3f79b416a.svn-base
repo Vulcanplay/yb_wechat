@@ -1,0 +1,18 @@
+import { Component } from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
+
+@Component({
+  selector: 'page-article',
+  templateUrl: 'article.html'
+})
+export class ArticlePage {
+  type:any;
+  title:any;
+  constructor(public navCtrl: NavController,
+              public navParams:NavParams) {
+  }
+  ionViewWillEnter(){
+    this.type = this.navParams.get("type");
+    this.title = this.navParams.get("title");
+  }
+}

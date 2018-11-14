@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      填写车牌号
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list margin-top>
+    <ion-item>
+      <ion-icon item-start color="base" class="iconfont icon-chepai"></ion-icon>
+      <ion-label item-start>车牌号码</ion-label>
+      <div item-start class="cp">
+        <button ion-button small color="gary" (click)="scanInput(cp);$event.stopPropagation();">{{cp}}&nbsp;
+          <ion-icon name="ios-arrow-down-outline"></ion-icon>
+        </button>
+      </div>
+      <ion-input type="text" placeholder="输入车牌号" [(ngModel)]="carPA"></ion-input>
+      <!-- <button ion-button item-end small clear class="sc"><ion-icon class="iconfont icon-yb-scan" color="oranger"></ion-icon></button> -->
+    </ion-item>
+    <ion-item>
+      <ion-icon item-start color="base" class="iconfont icon-location"></ion-icon>
+      <ion-label style="margin-left:0;">投保地区</ion-label>
+      <ion-select cancelText="取消" okText="确定" [(ngModel)]="code">
+        <ion-option value="110100">北京市</ion-option>
+        <ion-option value="310000">上海</ion-option>
+        <ion-option value="220100">长春市</ion-option>
+        <ion-option value="230100">哈尔滨</ion-option>
+        <ion-option value="410200">苏州</ion-option>
+        <ion-option value="320200">无锡市</ion-option>
+        <ion-option value="410300">洛阳市</ion-option>
+        <ion-option value="130500">合肥</ion-option>
+        <ion-option value="132500">杭州</ion-option>
+        <ion-option value="411000">湖州</ion-option>
+        <ion-option value="130500">芜湖</ion-option>
+          <!--  <ion-option value="130600">保定</ion-option>
+        <ion-option value="130100">石家庄</ion-option>
+        <ion-option value="131000">河北</ion-option>
+        <ion-option value="410400">平顶山市</ion-option>
+        <ion-option value="130300">秦皇岛市</ion-option>
+        <ion-option value="130900">沧州市</ion-option>
+        <ion-option value="130200">唐山市</ion-option>
+        <ion-option value="410500">安阳市</ion-option>
+        <ion-option value="130700">张家口市</ion-option>
+        <ion-option value="131100">衡水市</ion-option>
+        <ion-option value="130800">承德市</ion-option>
+        <ion-option value="370200">青岛市</ion-option>
+        <ion-option value="410600">鹤壁市</ion-option>
+        <ion-option value="370100">济南市</ion-option>
+        <ion-option value="370300">淄博市</ion-option>
+        <ion-option value="370700">潍坊市</ion-option>
+        <ion-option value="410700">新乡市</ion-option>
+        <ion-option value="370500">东营市</ion-option>
+        <ion-option value="530100">昆明市</ion-option>
+        <ion-option value="440500">汕头市</ion-option>
+        <ion-option value="410800">焦作市</ion-option>
+        <ion-option value="440600">佛山市</ion-option>
+        <ion-option value="440100">广州市</ion-option>
+        <ion-option value="440300">深圳市</ion-option>
+        <ion-option value="410900">濮阳市</ion-option>
+        <ion-option value="430100">长沙市</ion-option>
+        <ion-option value="510100">成都市</ion-option>
+        <ion-option value="511900">巴中市</ion-option>
+        <ion-option value="411100">漯河市</ion-option>
+        <ion-option value="510700">绵阳市</ion-option>
+        <ion-option value="510800">广元市</ion-option>
+        <ion-option value="230100">哈尔滨市</ion-option>
+        <ion-option value="650100">乌鲁木齐市</ion-option>
+        <ion-option value="411200">三门峡市</ion-option>
+        <ion-option value="210200">大连市</ion-option>
+        <ion-option value="320900">盐城市</ion-option>
+        <ion-option value="320200">无锡市</ion-option>
+        <ion-option value="411300">南阳市</ion-option>
+        <ion-option value="140100">太原市</ion-option>
+        <ion-option value="140200">大同市</ion-option>
+        <ion-option value="140300">阳泉市</ion-option>
+        <ion-option value="140400">长治市</ion-option>
+        <ion-option value="411500">信阳市</ion-option>
+        <ion-option value="140500">晋城市</ion-option>
+        <ion-option value="140600">朔州市</ion-option>
+        <ion-option value="140700">晋中市</ion-option>
+        <ion-option value="411600">周口市</ion-option>
+        <ion-option value="140800">运城市</ion-option>
+        <ion-option value="140900">忻州市</ion-option>
+        <ion-option value="141000">临汾市</ion-option>
+        <ion-option value="411700">驻马店市</ion-option>
+        <ion-option value="141100">吕梁市</ion-option>
+        <ion-option value="420100">武汉市</ion-option> -->
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div padding-horizontal>
+    <button ion-button block color="base" (click)="add()">确&emsp;定</button>
+  </div>
+</ion-content>

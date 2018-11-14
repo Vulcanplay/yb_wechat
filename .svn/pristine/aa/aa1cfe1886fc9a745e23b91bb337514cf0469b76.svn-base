@@ -1,0 +1,60 @@
+import { Injectable } from "@angular/core";
+import { HttpService } from "../../providers/HttpService";
+import { Observable } from "rxjs/Observable";
+import { Result } from "../../model/Result";
+
+@Injectable()
+export class HomeService {
+  constructor(public httpServices: HttpService) {
+  }
+  /**
+   * 获取最新信息
+   * */
+  getYbNewMessage(): Observable<(Result)> {
+    return this.httpServices.get('message/YBgetNewMessage').map(r => r.json());
+  }
+  /**
+   * 获取最新产品
+   * @param QYSSOO2 城市
+   * */
+  getNewProduct(p): Observable<(Result)> {
+    let params = {
+      QYSS002: p.city,
+    }
+    return this.httpServices.get('product/getNewProduct', params).map(r => r.json());
+  }
+  /**
+   * 获取延保品牌
+   * */
+  getYBBrand(): Observable<(Result)> {
+    return this.httpServices.get('Brand/getBrandHostList').map(r => r.json());
+  }
+  /**
+  * 获取头条信息
+  * */
+  getYBTopMessage(): Observable<(Result)> {
+    return this.httpServices.get('message/YBgetTopMessage').map(r => r.json());
+  }
+
+
+  /**
+  * 是否有车并返回车辆信息
+  * */
+  getMyCarTopMessage(userid): Observable<(Result)> {
+    let params = { id: userid };
+    return this.httpServices.get('myCar/YBgetMyCar', params).map(r => r.json());
+  }
+
+  /**
+   * 获取延堡套餐列表
+   * */
+  getYBPackage(p): Observable<(Result)> {
+    let params = {
+      YBJG003: p.YBJG003,
+      YBJG008: p.YBJG008,
+      YBCP009: p.YBCP009
+    };
+    return this.httpServices.get('/Product/GetProductSelectByDZ', params).map(r => r.json());
+  }
+
+}

@@ -1,0 +1,5 @@
+page-ewp-introduction{
+  h2{ width: 96%; margin:0 2%; padding: 16px 0; border-bottom: 1px solid #f5f5f5; text-align: center; font-size: 1.88rem; font-weight: bold;}
+  .line{ border-bottom: 1px solid #f5f5f5; padding: 0;}
+  .item-ios{border-top:0!important;}
+}

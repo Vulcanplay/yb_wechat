@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>确认订单</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list no-margin margin-top margin-bottom>
+    <ion-item class="ewp-details-item vehicle">
+      <ion-icon class="icon-img icar-logo" item-start [style.background-image]="getBackground(vehicle.MJCL029)"></ion-icon>
+      <ion-label>{{vehicle.BRANDNAME}}{{vehicle.CARSERIESNAME}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <div [style.background-image]="getBackground(YBXQ.YBCP003)"></div>
+      </ion-thumbnail>
+      <h2>{{YBXQ.YBCP002}}</h2>
+      <p>{{YBJG.YBCPNAME}}</p>
+      <p>
+        <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>{{YBJG.YBJG003}}</ion-note>
+      </p>
+      <ion-note clear item-end color="icon-gary">x1</ion-note>
+    </ion-item>
+    <ion-item class="ewp-details-item">
+      <ion-note item-end color="icon-gary">
+        小计
+        <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>{{YBJG.YBJG003}}</ion-note>
+      </ion-note>
+    </ion-item>
+  </ion-list>
+  <!--<ion-list no-margin margin-top margin-bottom>
+    <ion-item class="ewp-details-item vehicle">
+      <ion-icon class="icon-img icar-logo" item-start style="background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508155119777&di=8d538aaeffe8b1f3fe497c34368043e6&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F11%2F25%2F46%2F97X58PIC48e.jpg);"></ion-icon>
+      <ion-label>奥迪 A4L 2017 1.8T 双离合</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <div style="background-image: url(../assets/img/home/home_default_product.jpg)"></div>
+      </ion-thumbnail>
+      <h2>进口奔驰延保</h2>
+      <p>副标题副标题副标题副标题副标题副标题副标题</p>
+      <p>
+        <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+      </p>
+      <ion-note clear item-end color="icon-gary">x1</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <div style="background-image: url(../assets/img/home/home_default_product.jpg)"></div>
+      </ion-thumbnail>
+  <h2>进口奔驰延保</h2>
+  <p>副标题副标题副标题副标题副标题副标题副标题</p>
+  <p>
+    <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+  </p>
+  <ion-note clear item-end color="icon-gary">x1</ion-note>
+  </ion-item>
+  <ion-item class="ewp-details-item">
+    <ion-note item-end color="icon-gary">
+      小计
+      <ion-note color="danger"><ion-icon class="iconfont icon-custom-rmb"></ion-icon>6900.00</ion-note>
+    </ion-note>
+  </ion-item>
+  </ion-list>-->
+</ion-content>
+<ion-footer ion-row no-margin no-padding>
+  <button col full no-margin ion-button block disabled color="white">
+    <ion-note color="danger">总计<ion-icon class="iconfont icon-custom-rmb"></ion-icon>{{YBJG.YBJG003}}</ion-note>
+  </button>
+  <button (click)="paymentOrder()" col full no-margin ion-button block color="base">{{typeText}}</button>
+</ion-footer>

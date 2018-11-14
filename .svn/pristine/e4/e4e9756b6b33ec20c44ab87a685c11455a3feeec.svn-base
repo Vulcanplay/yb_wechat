@@ -1,0 +1,99 @@
+import { Component } from '@angular/core';
+import {ModalController, NavController, NavParams, AlertController} from 'ionic-angular';
+import {FilterBrandSeriesPage} from "../../../../shared/filter-brand-series/filter-brand-series";
+import {PreviewPicturePage} from "../../../../shared/preview-picture/preview-picture";
+import {FWXY_SERVE_URL, YB_HT_SERVE_URL} from "../../../../providers/Constants";
+
+@Component({
+  selector: 'page-yanbao-order-details',
+  templateUrl: 'details.html'
+})
+export class YanBaoOrderDetailsPage {
+  public params: any = {
+     mjclId:"",  //买家车辆ID
+     mjxxId:"", //买家信息ID
+     htId:"",   ////合同编号
+     ddId:"", ////订单编号
+     htUrl:"",  //// 合同地址
+     htNo:"",  //// 合同编号
+     htmjName:"",  ////合同买家姓名
+     htmjaddress:"",  ////买家地址
+     htmjPhone:"",   ////买家座机
+     htmjMobilePhone:0,   ////买家手机
+     htmjEmail:"",  ////买家邮箱
+     htmjCardNo:"",  ////买家证件号
+     htmjCardType:"",  ////买家身份证
+     htmjVin:"",   ////车VIN
+     htmjFDJNO:"",   ////发动机号
+     htmjBrand:"",  ////车品牌
+     htmjCarserise:"",  ////车系
+     htmjCarType:"",   ////车型
+     htmjCarPL:"",     ////车排量
+     htmjCarIszengya:0,   ////是否增压
+     htmjCarIssiqu:0,   //////是否四驱
+     htmjCarNo:"",  ////车牌
+     mjclglNO:"", ////当前行驶公里数
+     htmjYoubain:"", ////邮编
+     mjclIsjionkou:0, ////是否进口
+     htmjCarNewStarTime:"",   ////新车出厂日期
+     htmjCarNewBuyTime:"",   ////新车购买日期
+     htmjCarYear:"",   ////车龄
+     htmjCarBuyMoney:"",   //车价格
+     htmjCarFPtitle:"",   ////车发票抬头
+     htmjFatorystartTime:"",   ////原厂保修起始日期
+     htmjFatoryendTime:"",   ////原厂保修结束日期
+     htYanbaoTime:"",   ////延保合同期限
+     htmjFatoryGLNO:"",   ////原厂保修公里数
+     htYanbaoGLNO:"",   ////延保保修公里数
+     htStartTimeendTime:"",   ////合同生效开始结束日期
+     htProjectName:"",  ////合同保修项目名称
+     htPCmoney:"",   ////赔偿限额
+     htPrice:0,  ////延保购买价
+     htJXSname:"",  ////经销商名字
+     htJXSaddress:null,   ////经销省地质
+     htXSGW:"",  ////销售顾问
+     htmjCarIsBussess:0,   ////车辆是否用于营业
+     htIsdel:0,  ////合同是否有效
+     htFwxyUrl:"",   ////服务协议地质
+     orderTime:"",   ////订单提交时间
+     orderPayStyle:1,  ////订单支付方式
+     orderIsPay:0  ////订单是否支付
+  };
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              public alertCtrl: AlertController) {
+  }
+  ionViewDidLoad(){
+    this.params = this.navParams.get("item");
+  }
+
+  /**
+   * 选择品牌车型
+   * */
+  selectBrand(){
+    let brandModal = this.modalCtrl.create(FilterBrandSeriesPage,{});
+    brandModal.present();
+    brandModal.onDidDismiss(data => {
+      if (data){
+        this.params.htmjBrand = data.brandName;
+        this.params.htmjCarserise = data.seriesName;
+      }
+    });
+  }
+
+
+  /**
+   * 合同图片预览
+   * */
+  viewPhotoHT(picturePaths) {
+    this.modalCtrl.create(PreviewPicturePage, { 'initialSlide': 0, 'picturePaths': [YB_HT_SERVE_URL + picturePaths] }).present();
+  }
+
+  /**
+   * 服务协议图片预览
+   * */
+  viewPhotoFWXY(picturePaths) {
+    this.modalCtrl.create(PreviewPicturePage, { 'initialSlide': 0, 'picturePaths': [FWXY_SERVE_URL + picturePaths] }).present();
+  }
+}

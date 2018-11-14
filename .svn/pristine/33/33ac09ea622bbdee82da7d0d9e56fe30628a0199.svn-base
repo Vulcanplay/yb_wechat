@@ -1,0 +1,62 @@
+import { Component } from '@angular/core';
+import {ModalController, NavController, NavParams, AlertController} from 'ionic-angular';
+import {EWPYBOrderDatumPage} from "./datum/datum";
+import { DomSanitizer } from "@angular/platform-browser";
+
+@Component({
+  selector: 'page-ewp-yb-order',
+  templateUrl: 'order.html'
+})
+export class EWPYBOrderPage {
+  //价格对象
+  private ybPrice:any = {
+    C_YBJGINFO001:"",       //产品主键ID
+    C_YBJGINFO002:"",       //产品适应品牌ID
+    C_YBJGINFO003:"",       //产品适用品牌
+    C_YBJGINFO004:"",       //产品适车系ID
+    C_YBJGINFO005:"",       //产品适用车系名称
+    C_YBJGINFO006:0,        //保修公里数
+    C_YBJGINFO007:0,        //保修年限
+    C_YBJGINFO008:"",       //保险公司ID
+    C_YBJGINFO009:"",       //保险公司名称
+    C_YBJGINFO010:"",       //保险项目ID
+    C_YBJGINFO011:"",       //保险项目名称
+    C_YBJGINFO012:"",       //车价格范围
+    C_YBJGINFO013:0,        //是否删除  0未删除  1删除
+    C_YBJGINFO014:"",       //适用区域
+    C_YBJGINFO015:0,        //产品类型  0非活动  1活动
+    C_YBJGINFO016:0,        //原价
+    C_YBJGINFO017:0         //现价
+  };
+  //报价对象
+  private ybOffer:any = {};
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              public _sanitizer: DomSanitizer,
+              public alertCtrl: AlertController) {
+  }
+  ionViewWillEnter(){
+    this.ybPrice = this.navParams.get("ybPrice");
+    this.ybOffer = this.navParams.get("ybOffer");
+  }
+  /**
+   * 支付订单
+   * */
+  payOrder(){
+    this.alertCtrl.create({
+      title: '支付成功',
+      enableBackdropDismiss: false,
+      buttons: [{
+        text: '确定',
+        handler: () => {
+          this.navCtrl.push(EWPYBOrderDatumPage);
+        }
+      }]
+    }).present();
+  }
+
+  getBackground(image) {
+    return this._sanitizer.bypassSecurityTrustStyle(`url(${image})`);
+  }
+}

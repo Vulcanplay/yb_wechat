@@ -1,0 +1,28 @@
+<ion-content>
+  <ion-header>
+    <ion-navbar>
+      <ion-title>配置</ion-title>
+      <ion-buttons end>
+        <button ion-button (click)="dismiss()">
+          <i class="iconfont lg icon-custom-close"></i>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col>您选择了：<ion-note color="base">Sport版</ion-note></ion-col>
+    </ion-row>
+    <ion-row class="operation">
+      <button col col-4 ion-button margin small [color]="configureChecked ? 'base':'garylight'">全部</button>
+      <button col col-4 offset-4 ion-button margin small [color]="configureChecked ? 'base':'garylight'">清除</button>
+    </ion-row>
+    <ion-row>
+      <button col ion-button margin small [color]="configureChecked ? 'base':'garylight'">四驱领航</button>
+      <button col ion-button margin small [color]="configureChecked ? 'base':'garylight'">XL</button>
+      <button col ion-button margin small [color]="configureChecked ? 'base':'garylight'">BLUE自动型</button>
+      <button col ion-button margin small [color]="configureChecked ? 'base':'garylight'">四驱至尊版</button>
+      <button col ion-button margin small [color]="!configureChecked ? 'base':'garylight'">Sport版</button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

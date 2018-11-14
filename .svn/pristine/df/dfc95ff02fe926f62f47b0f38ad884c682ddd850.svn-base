@@ -1,0 +1,14 @@
+import { Component } from '@angular/core';
+import {ModalController, NavController, NavParams, AlertController} from 'ionic-angular';
+
+@Component({
+  selector: 'page-ewp-order-datum',
+  templateUrl: 'datum.html'
+})
+export class EWPOrderDatumPage {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              public alertCtrl: AlertController) {
+  }
+}

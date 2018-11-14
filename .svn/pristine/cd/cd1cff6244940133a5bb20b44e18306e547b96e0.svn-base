@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\appworkspace\\YB-YANBAO\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\xml\\config.xml",
+        "source": "E:\\appworkspace\\YB-YANBAO\\platforms\\android\\res\\xml\\config.xml"
+    },
+    {
+        "merged": "E:\\appworkspace\\test\\platforms\\android\\build\\intermediates\\res\\merged\\debug\\xml\\config.xml",
+        "source": "E:\\appworkspace\\test\\platforms\\android\\res\\xml\\config.xml"
+    }
+]

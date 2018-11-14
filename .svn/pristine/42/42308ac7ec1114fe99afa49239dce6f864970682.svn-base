@@ -1,0 +1,220 @@
+import { Component } from '@angular/core';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
+import {FilterBrandSeriesPage} from "../../shared/filter-brand-series/filter-brand-series";
+import {SBGetBrandPage} from "./sanbao/brand/brand";
+import {NativeService} from "../../providers/NativeService";
+import {SBGetSeriesPage} from "./sanbao/brand/series/series";
+import {Utils} from "../../providers/Utils";
+import {EWPService} from "./EWPService";
+import {EWPYBOrderPage} from "./yb-order/order";
+import {EWPSBOrderPage} from "./sb-order/order";
+import {EWPYBIntroductionPage} from "./yb-introduction/introduction";
+import {EWPSBIntroductionPage} from "./sb-introduction/introduction";
+@Component({
+  selector: 'page-ewp',
+  templateUrl: 'ewp.html'
+})
+export class EWPPage {
+  //三包延保切换 Tag
+  private tabsYSBTag: any = 1;
+  //延保选择品牌车型
+  private ybData = {
+    defaultText: '请选择品牌型号',
+    seriesId: '',
+    seriesName: '',
+    brandId: '',
+    brandName: '',
+    logo:'',
+  };
+  //三包获取价格对象
+  private sbData: any = {
+    seriesId: '',
+    seriesName: '',
+    seriesDefaultText: '请选择车型',
+    brandId: '',
+    brandName: '',
+    brandDefaultText: '请选择品牌',
+  };
+  //延保报价
+  private ybOffer: any = {
+    brandId: "",        //品牌ID
+    carseriseId: "",    //车系ID
+    priceList: "0",     //价格区间
+    activeType: 0,      //购买类型 0非活动 1活动
+    firstTime: "",      //初次等级日期
+    mileage: null,      //当前行驶公里数
+    isAgree: false,     //已知悉承保车辆标准
+    brandLogo: "",      //品牌LOGO
+    companyId: "7FE47047-A5A0-4850-975B-AD4F619295A3",//公司ID
+    projectId: "ADD18D01-B21C-428E-80ED-5C69D32DE801",//延保项目ID
+  };
+  //三包报价
+  private sbOffer: any = {
+    brandId: "",
+    carseriseId: "",
+    projectId: "二大件",//延保项目
+    companyId: "A80DD2AB-E2E5-43FD-9B45-F916F7A8DBFB", //公司ID
+    isAgree: false,     //已知悉承保车辆标准 - 三包
+  };
+  //今天
+  private toDay: any;
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              public nativeService: NativeService,
+              public ewpService: EWPService) {
+  }
+
+  ionViewWillEnter() {
+    this.toDay = Utils.dateFormat(new Date(), 'YYYY-MM-DD').toString();
+    if(this.navParams.get("tabsYSBTag")){
+      this.tabsYSBTag = this.navParams.get("tabsYSBTag");
+    }
+  }
+
+  /**
+   * 延保报价
+   * */
+  pushYBOrder(){
+    if (this.ybOffer.brandId === "" || this.ybOffer.carseriseId === ""){
+      this.nativeService.alertTip("请选择品牌车型~");
+      return false;
+    } else if (this.ybOffer.priceList == "0"){
+      this.nativeService.alertTip("请选择价格区间~");
+      return false;
+    } else if (this.ybOffer.firstTime === ""){
+      this.nativeService.alertTip("请选择初次登记日期~");
+      return false;
+    } else if (this.ybOffer.mileage == null){
+      this.nativeService.alertTip("当前行驶公里数不能为空，且必须为数字~");
+      return false;
+    } else if (!this.ybOffer.isAgree){
+      this.nativeService.alertTip("请确认已知悉承保车辆标准~");
+      return false;
+    } else {
+      this.ewpService.getYBPrice(this.ybOffer).subscribe( r => {
+        if(r.Code == 200){
+          this.navCtrl.push(EWPYBOrderPage, {ybPrice: r.DataList.Table[0], ybOffer: this.ybOffer});
+        } else {
+          this.nativeService.alertTip(r.Message);
+        }
+      });
+    }
+  }
+  /**
+   * 三包报价
+   * */
+  pushSBOrder(){
+    if (this.sbOffer.brandId === ""){
+      this.nativeService.alertTip("请选择品牌~");
+      return false;
+    } else if (this.sbOffer.carseriseId === ""){
+      this.nativeService.alertTip("请选择车型~");
+      return false;
+    } else if (!this.sbOffer.isAgree){
+      this.nativeService.alertTip("请确认已知悉承保车辆标准~");
+      return false;
+    } else {
+      this.ewpService.getSBPrice(this.sbOffer).subscribe( r => {
+        if(r.Code == 200){
+          this.navCtrl.push(EWPSBOrderPage, {sbPrice: r.DataList.Table[0], sbOffer: this.sbOffer});
+        } else {
+          this.nativeService.alertTip(r.Message);
+        }
+      });
+    }
+  }
+  /**
+   * 延保选择品牌车型
+   * */
+  ybSelectBrand(){
+    let brandModal = this.modalCtrl.create(FilterBrandSeriesPage,{});
+    brandModal.present();
+    brandModal.onDidDismiss(data => {
+      if (data){
+        this.ybData.defaultText = '';
+        this.ybData = data;
+        this.ybOffer.brandId = this.ybData.brandId;
+        this.ybOffer.carseriseId = this.ybData.seriesId;
+        this.ybOffer.brandLogo = this.ybData.logo;
+      }
+    });
+  }
+  /**
+   * 三包选择品牌
+   * */
+  sbSelectBrand(){
+    let sbBrandModal = this.modalCtrl.create(SBGetBrandPage,{});
+    sbBrandModal.present();
+    sbBrandModal.onDidDismiss(data => {
+      if (data){
+        this.sbData.brandDefaultText = '';
+        this.sbData.brandId = data.brandId;
+        this.sbData.brandName = data.brandName;
+        this.sbOffer.brandId = this.sbData.brandId;
+        //重置车型数据
+        this.sbData.seriesDefaultText = '请选择车型';
+        this.sbData.seriesId = '';
+        this.sbData.seriesName = '';
+      }
+    })
+  }
+  /**
+   * 三包选择车型
+   * */
+  sbSelectSeries(){
+    if (this.sbData.brandId == ''){
+      this.nativeService.alertTip("请先选择品牌~");
+    } else {
+      let sbSeriesModal = this.modalCtrl.create(SBGetSeriesPage,{brandId: this.sbData.brandId});
+      sbSeriesModal.present();
+      sbSeriesModal.onDidDismiss(data => {
+        if(data){
+          this.sbData.seriesDefaultText = '';
+          this.sbData.seriesId = data.seriesId;
+          this.sbData.seriesName = data.seriesName;
+          this.sbOffer.carseriseId = this.sbData.seriesId;
+        }
+      });
+    }
+  }
+  /**
+   * 弹出信息
+   * */
+  alertInfoWindow(title, type){
+    this.nativeService.alertInfoWindow(title, type);
+  }
+  /**
+   * 延保三包 标签切换
+   * */
+  tabsYSB(tag){
+    this.tabsYSBTag = tag;
+  }
+  /**
+   * 服务介绍
+   * */
+  action1(action){
+    // 1 延保 2 三包
+    if (action == 1){
+
+    } else {
+
+    }
+  }
+  action2(action){
+    // 1 延保 2 三包
+    if (action == 1){
+      this.navCtrl.push(EWPYBIntroductionPage);
+    } else {
+      this.navCtrl.push(EWPSBIntroductionPage);
+    }
+  }
+  action3(action){
+    // 1 延保 2 三包
+    if (action == 1){
+
+    } else {
+
+    }
+  }
+}

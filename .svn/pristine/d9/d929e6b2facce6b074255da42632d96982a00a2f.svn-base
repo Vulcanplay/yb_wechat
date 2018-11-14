@@ -1,0 +1,42 @@
+import { Injectable } from "@angular/core";
+import { HttpService } from "../../providers/HttpService";
+import { Observable } from "rxjs/Observable";
+import { Result } from "../../model/Result";
+
+@Injectable()
+export class FilterBrandSeries {
+  constructor(public httpServices: HttpService) {
+  }
+
+
+
+  //获取子品牌
+  getFilterBrandSeries(): Observable<(Result)> {
+    return this.httpServices.get('Brand/getSonBrandListALL').map(r => r.json());
+  }
+
+
+  getOrderDetailsData(p): Observable<(Result)> {
+    let parems = {
+      orderid: p.brandid
+    }
+    return this.httpServices.get('/Brand/GetCarseriesListALL', parems).map(r => r.json());
+  }
+
+
+
+  //根据品牌ID获取车系
+  getCarSeriseList(brandid) {
+    let parems = {
+      brandid: brandid
+    }
+    return this.httpServices.get('Brand/GetCarseriesListALL', parems).map(r => r.json());
+  }
+
+  //获取热门品牌
+  getHotBrandList(): Observable<(Result)> {
+    return this.httpServices.get('Brand/getBrandHostList').map(r => r.json());
+  }
+
+
+}

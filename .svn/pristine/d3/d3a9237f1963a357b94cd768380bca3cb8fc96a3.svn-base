@@ -1,0 +1,3 @@
+page-site-details{
+  .content-ios, .content-md, .content-wp{background-color: color($colors, white) !important;}
+}

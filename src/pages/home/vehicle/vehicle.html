@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{item.KHTIP010}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      名称
+      <ion-note color="dark" item-end>{{item.KHTIP010}}</ion-note>
+    </ion-item>
+    <ion-item>
+      单价
+      <ion-note color="danger" item-end><ion-icon class="iconfont icon-custom-rmb"></ion-icon>{{item.KHTIP011}}</ion-note>
+    </ion-item>
+    <ion-item>
+      数量
+      <div item-end text-right>
+        <ion-buttons text-center class="add-sub">
+          <button ion-button small outline color="icon-gary" [disabled]="item.KHTIP004 == 1" (click)="calcCount(0)"><ion-icon name="ios-remove-outline"></ion-icon></button>
+          <button ion-button small clear color="dark">{{item.KHTIP004}}</button>
+          <button ion-button small outline color="base" (click)="calcCount(1)"><ion-icon name="ios-add-outline"></ion-icon></button>
+        </ion-buttons>
+      </div>
+    </ion-item>
+    <ion-item>
+      合计总价
+      <ion-note color="danger" item-end><ion-icon class="iconfont icon-custom-rmb"></ion-icon>{{item.KHTIP011 * item.KHTIP004}}</ion-note>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer no-margin padding-horizontal>
+  <button (click)="pay()" full ion-button color="base">立即支付</button>
+</ion-footer>

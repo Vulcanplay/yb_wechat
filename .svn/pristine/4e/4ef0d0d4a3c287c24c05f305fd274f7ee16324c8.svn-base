@@ -1,0 +1,190 @@
+import { Component } from '@angular/core';
+import { ModalController, ViewController, AlertController, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { FormBuilder, Validators } from '@angular/forms';
+import { SignInService } from './SignInService';
+import { SignUpPage } from '../sign-up/sign-up';
+import { HomeaddCarARR } from "../../../model/UserInfo";
+import { Utils } from "../../../providers/Utils";
+import { VehiclePage } from '../../mine/vehicle/vehicle'
+import { HomeService } from "../../home/HomeService";
+@Component({
+  selector: 'page-sing-in',
+  templateUrl: 'sign-in.html',
+  providers: [SignInService]
+})
+export class SignInPage {
+  private userInfo = {
+    loginId:"",
+    loginname:null,
+    code:null,
+    mjinfoId:"",
+    mjname:null,
+    mjnike:null,
+    mjsex:null,
+    mjareaname:null,
+    mjphone:null,
+    mjcardtype:null,
+    mjcardNO:null,
+    mjaddress:null,
+    mjpostcode:null,
+    mjmail:null
+  };
+  private loginForm: any;
+  //是否来自微信菜单 并去订单
+  private wxMenuOrder: any = false;
+  //发送验证
+  sendCodeButton: any = { text: "发送验证码", disabled: false };
+
+  constructor(private viewCtrl: ViewController,
+    private formBuilder: FormBuilder,
+    private storage: Storage,
+    private navParams: NavParams,
+    private modalCtrl: ModalController,
+    private homeService: HomeService,
+    private alertCtrl: AlertController,
+    public navCtrl: NavController,
+    private signInService: SignInService) {
+    this.loginForm = this.formBuilder.group({
+      phone: ['', [Validators.required, Validators.pattern('1[0-9]{10}')]],// 第一个参数是默认值
+      verificationCode: ['']
+    });
+  }
+
+  ionViewWillEnter() {
+    this.storage.get('wx_user').then(data => {
+      this.userInfo = data;
+    });
+    /**
+     * 微信入口直接去订单页面
+     * */
+    this.wxMenuOrder = this.navParams.get("from") === 'wx_menu_order' ? true : false;
+  }
+
+  /**
+   * 登录
+   * */
+  signIn(user) {
+    this.signInService.login({
+      'LoginName': user.phone,
+      'code': user.verificationCode
+    }).subscribe(r => {
+      if (r.Code == 200){
+        this.userInfo = r.DataList.Table[0];
+        this.storage.clear();//清除缓存
+        Utils.sessionStorageClear();//清除缓存
+        this.storage.set('wx_user', this.userInfo);
+        if (this.navParams.get('type') == 'myhome') {
+          this.homeService.getMyCarTopMessage(this.userInfo.loginId).subscribe(r => {
+            if (r.data.length > 0) {
+              this.viewCtrl.dismiss({ users: this.userInfo, cars: r.data[0] });
+            }
+            else {
+              let model = this.modalCtrl.create(VehiclePage, { userid: this.userInfo.loginId, type: 'myhome' });
+              model.present();
+              model.onDidDismiss((data: HomeaddCarARR) => {
+                if (data != null) {
+                  this.viewCtrl.dismiss({ cars: data.cars, users: data.users });
+                }
+              });
+            }
+          });
+        } else if(this.wxMenuOrder) {
+            /**
+             * @platform.ready
+             * @wx_menu_order
+             * */
+            this.viewCtrl.dismiss(this.userInfo);
+        } else {
+          this.viewCtrl.dismiss(this.userInfo);
+        }
+      } else {
+        this.alertCtrl.create({
+          title: r.Message,
+          buttons: [
+          {
+            text: '确定',
+            handler: () => {
+            }
+          }]
+        }).present();
+        return false;
+      }
+    });
+  }
+
+  /**
+   * 跳转注册
+   * */
+  signUp() {
+    let modal = this.modalCtrl.create(SignUpPage);
+    modal.present();
+  }
+
+  /**
+   * 发送验证码
+   * */
+  sendCode(obj) {
+    if (obj.phone == '') {
+      this.alertCtrl.create({
+        title: '请输入手机号',
+        buttons: [
+        {
+          text: '确定',
+          handler: () => {
+          }
+        }]
+      }).present();
+    } else {
+      this.signInService.sendLoginCode({
+        LoginName : obj.phone
+      }).subscribe(r => {
+        if (r.Code == 200) {
+          //改变按钮状态
+          let InterValObj = null; //timer变量，控制时间
+          let curCount = 119;//当前剩余秒数
+          let self = this;
+          this.sendCodeButton.disabled = true;
+          this.sendCodeButton.text = "请在" + curCount + "秒内输入验证码";
+
+          InterValObj = setInterval(function () {
+            if (curCount == 0) {
+              clearInterval(InterValObj);
+              self.sendCodeButton.disabled = false;
+              self.sendCodeButton.text = "重新发送验证码";
+            }
+            else {
+              curCount--;
+              self.sendCodeButton.text = "请在" + curCount + "秒内输入验证码";
+            }
+          }, 1000);//启动计时器，1秒执行一次
+          this.alertCtrl.create({
+            title: '验证码已发送',
+            buttons: [
+              {
+                text: '确定',
+                handler: () => {
+                }
+              }]
+          }).present();
+        } else {
+          this.alertCtrl.create({
+            title: r.Message,
+            buttons: [
+              {
+                text: '确定',
+                handler: () => {}
+              }]
+          }).present();
+        }
+      }), () => { };
+    }
+  }
+
+  /**
+   * 关闭
+   * */
+  dismiss() {
+    this.viewCtrl.dismiss(this.userInfo);
+  }
+}

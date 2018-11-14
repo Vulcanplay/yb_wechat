@@ -1,0 +1,30 @@
+import { Component } from '@angular/core';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
+import { OrderCommentPage } from "../comment/comment";
+import { OrderService } from "../OrderService";
+import { PreviewPicturePage } from "../../../../shared/preview-picture/preview-picture";
+
+@Component({
+  selector: 'page-order-details',
+  templateUrl: 'details.html.backup'
+})
+export class OrderDetailsPage {
+  private orderDetailsData: any={};
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController) {
+
+  }
+  ionViewDidLoad() {
+    debugger;
+    this.orderDetailsData = this.navParams.get('list');
+    console.log(this.orderDetailsData);
+  }
+  comment() {
+    this.navCtrl.push(OrderCommentPage);
+  }
+
+  viewPhoto(picturePaths) {
+    this.modalCtrl.create(PreviewPicturePage, { 'initialSlide': 1, 'picturePaths': [picturePaths] }).present();
+  }
+}
